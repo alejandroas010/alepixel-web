@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ALEPIXEL — Diseño web para negocios locales</title>
+  <meta name="description" content="Diseño webs profesionales para pequeños negocios. Modernas, rápidas y pensadas para generar confianza y clientes." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── RESET ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    img { display: block; max-width: 100%; }
+
+    /* ─── TOKENS ─── */
+    :root {
+      --ink:        #0C0C0E;
+      --ink-soft:   #3A3A40;
+      --ink-muted:  #7A7A85;
+      --ink-faint:  #B0B0BA;
+      --surface:    #F7F6F3;
+      --surface2:   #EFEDE8;
+      --card:       #FFFFFF;
+      --border:     #E2E0DA;
+      --accent:     #1A1A1E;
+      --accent-warm:#8C6A3F;
+      --white:      #FFFFFF;
+
+      --font-display: 'DM Serif Display', Georgia, serif;
+      --font-body:    'DM Sans', system-ui, sans-serif;
+
+      --space-xs:  8px;
+      --space-sm:  16px;
+      --space-md:  32px;
+      --space-lg:  64px;
+      --space-xl:  96px;
+      --space-2xl: 140px;
+
+      --r:    6px;
+      --r-md: 12px;
+      --r-lg: 18px;
+
+      --max: 1160px;
+      --pad: clamp(20px, 5vw, 72px);
+    }
+
+    /* ─── BASE ─── */
+    body {
+      font-family: var(--font-body);
+      background: var(--surface);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    ::selection { background: var(--ink); color: var(--surface); }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--surface); }
+    ::-webkit-scrollbar-thumb { background: var(--ink-faint); border-radius: 3px; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 var(--pad);
+      transition: background 0.35s, border-color 0.35s;
+      border-bottom: 1px solid transparent;
+    }
+    nav.scrolled {
+      background: rgba(247,246,243,0.92);
+      backdrop-filter: blur(14px);
+      border-color: var(--border);
+    }
+    .nav-logo {
+      font-family: var(--font-body);
+      font-weight: 600; font-size: 1rem;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ink); text-decoration: none;
+    }
+    .nav-links {
+      display: flex; gap: 36px; list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.875rem; font-weight: 400;
+      color: var(--ink-soft); text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta {
+      background: var(--ink) !important; color: var(--surface) !important;
+      padding: 9px 22px; border-radius: var(--r);
+      font-size: 0.82rem !important; font-weight: 500 !important;
+      letter-spacing: 0.02em;
+      transition: opacity 0.2s !important;
+    }
+    .nav-cta:hover { opacity: 0.78 !important; }
+    .nav-hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 4px; background: none; border: none;
+    }
+    .nav-hamburger span {
+      display: block; width: 20px; height: 1.5px;
+      background: var(--ink); border-radius: 1px; transition: all 0.3s;
+    }
+
+    /* ─── MOBILE MENU ─── */
+    .mobile-menu {
+      display: none; position: fixed; inset: 0;
+      background: var(--surface);
+      z-index: 99; flex-direction: column;
+      align-items: center; justify-content: center; gap: 40px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: var(--font-display); font-size: 2rem;
+      color: var(--ink); text-decoration: none;
+    }
+    .mobile-close {
+      position: absolute; top: 22px; right: 24px;
+      font-size: 1.1rem; color: var(--ink-muted);
+      cursor: pointer; background: none; border: none;
+      font-family: var(--font-body);
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      padding: 140px var(--pad) 100px;
+      display: flex; flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .hero-eyebrow {
+      font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--ink-muted); margin-bottom: 28px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block;
+      width: 28px; height: 1px; background: var(--ink-faint);
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 7.5vw, 6.5rem);
+      line-height: 1.03;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      max-width: 900px;
+      margin-bottom: 44px;
+    }
+    .hero h1 em {
+      font-style: italic; color: var(--ink-soft);
+    }
+    .hero-bottom {
+      display: flex; align-items: flex-end;
+      justify-content: space-between; gap: 32px; flex-wrap: wrap;
+    }
+    .hero-sub {
+      font-size: clamp(0.95rem, 1.6vw, 1.08rem);
+      color: var(--ink-soft); line-height: 1.72;
+      max-width: 440px; font-weight: 300;
+    }
+    .hero-btns {
+      display: flex; gap: 12px; flex-wrap: wrap; flex-shrink: 0;
+    }
+    .btn-primary {
+      background: var(--ink); color: var(--surface);
+      padding: 13px 28px; border-radius: var(--r);
+      font-weight: 500; font-size: 0.9rem; letter-spacing: 0.02em;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+      transition: opacity 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.78; }
+    .btn-ghost {
+      background: transparent; color: var(--ink);
+      padding: 13px 28px; border-radius: var(--r);
+      font-weight: 400; font-size: 0.9rem; letter-spacing: 0.02em;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid var(--border);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--ink); background: var(--surface2); }
+
+    /* ─── SHARED SECTION LAYOUT ─── */
+    .section {
+      padding: clamp(90px, 12vw, 150px) var(--pad);
+      border-bottom: 1px solid var(--border);
+    }
+    .section-inner {
+      max-width: var(--max); margin: 0 auto;
+    }
+    .section-header {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 48px; margin-bottom: var(--space-lg);
+      align-items: start;
+    }
+    .section-label {
+      font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--ink-muted); display: block; margin-bottom: 18px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.9rem, 3.8vw, 3rem);
+      line-height: 1.1; letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+    .section-title em { font-style: italic; color: var(--ink-soft); }
+    .section-text {
+      font-size: 1rem; color: var(--ink-soft);
+      line-height: 1.75; font-weight: 300;
+    }
+    .section-text p + p { margin-top: 14px; }
+
+    /* ─── SERVICES / CAPABILITIES ─── */
+    #servicios { background: var(--surface); }
+    .services-list {
+      border-top: 1px solid var(--border);
+    }
+    .service-item {
+      display: grid; grid-template-columns: 48px 1fr auto;
+      align-items: center; gap: 28px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+      cursor: default;
+    }
+    .service-item:hover .service-name { color: var(--accent-warm); }
+    .service-num {
+      font-size: 0.72rem; font-weight: 500;
+      color: var(--ink-faint); letter-spacing: 0.08em;
+      font-family: var(--font-body);
+    }
+    .service-name {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      color: var(--ink); transition: color 0.2s;
+      letter-spacing: -0.01em;
+    }
+    .service-desc {
+      font-size: 0.85rem; color: var(--ink-muted);
+      max-width: 340px; line-height: 1.6; text-align: right;
+    }
+
+    /* ─── PROJECTS ─── */
+    #proyectos { background: var(--surface2); }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 2px;
+    }
+    .project-card {
+      background: var(--card);
+      padding: 36px 32px;
+      display: flex; flex-direction: column; gap: 20px;
+      transition: background 0.2s;
+      cursor: default;
+    }
+    .project-card:hover { background: #FAFAF8; }
+    .project-top {
+      display: flex; align-items: center;
+      justify-content: space-between;
+    }
+    .project-num {
+      font-size: 0.7rem; color: var(--ink-faint);
+      letter-spacing: 0.12em; font-weight: 500;
+    }
+    .project-tag {
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--ink-muted);
+      background: var(--surface2); border: 1px solid var(--border);
+      padding: 3px 10px; border-radius: 3px;
+    }
+    .project-visual {
+      border-radius: var(--r);
+      overflow: hidden;
+      position: relative;
+      border: 1px solid var(--border);
+    }
+    .project-visual .browser-body { height: 196px; }
+    .project-visual .pv-restaurant,
+    .project-visual .pv-barber,
+    .project-visual .pv-bar,
+    .project-visual .pv-travel,
+    .project-visual .pv-gym { position: absolute; inset: 0; z-index: 1; }
+    .project-name {
+      font-family: var(--font-display);
+      font-size: 1.35rem; letter-spacing: -0.015em;
+      color: var(--ink); line-height: 1.2;
+    }
+    .project-desc {
+      font-size: 0.875rem; color: var(--ink-soft);
+      line-height: 1.65; font-weight: 300;
+    }
+    .project-features {
+      display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 4px;
+    }
+    .project-feat {
+      font-size: 0.72rem; color: var(--ink-muted);
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 3px 10px; border-radius: 3px;
+    }
+
+    /* ─── BROWSER FRAME (firma visual: cada foto vive dentro de una "mini web") ─── */
+    .browser-frame {
+      border-radius: var(--r-md);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--card);
+      box-shadow: 0 30px 70px -34px rgba(60,48,30,0.28);
+    }
+    .browser-bar {
+      height: 32px;
+      display: flex; align-items: center; gap: 14px;
+      padding: 0 14px;
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: relative; z-index: 3;
+    }
+    .browser-dots { display: flex; gap: 6px; flex-shrink: 0; }
+    .browser-dots span {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--surface2); border: 1px solid var(--border);
+    }
+    .browser-dots span:first-child {
+      background: var(--accent-warm); border-color: var(--accent-warm); opacity: 0.55;
+    }
+    .browser-url {
+      flex: 1; max-width: 320px;
+      height: 18px; border-radius: 9px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-size: 0.6rem; color: var(--ink-muted);
+      display: flex; align-items: center; justify-content: center;
+      letter-spacing: 0.08em; font-weight: 400;
+      overflow: hidden; white-space: nowrap;
+      font-style: italic;
+    }
+    .browser-body { position: relative; overflow: hidden; }
+
+    /* Foto real con tratamiento cálido acorde a la paleta; si falla la carga,
+       se elimina y debajo queda la composición abstracta original como respaldo */
+    .pv-photo {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: 2;
+      filter: saturate(0.78) sepia(0.10) contrast(1.02) brightness(1.01);
+      transition: transform 0.8s cubic-bezier(0.2, 0.6, 0.2, 1);
+    }
+    .project-card:hover .pv-photo { transform: scale(1.035); }
+    .pv-caption {
+      position: absolute; left: 0; right: 0; bottom: 0;
+      z-index: 3;
+      padding: 36px 18px 12px;
+      background: linear-gradient(to top, rgba(10,9,7,0.72), transparent);
+      display: flex; align-items: flex-end; justify-content: space-between; gap: 10px;
+    }
+    .pv-caption .c1 {
+      font-family: var(--font-display); font-style: italic;
+      font-size: 0.98rem; color: rgba(250,248,243,0.95);
+      line-height: 1.2;
+    }
+    .pv-caption .c2 {
+      font-size: 0.55rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: rgba(250,248,243,0.55); font-family: var(--font-body);
+      white-space: nowrap; padding-bottom: 3px;
+    }
+
+    /* ─── HERO VISUAL ─── */
+    .hero-visual {
+      margin-top: 88px;
+      position: relative;
+    }
+    .hero-browser .browser-body {
+      height: clamp(240px, 42vw, 440px);
+      background: var(--surface2);
+    }
+    .hero-browser img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center 38%;
+      filter: saturate(0.78) sepia(0.10) contrast(1.02);
+    }
+    /* Tarjetas SVG flotantes sobre el mockup */
+    .hero-float {
+      position: absolute; z-index: 4;
+      filter: drop-shadow(0 20px 32px rgba(60,48,30,0.22));
+      animation: float 7s ease-in-out infinite;
+    }
+    .hero-float.f1 { right: clamp(12px, 4vw, 56px); top: -34px; width: clamp(150px, 22vw, 230px); }
+    .hero-float.f2 { left: clamp(8px, 3vw, 44px); bottom: -30px; width: clamp(140px, 20vw, 210px); animation-delay: -3.5s; }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-9px); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-float { animation: none; }
+      .reveal { transition: none; opacity: 1; transform: none; }
+    }
+
+    /* ─── ABOUT PHOTO ─── */
+    .about-photo { margin-bottom: 28px; }
+    .about-photo .browser-body {
+      height: 260px; background: var(--surface);
+    }
+    .about-photo img {
+      width: 100%; height: 100%; object-fit: cover;
+      filter: saturate(0.78) sepia(0.10) contrast(1.02);
+    }
+
+    /* ─── PROJECT VISUALS: abstract compositions per sector ─── */
+    .pv-restaurant {
+      background: #1A1208;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 20px;
+      position: relative; overflow: hidden;
+    }
+    .pv-restaurant::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #2A1E06 0%, #1A1208 60%, #0E0B04 100%);
+    }
+    .pv-restaurant-line {
+      position: absolute;
+      top: 24px; left: 20px; right: 20px;
+      height: 1px; background: rgba(212,175,55,0.3);
+    }
+    .pv-restaurant-circle {
+      position: absolute;
+      top: 32px; right: 24px;
+      width: 56px; height: 56px; border-radius: 50%;
+      border: 1px solid rgba(212,175,55,0.2);
+    }
+    .pv-restaurant-text {
+      position: relative; z-index: 1;
+    }
+    .pv-restaurant-text .t1 {
+      font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: rgba(212,175,55,0.6); margin-bottom: 4px;
+      font-family: var(--font-body);
+    }
+    .pv-restaurant-text .t2 {
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.05rem; color: rgba(245,237,213,0.9);
+    }
+
+    .pv-barber {
+      background: #0E0D0B;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .pv-barber::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 1px; height: 100%;
+      background: linear-gradient(to bottom, transparent, rgba(194,154,90,0.4), transparent);
+    }
+    .pv-barber-inner {
+      text-align: center; position: relative; z-index: 1;
+    }
+    .pv-barber-inner .t1 {
+      font-size: 0.5rem; letter-spacing: 0.35em; text-transform: uppercase;
+      color: rgba(194,154,90,0.5); margin-bottom: 8px;
+      font-family: var(--font-body);
+    }
+    .pv-barber-inner .t2 {
+      font-family: var(--font-display);
+      font-size: 1.5rem; color: rgba(240,234,214,0.9);
+      letter-spacing: 0.05em;
+    }
+    .pv-barber-inner .t3 {
+      font-size: 0.48rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: rgba(194,154,90,0.4); margin-top: 8px;
+      font-family: var(--font-body);
+    }
+    .pv-barber-line {
+      position: absolute;
+      bottom: 32px; left: 20px; right: 20px;
+      height: 1px; background: rgba(194,154,90,0.15);
+    }
+
+    .pv-bar {
+      background: #06040A;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 0 28px;
+      position: relative; overflow: hidden;
+    }
+    .pv-bar-grid {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(120,80,180,0.05) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(120,80,180,0.05) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+    .pv-bar-inner { position: relative; z-index: 1; }
+    .pv-bar-inner .t1 {
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.6rem; color: rgba(230,210,255,0.9);
+      margin-bottom: 6px;
+    }
+    .pv-bar-inner .t2 {
+      font-size: 0.5rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: rgba(180,140,255,0.4);
+      font-family: var(--font-body);
+    }
+
+    .pv-travel {
+      background: #04130F;
+      display: flex; flex-direction: column; justify-content: space-between;
+      padding: 22px 24px;
+      position: relative; overflow: hidden;
+    }
+    .pv-travel-top {
+      font-size: 0.5rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: rgba(0,200,130,0.5);
+      font-family: var(--font-body);
+    }
+    .pv-travel-flags {
+      display: flex; gap: 8px;
+    }
+    .pv-travel-flag {
+      width: 32px; height: 22px; border-radius: 3px;
+      border: 1px solid rgba(0,200,130,0.12);
+      background: rgba(0,200,130,0.06);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem;
+    }
+    .pv-travel-bottom {
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.1rem; color: rgba(230,248,242,0.85);
+    }
+
+    .pv-gym {
+      background: #080808;
+      display: flex; align-items: center;
+      padding: 0 28px; position: relative; overflow: hidden;
+    }
+    .pv-gym::before {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 3px; background: #E8302A;
+    }
+    .pv-gym-inner { }
+    .pv-gym-inner .t1 {
+      font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: #E8302A; margin-bottom: 6px;
+      font-family: var(--font-body);
+    }
+    .pv-gym-inner .t2 {
+      font-family: var(--font-display);
+      font-size: 2rem; color: #fff; line-height: 0.95;
+      letter-spacing: -0.03em; text-transform: uppercase;
+    }
+
+    .pv-more {
+      background: #14110C;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .pv-more::before {
+      content: '';
+      position: absolute; inset: 16px;
+      border: 1px solid rgba(140,106,63,0.3);
+      border-radius: 4px;
+    }
+    .pv-more .t1 {
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.3rem; color: rgba(245,240,228,0.92);
+      position: relative;
+    }
+    .pv-more .t2 {
+      font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: rgba(140,106,63,0.7); margin-top: 8px;
+      font-family: var(--font-body); position: relative;
+    }
+
+    /* ─── PROCESS ─── */
+    #proceso { background: var(--surface); }
+    .process-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border-left: 1px solid var(--border);
+    }
+    .process-step {
+      padding: 36px 28px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .process-step-num {
+      font-size: 0.7rem; font-weight: 500;
+      color: var(--ink-faint); letter-spacing: 0.1em;
+      margin-bottom: 20px; display: block;
+    }
+    .process-step h3 {
+      font-family: var(--font-display);
+      font-size: 1.15rem; color: var(--ink);
+      margin-bottom: 12px; line-height: 1.2;
+    }
+    .process-step p {
+      font-size: 0.875rem; color: var(--ink-soft);
+      line-height: 1.7; font-weight: 300;
+    }
+
+    /* ─── ABOUT ─── */
+    #sobre { background: var(--surface2); }
+    .about-grid {
+      display: grid; grid-template-columns: 5fr 4fr;
+      gap: 80px; align-items: center;
+    }
+    .about-text .section-label { margin-bottom: 18px; }
+    .about-text h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.1; letter-spacing: -0.02em;
+      margin-bottom: 28px;
+    }
+    .about-text h2 em { font-style: italic; color: var(--ink-soft); }
+    .about-text p {
+      font-size: 1rem; color: var(--ink-soft);
+      line-height: 1.78; font-weight: 300; margin-bottom: 16px;
+    }
+    .about-side { }
+    .about-stat-block {
+      border-top: 1px solid var(--border);
+    }
+    .about-stat {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .about-stat-num {
+      font-family: var(--font-display);
+      font-size: 2.2rem; color: var(--ink);
+      letter-spacing: -0.03em; line-height: 1;
+      margin-bottom: 4px;
+    }
+    .about-stat-label {
+      font-size: 0.8rem; color: var(--ink-muted); font-weight: 400;
+    }
+
+    /* ─── COMPROMISO ─── */
+    #compromiso { background: var(--surface); }
+    .commit-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+    }
+    .commit-card {
+      padding: 44px 36px 40px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+      transition: background 0.3s;
+    }
+    .commit-card:hover { background: var(--card); }
+    .commit-icon {
+      width: 40px; height: 40px;
+      margin-bottom: 24px;
+    }
+    .commit-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem; color: var(--ink);
+      margin-bottom: 14px; line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+    .commit-card p {
+      font-size: 0.9rem; color: var(--ink-soft);
+      line-height: 1.75; font-weight: 300;
+    }
+    .commit-note {
+      margin-top: 36px;
+      font-size: 0.85rem; color: var(--ink-muted);
+      font-weight: 300; font-style: italic;
+      font-family: var(--font-display);
+      letter-spacing: 0.01em;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .commit-note::before {
+      content: ''; display: block; flex-shrink: 0;
+      width: 28px; height: 1px; background: var(--ink-faint);
+    }
+
+    /* ─── CTA FINAL ─── */
+    #cta {
+      background: var(--ink); padding: var(--space-xl) var(--pad);
+    }
+    .cta-inner {
+      max-width: var(--max); margin: 0 auto;
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 60px; align-items: center;
+    }
+    .cta-inner h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4.5vw, 3.6rem);
+      line-height: 1.08; letter-spacing: -0.025em;
+      color: var(--surface);
+    }
+    .cta-inner h2 em { font-style: italic; color: rgba(245,244,240,0.5); }
+    .cta-right { flex-shrink: 0; }
+    .cta-right p {
+      font-size: 0.95rem; color: rgba(245,244,240,0.55);
+      line-height: 1.7; font-weight: 300;
+      max-width: 360px; margin-bottom: 28px;
+    }
+    .btn-wa {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #25D366; color: #fff;
+      padding: 14px 28px; border-radius: var(--r);
+      font-weight: 500; font-size: 0.9rem; text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: opacity 0.2s;
+    }
+    .btn-wa:hover { opacity: 0.85; }
+    .cta-note {
+      margin-top: 12px; font-size: 0.78rem;
+      color: rgba(245,244,240,0.3); font-weight: 300;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #09090B;
+      padding: 48px var(--pad) 36px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .footer-inner {
+      max-width: var(--max); margin: 0 auto;
+    }
+    .footer-top {
+      display: flex; justify-content: space-between;
+      align-items: flex-start; gap: 32px; flex-wrap: wrap;
+      padding-bottom: 36px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      margin-bottom: 28px;
+    }
+    .footer-logo {
+      font-family: var(--font-body); font-weight: 600;
+      font-size: 0.95rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(245,244,240,0.85); text-decoration: none;
+    }
+    .footer-claim {
+      font-size: 0.8rem; color: rgba(245,244,240,0.35);
+      margin-top: 6px; font-weight: 300;
+    }
+    .footer-links {
+      display: flex; gap: 28px; flex-wrap: wrap;
+    }
+    .footer-link {
+      font-size: 0.85rem; color: rgba(245,244,240,0.4);
+      text-decoration: none; display: flex; align-items: center; gap: 7px;
+      transition: color 0.2s;
+    }
+    .footer-link:hover { color: rgba(245,244,240,0.85); }
+    .footer-copy {
+      font-size: 0.75rem; color: rgba(245,244,240,0.2); font-weight: 300;
+    }
+
+    /* ─── REVEAL ─── */
+    .reveal {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.in { opacity: 1; transform: none; }
+    .d1 { transition-delay: 0.08s; }
+    .d2 { transition-delay: 0.16s; }
+    .d3 { transition-delay: 0.24s; }
+    .d4 { transition-delay: 0.32s; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1000px) {
+      .section-header { grid-template-columns: 1fr; gap: 20px; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .process-grid { grid-template-columns: repeat(2, 1fr); }
+      .cta-inner { grid-template-columns: 1fr; gap: 32px; }
+    }
+    @media (max-width: 780px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .commit-grid { grid-template-columns: 1fr; }
+      .service-item { grid-template-columns: 40px 1fr; }
+      .service-desc { display: none; }
+      .hero-bottom { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 560px) {
+      .process-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!--
+  ═══════════════════════════════════════════════════════════════
+  GUÍA RÁPIDA · IMÁGENES
+  Las fotos provienen de Unsplash (licencia libre, uso comercial
+  permitido, sin atribución obligatoria). Para cambiar cualquiera:
+  1. Busca una foto en unsplash.com, pexels.com o pixabay.com
+  2. Descárgala y súbela a tu hosting (ej: /img/mi-foto.jpg)
+  3. Sustituye la URL del atributo src del <img> correspondiente
+  Si alguna foto externa dejara de cargar, el diseño abstracto
+  original aparece automáticamente en su lugar (onerror).
+  ═══════════════════════════════════════════════════════════════
+-->
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">Alepixel</a>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#proyectos">Proyectos</a></li>
+    <li><a href="#sobre">Sobre mí</a></li>
+    <li><a href="#compromiso">Compromiso</a></li>
+    <li><a href="https://wa.me/34671179117?text=Hola%2C%20me%20gustar%C3%ADa%20hablar%20sobre%20mi%20web" target="_blank" class="nav-cta">Hablar por WhatsApp</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" onclick="openMenu()" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="closeMenu()">Cerrar ✕</button>
+  <a href="#servicios"   onclick="closeMenu()">Servicios</a>
+  <a href="#proyectos"   onclick="closeMenu()">Proyectos</a>
+  <a href="#sobre"       onclick="closeMenu()">Sobre mí</a>
+  <a href="#compromiso" onclick="closeMenu()">Compromiso</a>
+  <a href="https://wa.me/34671179117?text=Hola%2C%20me%20gustar%C3%ADa%20hablar%20sobre%20mi%20web" target="_blank" onclick="closeMenu()">WhatsApp</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-eyebrow reveal">Diseño web · Negocios locales</div>
+  <h1 class="reveal d1">
+    Diseño webs que convierten<br/>
+    <em>visitas en clientes.</em>
+  </h1>
+  <div class="hero-bottom reveal d2">
+    <p class="hero-sub">
+      Ayudo a pequeños negocios a tener una presencia online moderna, profesional y pensada para generar resultados. Sin plantillas. Sin atajos.
+    </p>
+    <div class="hero-btns">
+      <a href="#proyectos" class="btn-primary">Ver proyectos</a>
+      <a href="https://wa.me/34671179117?text=Hola%2C%20me%20gustar%C3%ADa%20hablar%20sobre%20mi%20web" target="_blank" class="btn-ghost">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="opacity:0.7"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.985-1.393C8.46 21.525 10.186 22 11.999 22 17.522 22 22 17.523 22 12c0-5.522-4.478-10-10.001-10zm.001 18.15c-1.644 0-3.17-.462-4.465-1.263l-.32-.19-3.317.926.893-3.255-.21-.335A8.1 8.1 0 013.85 12c0-4.494 3.656-8.15 8.15-8.15 4.495 0 8.15 3.656 8.15 8.15 0 4.495-3.655 8.15-8.15 8.15z"/></svg>
+        Hablar por WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- Visual del hero: mockup de navegador con foto real (Unsplash, libre de derechos) -->
+  <div class="hero-visual reveal d3">
+    <div class="browser-frame hero-browser">
+      <div class="browser-bar">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">tunegocio.es</div>
+      </div>
+      <div class="browser-body">
+        <img
+          src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=70"
+          alt="Espacio de trabajo de diseño web con código en pantalla"
+          loading="eager"
+          onerror="this.remove()"
+        />
+      </div>
+    </div>
+
+    <!-- Tarjeta SVG flotante: gráfica ilustrativa de crecimiento -->
+    <svg class="hero-float f1" viewBox="0 0 230 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect x="1" y="1" width="228" height="118" rx="12" fill="#FFFFFF" stroke="#E2E0DA"/>
+      <text x="20" y="32" font-family="DM Sans, sans-serif" font-size="9" letter-spacing="1.8" fill="#7A7A85">VISITAS A TU WEB</text>
+      <text x="20" y="56" font-family="DM Serif Display, serif" font-style="italic" font-size="17" fill="#0C0C0E">En crecimiento</text>
+      <polyline points="20,98 50,90 80,93 110,78 140,82 170,64 210,50" fill="none" stroke="#8C6A3F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="210" cy="50" r="3.5" fill="#8C6A3F"/>
+    </svg>
+
+    <!-- Tarjeta SVG flotante: mensaje de WhatsApp entrante -->
+    <svg class="hero-float f2" viewBox="0 0 210 78" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect x="1" y="1" width="208" height="76" rx="12" fill="#FFFFFF" stroke="#E2E0DA"/>
+      <circle cx="30" cy="39" r="15" fill="#EAF7EE"/>
+      <path transform="translate(22.5,31.5) scale(0.62)" fill="#25D366" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.985-1.393C8.46 21.525 10.186 22 11.999 22 17.522 22 22 17.523 22 12c0-5.522-4.478-10-10.001-10z"/>
+      <text x="56" y="33" font-family="DM Sans, sans-serif" font-size="11" font-weight="600" fill="#0C0C0E">Cliente nuevo</text>
+      <text x="56" y="51" font-family="DM Sans, sans-serif" font-size="10" fill="#7A7A85">«Hola, vi vuestra web y…»</text>
+      <circle cx="190" cy="22" r="4" fill="#25D366"/>
+    </svg>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="section" id="servicios">
+  <div class="section-inner">
+    <div class="section-header">
+      <div>
+        <span class="section-label reveal">Qué hago</span>
+        <h2 class="section-title reveal d1">Lo que tu negocio<br/><em>necesita online</em></h2>
+      </div>
+      <div class="section-text reveal d2">
+        <p>No me limito a hacer páginas web. Me aseguro de que cada decisión de diseño sirva a un objetivo: que las personas que lleguen a tu web confíen en ti y te contacten.</p>
+      </div>
+    </div>
+
+    <div class="services-list">
+      <div class="service-item reveal">
+        <span class="service-num">01</span>
+        <span class="service-name">Diseño web personalizado</span>
+        <span class="service-desc">Cada web refleja la identidad real del negocio, no una plantilla adaptada.</span>
+      </div>
+      <div class="service-item reveal d1">
+        <span class="service-num">02</span>
+        <span class="service-name">Optimización para móvil</span>
+        <span class="service-desc">La mayoría de tus clientes llegan desde el teléfono. La experiencia es impecable.</span>
+      </div>
+      <div class="service-item reveal d2">
+        <span class="service-num">03</span>
+        <span class="service-name">Contacto directo por WhatsApp</span>
+        <span class="service-desc">Integración que reduce la fricción entre el visitante y el primer contacto.</span>
+      </div>
+      <div class="service-item reveal d3">
+        <span class="service-num">04</span>
+        <span class="service-name">Diseño orientado a resultados</span>
+        <span class="service-desc">Estructura, jerarquía y llamadas a la acción pensadas para convertir.</span>
+      </div>
+      <div class="service-item reveal d4">
+        <span class="service-num">05</span>
+        <span class="service-name">Presencia online que inspira confianza</span>
+        <span class="service-desc">Un negocio con buena web gana credibilidad antes de decir una sola palabra.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROYECTOS -->
+<section class="section" id="proyectos">
+  <div class="section-inner">
+    <div class="section-header">
+      <div>
+        <span class="section-label reveal">Tipos de proyectos</span>
+        <h2 class="section-title reveal d1">El tipo de web que<br/><em>puedo crear para ti</em></h2>
+      </div>
+      <div class="section-text reveal d2">
+        <p>Trabajo con negocios de distintos sectores. Aquí tienes una muestra del tipo de proyectos que desarrollo: cada uno con su identidad propia, su objetivo y su público.</p>
+        <p style="margin-top:10px; font-size:0.82rem; color:var(--ink-faint);">Ejemplos de referencia — el tuyo será único para tu negocio.</p>
+      </div>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- Restaurante -->
+      <div class="project-card reveal">
+        <div class="project-top">
+          <span class="project-num">PR — 01</span>
+          <span class="project-tag">Restaurante</span>
+        </div>
+        <div class="project-visual">
+          <div class="browser-bar">
+            <div class="browser-dots"><span></span><span></span><span></span></div>
+            <div class="browser-url">turestaurante.es</div>
+          </div>
+          <div class="browser-body">
+            <img class="pv-photo" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=70" alt="Interior acogedor de un restaurante con mesas preparadas" loading="lazy" onerror="this.remove()"/>
+            <div class="pv-caption">
+              <span class="c1">Carta digital · Reservas</span>
+              <span class="c2">Restaurante</span>
+            </div>
+            <div class="pv-restaurant">
+            <div class="pv-restaurant-line"></div>
+            <div class="pv-restaurant-circle"></div>
+            <div class="pv-restaurant-text">
+              <div class="t1">Restaurante mediterráneo</div>
+              <div class="t2">Carta digital · Reservas online</div>
+            </div>
+          </div>
+          </div>
+        </div>
+        <div class="project-name">Restaurante o cafetería</div>
+        <p class="project-desc">Web elegante con carta digital, galería de platos, información de reservas y presencia que transmite calidad desde el primer vistazo.</p>
+        <div class="project-features">
+          <span class="project-feat">Carta digital</span>
+          <span class="project-feat">Reservas</span>
+          <span class="project-feat">Galería</span>
+          <span class="project-feat">WhatsApp</span>
+        </div>
+      </div>
+
+      <!-- Barbería -->
+      <div class="project-card reveal d1">
+        <div class="project-top">
+          <span class="project-num">PR — 02</span>
+          <span class="project-tag">Barbería</span>
+        </div>
+        <div class="project-visual">
+          <div class="browser-bar">
+            <div class="browser-dots"><span></span><span></span><span></span></div>
+            <div class="browser-url">tubarberia.es</div>
+          </div>
+          <div class="browser-body">
+            <img class="pv-photo" src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=900&q=70" alt="Barbero trabajando con un cliente en una barbería" loading="lazy" onerror="this.remove()"/>
+            <div class="pv-caption">
+              <span class="c1">Cita online · Servicios</span>
+              <span class="c2">Barbería</span>
+            </div>
+            <div class="pv-barber">
+            <div class="pv-barber-inner">
+              <div class="t1">Premium Barbershop</div>
+              <div class="t2">Gents Only</div>
+              <div class="t3">Barcelona · Est. 2020</div>
+            </div>
+            <div class="pv-barber-line"></div>
+          </div>
+          </div>
+        </div>
+        <div class="project-name">Barbería o peluquería</div>
+        <p class="project-desc">Diseño con personalidad propia, lista de servicios con precios, horarios y sistema para que los clientes pidan cita sin llamar.</p>
+        <div class="project-features">
+          <span class="project-feat">Lista de servicios</span>
+          <span class="project-feat">Cita online</span>
+          <span class="project-feat">Horarios</span>
+        </div>
+      </div>
+
+      <!-- Bar de copas -->
+      <div class="project-card reveal d2">
+        <div class="project-top">
+          <span class="project-num">PR — 03</span>
+          <span class="project-tag">Bar · Coctelería</span>
+        </div>
+        <div class="project-visual">
+          <div class="browser-bar">
+            <div class="browser-dots"><span></span><span></span><span></span></div>
+            <div class="browser-url">tucocteleria.es</div>
+          </div>
+          <div class="browser-body">
+            <img class="pv-photo" src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=900&q=70" alt="Dos cócteles brindando en un bar con ambiente nocturno" loading="lazy" onerror="this.remove()"/>
+            <div class="pv-caption">
+              <span class="c1">Carta · Eventos</span>
+              <span class="c2">Coctelería</span>
+            </div>
+            <div class="pv-bar">
+            <div class="pv-bar-grid"></div>
+            <div class="pv-bar-inner">
+              <div class="t1">Luna Nueva</div>
+              <div class="t2">Cocktail Bar · Madrid</div>
+            </div>
+          </div>
+          </div>
+        </div>
+        <div class="project-name">Bar de copas o coctelería</div>
+        <p class="project-desc">Estética oscura y premium con carta de cócteles, agenda de eventos y reserva de mesa directamente por WhatsApp.</p>
+        <div class="project-features">
+          <span class="project-feat">Carta de cócteles</span>
+          <span class="project-feat">Eventos</span>
+          <span class="project-feat">Reservas</span>
+        </div>
+      </div>
+
+      <!-- Agencia viajes -->
+      <div class="project-card reveal">
+        <div class="project-top">
+          <span class="project-num">PR — 04</span>
+          <span class="project-tag">Agencia de viajes</span>
+        </div>
+        <div class="project-visual">
+          <div class="browser-bar">
+            <div class="browser-dots"><span></span><span></span><span></span></div>
+            <div class="browser-url">tuagenciadeviajes.es</div>
+          </div>
+          <div class="browser-body">
+            <img class="pv-photo" src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=900&q=70" alt="Viajero con maleta y mapa preparando su próximo destino" loading="lazy" onerror="this.remove()"/>
+            <div class="pv-caption">
+              <span class="c1">Destinos · Consultas</span>
+              <span class="c2">Viajes</span>
+            </div>
+            <div class="pv-travel">
+            <div class="pv-travel-top">Agencia de viajes · Destinos 2025</div>
+            <div class="pv-travel-flags">
+              <div class="pv-travel-flag">🇯🇵</div>
+              <div class="pv-travel-flag">🇹🇭</div>
+              <div class="pv-travel-flag">🇮🇸</div>
+              <div class="pv-travel-flag">🇲🇦</div>
+            </div>
+            <div class="pv-travel-bottom">Tu próximo viaje<br/>empieza aquí.</div>
+          </div>
+          </div>
+        </div>
+        <div class="project-name">Agencia de viajes</div>
+        <p class="project-desc">Web cercana y profesional con destinos destacados, precios orientativos y contacto fácil para consultas sin compromiso.</p>
+        <div class="project-features">
+          <span class="project-feat">Destinos</span>
+          <span class="project-feat">Consulta directa</span>
+          <span class="project-feat">Formulario</span>
+        </div>
+      </div>
+
+      <!-- Gimnasio -->
+      <div class="project-card reveal d1">
+        <div class="project-top">
+          <span class="project-num">PR — 05</span>
+          <span class="project-tag">Gimnasio</span>
+        </div>
+        <div class="project-visual">
+          <div class="browser-bar">
+            <div class="browser-dots"><span></span><span></span><span></span></div>
+            <div class="browser-url">tugimnasio.es</div>
+          </div>
+          <div class="browser-body">
+            <img class="pv-photo" src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=70" alt="Interior de un gimnasio moderno con zona de pesas" loading="lazy" onerror="this.remove()"/>
+            <div class="pv-caption">
+              <span class="c1">Tarifas · Horarios</span>
+              <span class="c2">Fitness</span>
+            </div>
+            <div class="pv-gym">
+            <div class="pv-gym-inner">
+              <div class="t1">Centro de entrenamiento</div>
+              <div class="t2">Supera<br/>tus límites.</div>
+            </div>
+          </div>
+          </div>
+        </div>
+        <div class="project-name">Gimnasio o estudio de fitness</div>
+        <p class="project-desc">Diseño enérgico y directo con información de instalaciones, tarifas claras y captación de nuevos socios desde el primer día.</p>
+        <div class="project-features">
+          <span class="project-feat">Tarifas</span>
+          <span class="project-feat">Horarios</span>
+          <span class="project-feat">Captación</span>
+          <span class="project-feat">WhatsApp</span>
+        </div>
+      </div>
+
+      <!-- Y más negocios -->
+      <div class="project-card reveal d2">
+        <div class="project-top">
+          <span class="project-num">PR — 06</span>
+          <span class="project-tag">Y más negocios</span>
+        </div>
+        <div class="project-visual">
+          <div class="browser-bar">
+            <div class="browser-dots"><span></span><span></span><span></span></div>
+            <div class="browser-url">tunegocio.es</div>
+          </div>
+          <div class="browser-body">
+            <img class="pv-photo" src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&q=70" alt="Interior luminoso de un pequeño comercio local" loading="lazy" onerror="this.remove()"/>
+            <div class="pv-caption">
+              <span class="c1">Tu sector también</span>
+              <span class="c2">Tu negocio</span>
+            </div>
+            <div class="pv-more">
+              <div class="t1">¿Y tu negocio?</div>
+              <div class="t2">Cualquier sector</div>
+            </div>
+          </div>
+        </div>
+        <div class="project-name">Tiendas, clínicas, talleres… y el tuyo</div>
+        <p class="project-desc">Estos son solo ejemplos. Si tu negocio necesita una web que transmita confianza y atraiga clientes, puedo crearla — sea cual sea tu sector.</p>
+        <div class="project-features">
+          <span class="project-feat">Diseño a medida</span>
+          <span class="project-feat">Cualquier sector</span>
+          <span class="project-feat">WhatsApp</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section class="section" id="proceso">
+  <div class="section-inner">
+    <div class="section-header">
+      <div>
+        <span class="section-label reveal">Cómo trabajo</span>
+        <h2 class="section-title reveal d1">Un proceso claro,<br/><em>sin sorpresas</em></h2>
+      </div>
+      <div class="section-text reveal d2">
+        <p>Trabajar conmigo es sencillo. Tú me explicas tu negocio, yo me encargo del resto. Cuatro pasos desde el primer mensaje hasta tu web publicada.</p>
+      </div>
+    </div>
+
+    <div class="process-grid">
+      <div class="process-step reveal">
+        <span class="process-step-num">Paso 01</span>
+        <h3>Conozco tu negocio</h3>
+        <p>Hablamos para entender quién eres, qué ofreces y qué quieres conseguir. No hay formularios complicados, solo una conversación.</p>
+      </div>
+      <div class="process-step reveal d1">
+        <span class="process-step-num">Paso 02</span>
+        <h3>Diseño tu propuesta</h3>
+        <p>Creo una propuesta visual personalizada basada en tu negocio y tu competencia. Sin plantillas genéricas, sin soluciones copiadas.</p>
+      </div>
+      <div class="process-step reveal d2">
+        <span class="process-step-num">Paso 03</span>
+        <h3>Desarrollo y publico</h3>
+        <p>Construyo la web, la pruebo en todos los dispositivos y la publico en tu dominio. Te mantengo informado en cada etapa.</p>
+      </div>
+      <div class="process-step reveal d3">
+        <span class="process-step-num">Paso 04</span>
+        <h3>Te entrego lista para usar</h3>
+        <p>Recibes tu web funcionando al 100%: con WhatsApp integrado, optimizada para móvil y lista para empezar a captar clientes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE MÍ -->
+<section class="section" id="sobre">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <span class="section-label reveal">Sobre Alepixel</span>
+        <h2 class="reveal d1">No solo páginas<br/><em>bonitas.</em></h2>
+        <p class="reveal d2">Soy el creador de Alepixel. Ayudo a pequeños negocios a tener una web moderna, rápida y diseñada para transmitir confianza desde el primer vistazo.</p>
+        <p class="reveal d2">Mi objetivo no es solo que tu web quede bien. Es que te ayude a conseguir más oportunidades para tu negocio. Cada proyecto lo trato como si fuera el mío propio, con atención al detalle y comunicación directa en todo momento.</p>
+        <p class="reveal d3">Trabajo con un número reducido de clientes a la vez para garantizar que cada proyecto recibe la atención que merece.</p>
+      </div>
+      <div class="about-side reveal d2">
+        <div class="browser-frame about-photo">
+          <div class="browser-bar">
+            <div class="browser-dots"><span></span><span></span><span></span></div>
+            <div class="browser-url">alepixel.es</div>
+          </div>
+          <div class="browser-body">
+            <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=900&q=70" alt="Escritorio de trabajo minimalista con portátil donde se diseñan las webs" loading="lazy" onerror="this.closest('.about-photo').remove()"/>
+          </div>
+        </div>
+        <div class="about-stat-block">
+          <div class="about-stat">
+            <div class="about-stat-num">1 a 1</div>
+            <div class="about-stat-label">Trato directo en cada proyecto, de principio a fin</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-num">Mobile-first</div>
+            <div class="about-stat-label">Todas las webs optimizadas para móvil</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-num">Directo</div>
+            <div class="about-stat-label">Sin intermediarios · Hablas siempre conmigo</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-num">Resultado</div>
+            <div class="about-stat-label">El objetivo es que tu web trabaje para ti</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPROMISO -->
+<section class="section" id="compromiso">
+  <div class="section-inner">
+    <div class="section-header">
+      <div>
+        <span class="section-label reveal">Compromiso</span>
+        <h2 class="section-title reveal d1">Lo que te garantizo<br/><em>en cada proyecto.</em></h2>
+      </div>
+      <div class="section-text reveal d2">
+        <p>No creo en promesas vacías. Prefiero comprometerme con tres cosas concretas que puedes exigirme desde el primer mensaje hasta la entrega de tu web.</p>
+      </div>
+    </div>
+
+    <div class="commit-grid">
+      <div class="commit-card reveal">
+        <svg class="commit-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="20" cy="20" r="18.5" fill="none" stroke="var(--accent-warm)" stroke-width="1" opacity="0.45"/>
+          <path d="M13 20.5 L18 25.5 L27.5 15.5" fill="none" stroke="var(--accent-warm)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h3>Precio cerrado, sin sorpresas</h3>
+        <p>Antes de empezar tienes un presupuesto claro y por escrito. Lo que acordamos es exactamente lo que pagas — ni extras ocultos ni letra pequeña.</p>
+      </div>
+
+      <div class="commit-card reveal d1">
+        <svg class="commit-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="20" cy="20" r="18.5" fill="none" stroke="var(--accent-warm)" stroke-width="1" opacity="0.45"/>
+          <circle cx="20" cy="15" r="4.5" fill="none" stroke="var(--accent-warm)" stroke-width="1.4"/>
+          <path d="M11.5 29 C11.5 23.8 15.3 21.5 20 21.5 C24.7 21.5 28.5 23.8 28.5 29" fill="none" stroke="var(--accent-warm)" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        <h3>Dedicación completa</h3>
+        <p>Trabajo con muy pocos proyectos a la vez. El tuyo no pasa por una cadena de producción: hablas siempre conmigo y recibe mi atención de principio a fin.</p>
+      </div>
+
+      <div class="commit-card reveal d2">
+        <svg class="commit-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="20" cy="20" r="18.5" fill="none" stroke="var(--accent-warm)" stroke-width="1" opacity="0.45"/>
+          <rect x="12" y="13" width="16" height="12" rx="1.5" fill="none" stroke="var(--accent-warm)" stroke-width="1.4"/>
+          <path d="M16 28.5 h8 M20 25 v3.5" stroke="var(--accent-warm)" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        <h3>Propuesta sin compromiso</h3>
+        <p>Hablamos de tu negocio y te presento una primera dirección visual antes de que decidas nada. Si no te convence, no pasa nada.</p>
+      </div>
+    </div>
+
+    <p class="commit-note reveal d3">¿Tienes dudas? Escríbeme por WhatsApp y te las resuelvo en el día, sin tecnicismos y sin compromiso.</p>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section id="cta">
+  <div class="cta-inner">
+    <h2 class="reveal">
+      Tu negocio merece<br/>una web <em>a la altura<br/>de lo que ofreces.</em>
+    </h2>
+    <div class="cta-right reveal d1">
+      <p>Si quieres una página profesional que inspire confianza y te ayude a destacar, hablemos. Sin compromiso y sin tecnicismos.</p>
+      <a href="https://wa.me/34671179117?text=Hola%2C%20me%20gustar%C3%ADa%20hablar%20sobre%20mi%20web" target="_blank" class="btn-wa">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.985-1.393C8.46 21.525 10.186 22 11.999 22 17.522 22 22 17.523 22 12c0-5.522-4.478-10-10.001-10zm.001 18.15c-1.644 0-3.17-.462-4.465-1.263l-.32-.19-3.317.926.893-3.255-.21-.335A8.1 8.1 0 013.85 12c0-4.494 3.656-8.15 8.15-8.15 4.495 0 8.15 3.656 8.15 8.15 0 4.495-3.655 8.15-8.15 8.15z"/></svg>
+        Hablar por WhatsApp
+      </a>
+      <p class="cta-note">Respondo en menos de 24 horas</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <a href="#" class="footer-logo">Alepixel</a>
+        <p class="footer-claim">Diseño web para negocios que quieren destacar.</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://wa.me/34671179117" target="_blank" class="footer-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.985-1.393C8.46 21.525 10.186 22 11.999 22 17.522 22 22 17.523 22 12c0-5.522-4.478-10-10.001-10zm.001 18.15c-1.644 0-3.17-.462-4.465-1.263l-.32-.19-3.317.926.893-3.255-.21-.335A8.1 8.1 0 013.85 12c0-4.494 3.656-8.15 8.15-8.15 4.495 0 8.15 3.656 8.15 8.15 0 4.495-3.655 8.15-8.15 8.15z"/></svg>
+          +34 671 17 91 17
+        </a>
+        <a href="https://instagram.com" target="_blank" class="footer-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor"/></svg>
+          Instagram
+        </a>
+        <a href="mailto:hola@alepixel.es" class="footer-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          hola@alepixel.es
+        </a>
+      </div>
+    </div>
+    <div class="footer-copy">© 2026 Alepixel. Todos los derechos reservados.</div>
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 30);
+  });
+
+  // Mobile menu
+  function openMenu()  { document.getElementById('mobileMenu').classList.add('open'); }
+  function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Hero reveals immediately
+  document.querySelectorAll('.hero .reveal').forEach((el, i) => {
+    setTimeout(() => el.classList.add('in'), i * 100 + 150);
+  });
+</script>
+</body>
+</html>
