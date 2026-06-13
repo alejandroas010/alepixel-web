@@ -95,7 +95,8 @@ button,input,select,textarea{font-family:inherit;cursor:none}
   display:flex;align-items:center;justify-content:center;
   flex-direction:column;gap:24px
 }
-#spl-logo{display:flex;overflow:hidden;line-height:1;align-items:center;gap:0}
+#spl-logo{display:flex;flex-direction:column;align-items:center;gap:4px}
+.spl-row{display:flex;overflow:hidden;line-height:1}
 .spl-l{
   font-family:var(--font-d);
   font-size:clamp(64px,13vw,130px);
@@ -103,6 +104,7 @@ button,input,select,textarea{font-family:inherit;cursor:none}
   letter-spacing:-.02em;
   transform:translateY(110%);opacity:0;display:block
 }
+.spl-sm{font-size:clamp(30px,6vw,64px);letter-spacing:.14em}
 #spl-tag{
   font-family:var(--font-m);font-size:clamp(9px,1.3vw,11px);
   letter-spacing:.32em;color:rgba(255,255,255,.55);
@@ -336,16 +338,36 @@ button,input,select,textarea{font-family:inherit;cursor:none}
    ===================== */
 #carousel-wrap{position:relative}
 .car-sticky{
-  position:sticky;top:0;height:100vh;
-  overflow:hidden;display:flex;align-items:stretch
+  position:relative;
+  height:85vh;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  display:flex;align-items:stretch
 }
-.car-track{display:flex;will-change:transform}
+.car-sticky::-webkit-scrollbar{display:none}
+.car-track{display:flex}
 .car-panel{
-  min-width:100vw;height:100vh;
-  position:relative;display:flex;align-items:flex-end;overflow:hidden
+  min-width:100vw;height:85vh;
+  position:relative;display:flex;align-items:flex-end;overflow:hidden;
+  scroll-snap-align:start;flex-shrink:0
 }
-.car-bg{position:absolute;inset:0}
+.car-bg{position:absolute;inset:0;background:var(--carbon-2)}
 .car-bg img{width:100%;height:100%;object-fit:cover;display:block}
+.car-nav{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:52px;height:52px;border-radius:50%;
+  background:rgba(26,26,26,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border:1.5px solid rgba(255,255,255,.22);
+  color:var(--white);
+  display:flex;align-items:center;justify-content:center;
+  z-index:10;transition:background .25s,border-color .25s;cursor:none
+}
+.car-nav:hover{background:var(--rose);border-color:var(--rose)}
+.car-prev{left:20px}
+.car-next{right:20px}
+@media(max-width:620px){.car-prev{left:10px}.car-next{right:10px}}
 .car-ov{
   position:absolute;inset:0;
   background:linear-gradient(to top,rgba(26,26,26,.88) 0%,rgba(26,26,26,.4) 40%,rgba(26,26,26,.06) 100%)
@@ -675,6 +697,63 @@ button,input,select,textarea{font-family:inherit;cursor:none}
 .footer-bot-t a:hover{color:var(--white)}
 
 /* =====================
+   PRODUCTOS
+   ===================== */
+#productos{
+  padding:clamp(80px,10vw,140px) clamp(24px,5.5vw,80px);
+  background:var(--rose-bg)
+}
+.prod-filters{
+  display:flex;flex-wrap:wrap;gap:8px;
+  margin:40px 0 36px
+}
+.prod-tab{
+  padding:8px 18px;
+  border:1.5px solid var(--border);
+  border-radius:40px;background:none;
+  font-family:var(--font-m);font-size:10px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--mid);transition:all .22s;cursor:none
+}
+.prod-tab:hover{border-color:var(--rose);color:var(--rose)}
+.prod-tab.on{background:var(--rose);border-color:var(--rose);color:var(--white)}
+.prod-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(268px,1fr));
+  gap:14px
+}
+.prod-card{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:var(--r);padding:22px;
+  transition:transform .3s var(--ease),box-shadow .3s
+}
+.prod-card:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(229,0,59,.1)}
+.prod-card.hidden{display:none}
+.prod-badge{
+  font-family:var(--font-m);font-size:9px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--rose);background:var(--rose-bg2);
+  padding:3px 10px;border-radius:4px;
+  display:inline-block;margin-bottom:12px
+}
+.prod-name{
+  font-family:var(--font-d);font-size:16px;font-weight:700;
+  color:var(--carbon);margin-bottom:4px;line-height:1.3
+}
+.prod-ref{
+  font-family:var(--font-m);font-size:10px;font-weight:700;
+  letter-spacing:.1em;color:var(--mid);margin-bottom:10px
+}
+.prod-desc{font-size:13px;color:var(--mid);line-height:1.6;margin-bottom:12px}
+.prod-specs{display:flex;flex-wrap:wrap;gap:5px}
+.prod-spec{
+  font-size:11px;color:var(--carbon);
+  background:var(--rose-bg);padding:3px 8px;
+  border-radius:3px;border:1px solid var(--border)
+}
+
+/* =====================
    SCROLL REVEAL
    ===================== */
 .rv{opacity:0;transform:translateY(32px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
@@ -713,7 +792,8 @@ button,input,select,textarea{font-family:inherit;cursor:none}
 <!-- SPLASH -->
 <div id="splash" role="status" aria-label="Cargando Kadal Menaje">
   <div id="spl-logo" aria-hidden="true">
-    <span class="spl-l">K</span><span class="spl-l">A</span><span class="spl-l">D</span><span class="spl-l">A</span><span class="spl-l">L</span>
+    <div class="spl-row"><span class="spl-l">K</span><span class="spl-l">A</span><span class="spl-l">D</span><span class="spl-l">A</span><span class="spl-l">L</span></div>
+    <div class="spl-row"><span class="spl-l spl-sm">M</span><span class="spl-l spl-sm">E</span><span class="spl-l spl-sm">N</span><span class="spl-l spl-sm">A</span><span class="spl-l spl-sm">J</span><span class="spl-l spl-sm">E</span></div>
   </div>
   <p id="spl-tag">Si se puede dibujar, se puede fabricar.</p>
   <div id="spl-bar"></div>
@@ -727,6 +807,7 @@ button,input,select,textarea{font-family:inherit;cursor:none}
 
   <div class="nav-links" role="navigation">
     <a href="#gamas-intro">Gamas</a>
+    <a href="#productos">Productos</a>
     <a href="#porque">Por qué Kadal</a>
     <a href="#testi">Clientes</a>
     <a href="#contacto">Contacto</a>
@@ -745,6 +826,7 @@ button,input,select,textarea{font-family:inherit;cursor:none}
 <!-- MOBILE MENU -->
 <div id="mob-menu" role="dialog" aria-modal="true" aria-label="Menú de navegación">
   <a href="#gamas-intro" onclick="closeMob()">Gamas</a>
+  <a href="#productos" onclick="closeMob()">Productos</a>
   <a href="#porque" onclick="closeMob()">Por qué Kadal</a>
   <a href="#testi" onclick="closeMob()">Clientes</a>
   <a href="#contacto" onclick="closeMob()">Contacto</a>
@@ -829,6 +911,12 @@ button,input,select,textarea{font-family:inherit;cursor:none}
 <div id="carousel-wrap" aria-label="Gamas de productos">
   <div class="car-sticky" id="carSticky">
     <div class="car-track" id="carTrack"></div>
+    <button class="car-nav car-prev" id="carPrev" aria-label="Gama anterior">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="car-nav car-next" id="carNext" aria-label="Gama siguiente">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
   </div>
 </div>
 <div class="car-progress" id="carProg" aria-hidden="true"></div>
@@ -909,6 +997,19 @@ button,input,select,textarea{font-family:inherit;cursor:none}
       <div class="stat-lb">Años de experiencia</div>
       <div class="stat-sub">Equipo fundador del sector</div>
     </div>
+  </div>
+</section>
+
+<!-- PRODUCTOS -->
+<section id="productos" aria-labelledby="prod-h2">
+  <div class="inner">
+    <p class="slbl rv">Catálogo completo</p>
+    <h2 class="sh2 rv" id="prod-h2" style="transition-delay:.1s">Todos nuestros<br><em>productos.</em></h2>
+    <p class="rv" style="font-size:clamp(15px,1.7vw,18px);color:var(--mid);max-width:540px;margin-top:18px;line-height:1.7;transition-delay:.2s">
+      Más de 500 referencias en stock permanente, disponibles para pedido inmediato.
+    </p>
+    <div class="prod-filters" id="prodFilters"></div>
+    <div class="prod-grid" id="prodGrid"></div>
   </div>
 </section>
 
@@ -1117,7 +1218,7 @@ var GAMAS=[
   {id:'fjord',num:'03',name:'Fjord',
    desc:'Serie nórdica de acero al carbono. Gana carácter con cada uso. La elegancia funcional de la cocina escandinava en tu lineal.',
    tags:['Acero al Carbono','Nórdico','Sin Antiadherente','Versátil'],
-   img:'https://images.unsplash.com/photo-1590736704728-f4730bb30770?w=1600&q=85'},
+   img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=85'},
   {id:'nuuk',num:'04',name:'Nuuk',
    desc:'Woks y paellas de gran diámetro para cocina profesional. Bordes altos, fondo plano, distribución del calor excepcional.',
    tags:['Wok','Paella','Gran Formato','Inducción'],
@@ -1133,7 +1234,7 @@ var GAMAS=[
   {id:'bluenet',num:'07',name:'BlueNet',
    desc:'Antiadherente azul marino de última generación. Textura reticulada anti-rayado. El más vendido en cadenas de supermercados.',
    tags:['Antiadherente','Anti-Rayado','Top Ventas','Exclusivo'],
-   img:'https://images.unsplash.com/photo-1624375377394-b54cac3e57a9?w=1600&q=85'},
+   img:'https://images.unsplash.com/photo-1574270801973-3eb39b3e52e6?w=1600&q=85'},
   {id:'zero',num:'08',name:'ZERO',
    desc:'100% libre de PFAS, PTFE y PFOA. Recubrimiento mineral cerámico de origen natural. La gama eco-friendly que impulsa tus ventas.',
    tags:['Sin PFAS','Cerámico','Eco-Friendly','Mineral Natural'],
@@ -1280,18 +1381,20 @@ safe(function(){
   gsap.to(els,{y:0,opacity:1,duration:.85,ease:'power3.out',stagger:.1,delay:2.0});
 },'hero-enter');
 
-/* CAROUSEL */
+/* CAROUSEL — CSS horizontal scroll-snap */
 safe(function(){
-  var wrap=qs('#carousel-wrap');
+  var sticky=qs('#carSticky');
   var track=qs('#carTrack');
   var prog=qs('#carProg');
-  if(!wrap||!track||!prog)return;
+  var prevBtn=qs('#carPrev');
+  var nextBtn=qs('#carNext');
+  if(!sticky||!track||!prog)return;
 
   /* Build panels */
   var html='';
   GAMAS.forEach(function(g){
     html+='<div class="car-panel" id="panel-'+g.id+'">';
-    html+='<div class="car-bg"><img src="'+g.img+'" alt="'+g.name+'" loading="lazy"></div>';
+    html+='<div class="car-bg"><img src="'+g.img+'" alt="'+g.name+'" loading="lazy" onerror="this.style.display=\'none\'"></div>';
     html+='<div class="car-ov"></div>';
     html+='<div class="car-stripe"></div>';
     html+='<div class="car-c">';
@@ -1325,71 +1428,46 @@ safe(function(){
     dHtml+='<button class="car-dot'+(i===0?' on':'')+'" data-idx="'+i+'" aria-label="Gama '+g.name+'"></button>';
   });
   prog.innerHTML=dHtml;
+  prog.classList.add('show');
   var dots=qsa('.car-dot',prog);
+  var curIdx=0;
 
-  if(window.gsap&&window.ScrollTrigger){
-    gsap.registerPlugin(ScrollTrigger);
-    var totalW=(GAMAS.length-1)*window.innerWidth;
-    wrap.style.height=(window.innerHeight+totalW)+'px';
-
-    gsap.to(track,{
-      x:-totalW,ease:'none',
-      scrollTrigger:{
-        trigger:wrap,start:'top top',end:'+='+(totalW),
-        scrub:1.2,pin:'#carSticky',anticipatePin:1,invalidateOnRefresh:true,
-        onUpdate:function(self){
-          var idx=Math.round(self.progress*(GAMAS.length-1));
-          idx=Math.max(0,Math.min(idx,GAMAS.length-1));
-          dots.forEach(function(d,i){d.classList.toggle('on',i===idx);});
-          prog.classList.toggle('show',self.progress>0.005&&self.progress<0.996);
-        }
-      }
-    });
-
-    dots.forEach(function(dot,i){
-      dot.addEventListener('click',function(){
-        var target=wrap.offsetTop+(i/(GAMAS.length-1))*totalW;
-        window.scrollTo({top:target,behavior:'smooth'});
-      });
-    });
-
-    window.addEventListener('resize',function(){
-      totalW=(GAMAS.length-1)*window.innerWidth;
-      wrap.style.height=(window.innerHeight+totalW)+'px';
-      ScrollTrigger.refresh();
-    });
-
-  } else {
-    /* CSS fallback */
-    var sticky=qs('#carSticky');
-    if(sticky){
-      sticky.style.position='relative';
-      sticky.style.height='100vh';
-      sticky.style.overflowX='auto';
-      sticky.style.scrollSnapType='x mandatory';
-    }
-    wrap.style.height='auto';
-    qsa('.car-panel',track).forEach(function(p){p.style.scrollSnapAlign='start';});
-    prog.style.display='none';
+  function scrollToIdx(idx){
+    curIdx=Math.max(0,Math.min(idx,GAMAS.length-1));
+    sticky.scrollTo({left:curIdx*sticky.clientWidth,behavior:'smooth'});
+    dots.forEach(function(d,i){d.classList.toggle('on',i===curIdx);});
   }
+
+  if(prevBtn)prevBtn.addEventListener('click',function(){scrollToIdx(curIdx-1);});
+  if(nextBtn)nextBtn.addEventListener('click',function(){scrollToIdx(curIdx+1);});
+
+  dots.forEach(function(dot,i){
+    dot.addEventListener('click',function(){scrollToIdx(i);});
+  });
+
+  /* Sync dots on native scroll / touch swipe */
+  var st;
+  sticky.addEventListener('scroll',function(){
+    clearTimeout(st);
+    st=setTimeout(function(){
+      var idx=Math.round(sticky.scrollLeft/sticky.clientWidth);
+      curIdx=Math.max(0,Math.min(idx,GAMAS.length-1));
+      dots.forEach(function(d,i){d.classList.toggle('on',i===curIdx);});
+    },80);
+  },{passive:true});
 },'carousel');
 
-/* SCROLL REVEAL — BUG FIX: guard against repeated observer calls */
+/* SCROLL REVEAL */
 safe(function(){
   var els=qsa('.rv');
   if(!els.length)return;
   var io=new IntersectionObserver(function(entries){
     entries.forEach(function(e){
-      if(e.isIntersecting){
-        e.target.classList.add('in');
-        io.unobserve(e.target);
-      }
+      if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
     });
   },{threshold:.05,rootMargin:'0px 0px -40px 0px'});
-  els.forEach(function(el){
-    io.observe(el);
-    setTimeout(function(){el.classList.add('in');},7000); /* safety */
-  });
+  window._kio=io;
+  els.forEach(function(el){io.observe(el);});
 },'reveal');
 
 /* GSAP ANIMATIONS */
@@ -1450,6 +1528,99 @@ safe(function(){
   /* Recalc on resize */
   window.addEventListener('resize',function(){go(Math.min(cur,getMax()));});
 },'testi');
+
+/* PRODUCTOS */
+safe(function(){
+  var PRODUCTOS=[
+    {gama:'piedra-black',gn:'Piedra Black',ref:'KPB-20',name:'Sartén Piedra Black 20cm',desc:'Antiadherente de piedra triple capa. Apta inducción. Sin PFOA.',specs:['Ø 20 cm','Ind./Gas/Vitro','Triple capa','Sin PFOA']},
+    {gama:'piedra-black',gn:'Piedra Black',ref:'KPB-24',name:'Sartén Piedra Black 24cm',desc:'Antiadherente de piedra triple capa. Apta inducción. Sin PFOA.',specs:['Ø 24 cm','Ind./Gas/Vitro','Triple capa','Sin PFOA']},
+    {gama:'piedra-black',gn:'Piedra Black',ref:'KPB-28',name:'Sartén Piedra Black 28cm',desc:'Antiadherente de piedra triple capa. Apta inducción. Sin PFOA.',specs:['Ø 28 cm','Ind./Gas/Vitro','Triple capa','Sin PFOA']},
+    {gama:'piedra-black',gn:'Piedra Black',ref:'KPB-32',name:'Sartén Piedra Black 32cm',desc:'Formato extra para hostelería. Triple capa piedra reforzada.',specs:['Ø 32 cm','Ind./Gas/Vitro','Triple capa','Hostelería']},
+    {gama:'piedra-black',gn:'Piedra Black',ref:'CPAB-24',name:'Cazuela Piedra Black 24cm',desc:'Aluminio con recubrimiento de piedra. Tapa de cristal templado.',specs:['Ø 24 cm','Tapa cristal','2,4 L','Antiadherente']},
+    {gama:'piedra-black',gn:'Piedra Black',ref:'CPAB-28',name:'Cazuela Piedra Black 28cm',desc:'Aluminio con recubrimiento de piedra. Tapa de cristal templado.',specs:['Ø 28 cm','Tapa cristal','3,5 L','Antiadherente']},
+    {gama:'indublock',gn:'InduBlock',ref:'KIB-20',name:'Sartén InduBlock 20cm',desc:'Base de acero reforzado para inducción de alta potencia. Larga vida útil.',specs:['Ø 20 cm','Inducción HD','Acero reforzado','Apilable']},
+    {gama:'indublock',gn:'InduBlock',ref:'KIB-24',name:'Sartén InduBlock 24cm',desc:'Base de acero reforzado para inducción de alta potencia. Larga vida útil.',specs:['Ø 24 cm','Inducción HD','Acero reforzado','Apilable']},
+    {gama:'indublock',gn:'InduBlock',ref:'KIB-28',name:'Sartén InduBlock 28cm',desc:'Base de acero reforzado para inducción de alta potencia. Larga vida útil.',specs:['Ø 28 cm','Inducción HD','Acero reforzado','Apilable']},
+    {gama:'indublock',gn:'InduBlock',ref:'KIB-SET6',name:'Batería InduBlock 6 pzs',desc:'Set completo: 3 sartenes + 3 cazuelas. Tapa de cristal incluida.',specs:['6 piezas','Todas las fuentes','Tapa cristal','Caja display']},
+    {gama:'fjord',gn:'Fjord',ref:'KFJ-20',name:'Sartén Fjord 20cm',desc:'Acero al carbono natural. Gana antiadherencia con el uso. Estilo nórdico.',specs:['Ø 20 cm','Acero carbono','Todas las fuentes','Sin antiadh.']},
+    {gama:'fjord',gn:'Fjord',ref:'KFJ-24',name:'Sartén Fjord 24cm',desc:'Acero al carbono natural. Gana antiadherencia con el uso. Estilo nórdico.',specs:['Ø 24 cm','Acero carbono','Todas las fuentes','Sin antiadh.']},
+    {gama:'fjord',gn:'Fjord',ref:'KFJ-28',name:'Sartén Fjord 28cm',desc:'Acero al carbono natural. Gana antiadherencia con el uso. Estilo nórdico.',specs:['Ø 28 cm','Acero carbono','Todas las fuentes','Sin antiadh.']},
+    {gama:'fjord',gn:'Fjord',ref:'WFJ-32',name:'Wok Fjord 32cm',desc:'Wok de acero al carbono con asas ergonómicas. Ideal para fuego vivo.',specs:['Ø 32 cm','Acero carbono','Gas/Fuego','Asas ergo.']},
+    {gama:'nuuk',gn:'Nuuk',ref:'WNK-32',name:'Wok Nuuk 32cm',desc:'Wok antiadherente de gran diámetro. Bordes altos, fondo plano reforzado.',specs:['Ø 32 cm','Antiadherente','Bordes altos','Fondo plano']},
+    {gama:'nuuk',gn:'Nuuk',ref:'WNK-36',name:'Wok Nuuk 36cm',desc:'Wok antiadherente profesional. Para grupos y hostelería de volumen.',specs:['Ø 36 cm','Antiadherente','Hostelería','Fondo plano']},
+    {gama:'nuuk',gn:'Nuuk',ref:'PNK-40',name:'Paella Nuuk 40cm',desc:'Paellera antiadherente con fondo difusor de calor. Apta inducción.',specs:['Ø 40 cm','Antiadherente','Fondo difusor','Inducción']},
+    {gama:'nuuk',gn:'Nuuk',ref:'PNK-46',name:'Paella Nuuk 46cm',desc:'Paellera gran formato para hostelería. Asas doble remache reforzado.',specs:['Ø 46 cm','Antiadherente','Hostelería','Doble remache']},
+    {gama:'firenze',gn:'Firenze',ref:'KFZ-20',name:'Sartén Firenze 20cm',desc:'Aluminio fundido premium con acabado italiano. Peso equilibrado.',specs:['Ø 20 cm','Aluminio fundido','Inducción','Premium']},
+    {gama:'firenze',gn:'Firenze',ref:'KFZ-24',name:'Sartén Firenze 24cm',desc:'Aluminio fundido premium con acabado italiano. Peso equilibrado.',specs:['Ø 24 cm','Aluminio fundido','Inducción','Premium']},
+    {gama:'firenze',gn:'Firenze',ref:'KFZ-28',name:'Sartén Firenze 28cm',desc:'Aluminio fundido premium con acabado italiano. Peso equilibrado.',specs:['Ø 28 cm','Aluminio fundido','Inducción','Premium']},
+    {gama:'firenze',gn:'Firenze',ref:'KFZ-SET5',name:'Batería Firenze 5 pzs',desc:'Set completo aluminio fundido. 5 piezas. Tapa cristal incluida.',specs:['5 piezas','Aluminio fundido','Todas las fuentes','Tapa cristal']},
+    {gama:'alejandra',gn:'Alejandra',ref:'OAL-18',name:'Olla Alejandra 18cm',desc:'Acero inox 18/10 superficie espejo. Tapa inox con válvula vapor.',specs:['Ø 18 cm','Inox 18/10','2 L','Válvula vapor']},
+    {gama:'alejandra',gn:'Alejandra',ref:'OAL-20',name:'Olla Alejandra 20cm',desc:'Acero inox 18/10 superficie espejo. Tapa inox con válvula vapor.',specs:['Ø 20 cm','Inox 18/10','3 L','Válvula vapor']},
+    {gama:'alejandra',gn:'Alejandra',ref:'OAL-24',name:'Olla Alejandra 24cm',desc:'Olla alta inox para caldos y pasta. Fondo de aluminio encapsulado.',specs:['Ø 24 cm','Inox 18/10','5 L','Fondo encapsulado']},
+    {gama:'alejandra',gn:'Alejandra',ref:'CAL-24',name:'Cazuela Alejandra 24cm',desc:'Cazuela inox baja, fondo encapsulado. Ideal para guisos y estofados.',specs:['Ø 24 cm','Inox 18/10','3,2 L','Tapa inox']},
+    {gama:'alejandra',gn:'Alejandra',ref:'AL-SET7',name:'Batería Alejandra 7 pzs',desc:'Set completo inox 18/10: 4 ollas + 3 sartenes. Fondo encapsulado.',specs:['7 piezas','Inox 18/10','Todas las fuentes','Fondo encapsulado']},
+    {gama:'bluenet',gn:'BlueNet',ref:'KBN-20',name:'Sartén BlueNet 20cm',desc:'Antiadherente azul marino reticulado anti-rayado. Top ventas.',specs:['Ø 20 cm','Antiadherente','Anti-rayado','Inducción']},
+    {gama:'bluenet',gn:'BlueNet',ref:'KBN-24',name:'Sartén BlueNet 24cm',desc:'Antiadherente azul marino reticulado anti-rayado. Top ventas.',specs:['Ø 24 cm','Antiadherente','Anti-rayado','Inducción']},
+    {gama:'bluenet',gn:'BlueNet',ref:'KBN-28',name:'Sartén BlueNet 28cm',desc:'Antiadherente azul marino reticulado anti-rayado. Top ventas.',specs:['Ø 28 cm','Antiadherente','Anti-rayado','Inducción']},
+    {gama:'bluenet',gn:'BlueNet',ref:'CBN-24',name:'Cazuela BlueNet 24cm',desc:'Cazuela antiadherente azul marino. Tapa cristal templado.',specs:['Ø 24 cm','Antiadherente','Tapa cristal','Inducción']},
+    {gama:'zero',gn:'ZERO',ref:'KZ-20',name:'Sartén ZERO 20cm',desc:'Sin PFAS, PTFE ni PFOA. Recubrimiento mineral cerámico natural.',specs:['Ø 20 cm','Sin PFAS','Cerámico mineral','Eco']},
+    {gama:'zero',gn:'ZERO',ref:'KZ-24',name:'Sartén ZERO 24cm',desc:'Sin PFAS, PTFE ni PFOA. Recubrimiento mineral cerámico natural.',specs:['Ø 24 cm','Sin PFAS','Cerámico mineral','Eco']},
+    {gama:'zero',gn:'ZERO',ref:'KZ-28',name:'Sartén ZERO 28cm',desc:'Sin PFAS, PTFE ni PFOA. Recubrimiento mineral cerámico natural.',specs:['Ø 28 cm','Sin PFAS','Cerámico mineral','Eco']},
+    {gama:'zero',gn:'ZERO',ref:'CZ-24',name:'Cazuela ZERO 24cm',desc:'Cazuela cerámica sin PFAS. Apta horno hasta 220°C. Eco-friendly.',specs:['Ø 24 cm','Sin PFAS','Apta horno','220°C max']},
+    {gama:'utensilios',gn:'Utensilios',ref:'SU-5',name:'Set Utensilios Pro 5 pzs',desc:'Espátula, cucharón, cucharón ranurado, espumadera y tenedor.',specs:['5 piezas','Acero inox','Silicona GF','Caja display']},
+    {gama:'utensilios',gn:'Utensilios',ref:'ESP-SIL',name:'Espátula Silicona Pro',desc:'Resistente al calor hasta 220°C. Mango ergonómico antideslizante.',specs:['220°C max','Silicona GF','Acero inox','Ergonómica']},
+    {gama:'utensilios',gn:'Utensilios',ref:'PZ-INX',name:'Pinzas Chef Inox 30cm',desc:'Pinzas profesionales de cocina. Cierre magnético. Acero inox 18/10.',specs:['30 cm','Inox 18/10','Cierre magnético','Lavavajillas']},
+    {gama:'utensilios',gn:'Utensilios',ref:'TC-PRO',name:'Tabla Corte Pro 40×28cm',desc:'PP alta densidad. Antideslizante. Fácil lavado. BPA free.',specs:['40×28 cm','PP alta densidad','Antideslizante','BPA free']},
+    {gama:'cafe-moka',gn:'Café & Moka',ref:'MOK-3',name:'Cafetera Moka 3 tazas',desc:'Cafetera italiana clásica en aluminio pulido. Apta gas y vitro.',specs:['3 tazas','Aluminio','Gas/Vitro','Clásica']},
+    {gama:'cafe-moka',gn:'Café & Moka',ref:'MOK-6',name:'Cafetera Moka 6 tazas',desc:'Cafetera italiana clásica en aluminio pulido. Apta gas y vitro.',specs:['6 tazas','Aluminio','Gas/Vitro','Clásica']},
+    {gama:'cafe-moka',gn:'Café & Moka',ref:'MOK-9',name:'Cafetera Moka 9 tazas',desc:'Cafetera italiana clásica en aluminio pulido. Apta gas y vitro.',specs:['9 tazas','Aluminio','Gas/Vitro','Clásica']},
+    {gama:'cafe-moka',gn:'Café & Moka',ref:'CAF-SET',name:'Set Degustación Café 4 pzs',desc:'Cafetera 6tz + 2 tazas + cucharillas. Packaging regalo incluido.',specs:['4 piezas','6 tazas','Packaging regalo','Inox+cristal']}
+  ];
+
+  var filtersEl=qs('#prodFilters');
+  var gridEl=qs('#prodGrid');
+  if(!filtersEl||!gridEl)return;
+
+  /* Filter tabs */
+  var gamaKeys=['all'].concat(GAMAS.map(function(g){return g.id;}));
+  var gamaLabels={all:'Todos','piedra-black':'Piedra Black','indublock':'InduBlock','fjord':'Fjord','nuuk':'Nuuk','firenze':'Firenze','alejandra':'Alejandra','bluenet':'BlueNet','zero':'ZERO','utensilios':'Utensilios','cafe-moka':'Café & Moka'};
+  var fHtml='';
+  gamaKeys.forEach(function(k){
+    fHtml+='<button class="prod-tab'+(k==='all'?' on':'')+'" data-filter="'+k+'">'+gamaLabels[k]+'</button>';
+  });
+  filtersEl.innerHTML=fHtml;
+
+  /* Product cards */
+  var pHtml='';
+  PRODUCTOS.forEach(function(p){
+    pHtml+='<div class="prod-card rv" data-gama="'+p.gama+'">';
+    pHtml+='<span class="prod-badge">'+p.gn+'</span>';
+    pHtml+='<div class="prod-name">'+p.name+'</div>';
+    pHtml+='<div class="prod-ref">REF. '+p.ref+'</div>';
+    pHtml+='<p class="prod-desc">'+p.desc+'</p>';
+    pHtml+='<div class="prod-specs">';
+    p.specs.forEach(function(s){pHtml+='<span class="prod-spec">'+s+'</span>';});
+    pHtml+='</div></div>';
+  });
+  gridEl.innerHTML=pHtml;
+
+  /* Re-observe new .rv elements */
+  var newRv=qsa('.rv',gridEl);
+  if(window._kio){newRv.forEach(function(el){window._kio.observe(el);});}
+
+  /* Filter logic */
+  var tabs=qsa('.prod-tab',filtersEl);
+  var cards=qsa('.prod-card',gridEl);
+  tabs.forEach(function(tab){
+    tab.addEventListener('click',function(){
+      var filter=tab.getAttribute('data-filter');
+      tabs.forEach(function(t){t.classList.toggle('on',t===tab);});
+      cards.forEach(function(c){
+        c.classList.toggle('hidden',filter!=='all'&&c.getAttribute('data-gama')!==filter);
+      });
+    });
+  });
+},'productos');
 
 /* FORM */
 safe(function(){
