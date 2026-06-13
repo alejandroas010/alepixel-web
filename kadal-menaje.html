@@ -4,54 +4,51 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kadal Menaje — Distribución Mayorista de Menaje Profesional</title>
-<meta name="description" content="Kadal Menaje. Distribución mayorista de menaje de cocina profesional. Solo para ferreterías, supermercados y distribuidores. EST. 2012. +8.000 palets de capacidad.">
+<meta name="description" content="Kadal Menaje. Distribución mayorista de menaje de cocina profesional. Solo para ferreterías, supermercados y distribuidores. EST. 2012.">
 <meta name="robots" content="index, follow">
 <meta property="og:title" content="Kadal Menaje — Distribución Mayorista">
 <meta property="og:description" content="Si se puede dibujar, se puede fabricar. Menaje profesional para distribuidores. EST. 2012.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700;1,9..144,900&family=Manrope:wght@300;400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700;1,800&family=Manrope:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 /* =====================================================
-   KADAL MENAJE — v4.0 Premium B2B
+   KADAL MENAJE — v5.0 Blanco & Rosa
    Design: Alepixel · 2024
    ===================================================== */
 
 :root{
-  --cream:#F7F4EF;
-  --cream-d:#EDE9E2;
-  --cream-dd:#E2DDD5;
-  --carbon:#1A1A1A;
-  --carbon-2:#222;
-  --fire:#C24A23;
-  --fire-l:#D4613A;
-  --fire-d:#A83D1C;
-  --steel:#1E5F8C;
-  --steel-l:#2670A0;
-  --mid:#6B6B6B;
-  --border:rgba(26,26,26,.1);
-  --border-l:rgba(26,26,26,.06);
-  --white:#fff;
+  /* BRAND PALETTE: Blanco + Rosa Kadal */
+  --white: #FFFFFF;
+  --rose: #E5003B;       /* Pink brand — from logo */
+  --rose-l: #FF1F55;     /* Lighter hover */
+  --rose-d: #B80030;     /* Darker variant */
+  --rose-bg: #FFF0F4;    /* Very light pink bg */
+  --rose-bg2: #FFE0EA;   /* Light pink sections */
+  --carbon: #1A1A1A;
+  --carbon-2: #2A2A2A;
+  --mid: #707070;
+  --border: rgba(229,0,59,.12);
+  --border-g: rgba(26,26,26,.1);
 
-  --font-d:'Fraunces',Georgia,serif;
-  --font-s:'Manrope',system-ui,sans-serif;
-  --font-m:'Space Mono',monospace;
+  --font-d: 'Poppins', system-ui, sans-serif;
+  --font-s: 'Manrope', system-ui, sans-serif;
+  --font-m: 'Space Mono', monospace;
 
-  --ease:cubic-bezier(.16,1,.3,1);
-  --ease-out:cubic-bezier(.0,.0,.2,1);
-  --tr:.4s var(--ease);
+  --ease: cubic-bezier(.16,1,.3,1);
+  --tr: .35s var(--ease);
 
-  --max:1360px;
-  --nav-h:72px;
-  --r:6px;
+  --max: 1360px;
+  --nav-h: 72px;
+  --r: 8px;
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;font-size:16px}
 body{
   font-family:var(--font-s);
-  background:var(--cream);
+  background:var(--white);
   color:var(--carbon);
   line-height:1.6;
   overflow-x:hidden;
@@ -60,36 +57,31 @@ body{
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 button,input,select,textarea{font-family:inherit;cursor:none}
-::selection{background:var(--fire);color:var(--white)}
+::selection{background:var(--rose);color:var(--white)}
 
 /* =====================
    CUSTOM CURSOR
    ===================== */
 #cur{
   position:fixed;top:0;left:0;
-  width:18px;height:18px;
+  width:16px;height:16px;
   border-radius:50%;
-  background:var(--fire);
+  background:var(--rose);
   pointer-events:none;
   z-index:9999;
   transform:translate(-50%,-50%);
-  transition:width .25s var(--ease),height .25s var(--ease),opacity .2s,background .3s;
-  mix-blend-mode:multiply;
+  transition:width .22s var(--ease),height .22s var(--ease),opacity .2s;
   will-change:left,top
 }
 #cur-lbl{
   position:fixed;top:0;left:0;
-  pointer-events:none;
-  z-index:9998;
-  font-family:var(--font-m);
-  font-size:9px;font-weight:700;
-  letter-spacing:.12em;text-transform:uppercase;
-  color:var(--white);
-  background:var(--carbon);
-  padding:5px 11px;border-radius:20px;
+  pointer-events:none;z-index:9998;
+  font-family:var(--font-m);font-size:9px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--white);background:var(--carbon);
+  padding:5px 12px;border-radius:20px;
   transform:translate(14px,14px);
-  opacity:0;transition:opacity .2s;
-  white-space:nowrap
+  opacity:0;transition:opacity .2s;white-space:nowrap
 }
 #cur-lbl.show{opacity:1}
 
@@ -98,42 +90,27 @@ button,input,select,textarea{font-family:inherit;cursor:none}
    ===================== */
 #splash{
   position:fixed;inset:0;
-  background:var(--carbon);
+  background:var(--rose);
   z-index:10000;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  gap:28px
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:24px
 }
-#spl-logo{
-  display:flex;
-  overflow:hidden;
-  line-height:1
-}
+#spl-logo{display:flex;overflow:hidden;line-height:1;align-items:center;gap:0}
 .spl-l{
   font-family:var(--font-d);
-  font-size:clamp(72px,14vw,140px);
-  font-weight:900;
-  color:var(--cream);
-  letter-spacing:-.03em;
-  transform:translateY(110%);
-  opacity:0;
-  display:block
+  font-size:clamp(64px,13vw,130px);
+  font-weight:900;color:var(--white);
+  letter-spacing:-.02em;
+  transform:translateY(110%);opacity:0;display:block
 }
-.spl-l.accent{color:var(--fire)}
 #spl-tag{
-  font-family:var(--font-m);
-  font-size:clamp(9px,1.4vw,12px);
-  letter-spacing:.35em;
-  color:rgba(247,244,239,.35);
-  text-transform:uppercase;
-  opacity:0;transform:translateY(16px)
+  font-family:var(--font-m);font-size:clamp(9px,1.3vw,11px);
+  letter-spacing:.32em;color:rgba(255,255,255,.55);
+  text-transform:uppercase;opacity:0;transform:translateY(14px)
 }
 #spl-bar{
   position:absolute;bottom:0;left:0;
-  height:2px;width:0%;
-  background:var(--fire)
+  height:3px;width:0%;background:rgba(255,255,255,.4)
 }
 
 /* =====================
@@ -141,61 +118,53 @@ button,input,select,textarea{font-family:inherit;cursor:none}
    ===================== */
 #nav{
   position:fixed;top:0;left:0;right:0;
-  height:var(--nav-h);
-  z-index:1000;
+  height:var(--nav-h);z-index:1000;
   display:flex;align-items:center;
   padding:0 clamp(20px,4.5vw,64px);
   transition:background .4s var(--ease),box-shadow .4s var(--ease)
 }
 #nav.stuck{
-  background:rgba(247,244,239,.93);
-  backdrop-filter:blur(18px);
-  -webkit-backdrop-filter:blur(18px);
-  box-shadow:0 1px 0 var(--border)
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  box-shadow:0 1px 0 rgba(229,0,59,.1)
 }
 .nav-logo{
-  display:flex;align-items:center;
-  flex-shrink:0;margin-right:auto
+  display:flex;align-items:center;flex-shrink:0;margin-right:auto
 }
-.nav-logo svg{height:34px;width:auto}
+.nav-logo img{height:40px;width:auto;object-fit:contain}
 .nav-links{
   display:flex;align-items:center;
-  gap:clamp(20px,3vw,44px);
-  margin-right:32px
+  gap:clamp(20px,3vw,44px);margin-right:32px
 }
 .nav-links a{
-  font-size:12px;font-weight:700;
-  letter-spacing:.07em;text-transform:uppercase;
+  font-family:var(--font-d);font-size:12px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;
   position:relative;padding-bottom:3px
 }
 .nav-links a::after{
-  content:'';position:absolute;
-  bottom:0;left:0;width:0;height:1.5px;
-  background:var(--fire);
+  content:'';position:absolute;bottom:0;left:0;
+  width:0;height:2px;background:var(--rose);
   transition:width .3s var(--ease)
 }
 .nav-links a:hover::after{width:100%}
 .nav-cta{
   display:inline-flex;align-items:center;gap:8px;
-  padding:10px 22px;
-  background:var(--fire);color:var(--white);
+  padding:11px 24px;
+  background:var(--rose);color:var(--white);
   border-radius:var(--r);
-  font-size:12px;font-weight:700;
-  letter-spacing:.07em;text-transform:uppercase;
-  border:2px solid var(--fire);
-  transition:background .3s,transform .2s,box-shadow .3s;
-  flex-shrink:0
+  font-family:var(--font-d);font-size:12px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;
+  border:2px solid var(--rose);
+  transition:background .3s,transform .2s,box-shadow .3s;flex-shrink:0
 }
-.nav-cta:hover{background:var(--fire-l);border-color:var(--fire-l);transform:translateY(-1px);box-shadow:0 6px 20px rgba(194,74,35,.3)}
+.nav-cta:hover{background:var(--rose-l);border-color:var(--rose-l);transform:translateY(-1px);box-shadow:0 6px 20px rgba(229,0,59,.3)}
 #hamburger{
   display:none;flex-direction:column;gap:5px;
-  background:none;border:none;padding:6px;
-  margin-left:12px
+  background:none;border:none;padding:6px;margin-left:12px
 }
 #hamburger span{
   display:block;width:24px;height:2px;
-  background:var(--carbon);border-radius:2px;
-  transition:var(--tr)
+  background:var(--carbon);border-radius:2px;transition:var(--tr)
 }
 #hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 #hamburger.open span:nth-child(2){opacity:0}
@@ -206,142 +175,133 @@ button,input,select,textarea{font-family:inherit;cursor:none}
    ===================== */
 #mob-menu{
   display:none;position:fixed;inset:0;
-  background:var(--carbon);
-  z-index:999;
-  padding:calc(var(--nav-h) + 48px) clamp(28px,6vw,64px) 48px;
+  background:var(--rose);z-index:999;
+  padding:calc(var(--nav-h)+48px) clamp(28px,6vw,64px) 48px;
   flex-direction:column;gap:0
 }
 #mob-menu.open{display:flex}
-#mob-menu a{
+#mob-menu > a{
   font-family:var(--font-d);
-  font-size:clamp(36px,7.5vw,60px);
-  font-weight:700;color:var(--cream);
-  border-bottom:1px solid rgba(247,244,239,.07);
-  padding:18px 0;
-  transition:color .3s,padding-left .3s
+  font-size:clamp(34px,7vw,56px);
+  font-weight:800;color:var(--white);
+  border-bottom:1px solid rgba(255,255,255,.15);
+  padding:16px 0;
+  transition:opacity .3s,padding-left .3s
 }
-#mob-menu a:hover{color:var(--fire);padding-left:12px}
+#mob-menu > a:hover{opacity:.75;padding-left:10px}
 .mob-contact{
-  margin-top:auto;
-  padding-top:32px;
+  margin-top:auto;padding-top:28px;
   display:flex;flex-direction:column;gap:10px
 }
 .mob-contact a{
   font-family:var(--font-s) !important;font-size:14px !important;
-  font-weight:600 !important;color:rgba(247,244,239,.5) !important;
+  font-weight:600 !important;color:rgba(255,255,255,.65) !important;
   border:none !important;padding:0 !important
 }
-.mob-contact a:hover{color:var(--fire) !important;padding-left:0 !important}
+.mob-contact a:hover{opacity:1 !important;padding-left:0 !important;color:var(--white) !important}
 
 /* =====================
    HERO
    ===================== */
 #hero{
   min-height:100vh;min-height:100svh;
-  display:flex;flex-direction:column;
-  justify-content:flex-end;
-  padding:calc(var(--nav-h)+60px) clamp(24px,5.5vw,80px) clamp(64px,8vw,104px);
-  position:relative;overflow:hidden
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:calc(var(--nav-h)+60px) clamp(24px,5.5vw,80px) clamp(64px,8vw,100px);
+  position:relative;overflow:hidden;background:var(--white)
 }
 .hero-bg{position:absolute;inset:0;overflow:hidden}
 #hero-img{
-  width:100%;height:100%;
-  object-fit:cover;
-  transform:scale(1.08);
-  transform-origin:60% 50%;
+  width:100%;height:100%;object-fit:cover;
+  transform:scale(1.08);transform-origin:60% 50%;
   will-change:transform
 }
 .hero-ov{
   position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(247,244,239,.91) 0%,rgba(247,244,239,.74) 45%,rgba(247,244,239,.28) 100%)
+  background:linear-gradient(135deg,rgba(255,255,255,.94) 0%,rgba(255,255,255,.78) 45%,rgba(255,255,255,.3) 100%)
 }
-.hero-c{position:relative;z-index:1;max-width:900px}
+/* Pink glow accent */
+.hero-glow{
+  position:absolute;
+  width:600px;height:600px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(229,0,59,.12) 0%,transparent 70%);
+  right:-100px;top:50%;transform:translateY(-50%);
+  pointer-events:none
+}
+.hero-c{position:relative;z-index:1;max-width:880px}
 .hero-kick{
   font-family:var(--font-m);font-size:11px;font-weight:700;
-  letter-spacing:.3em;text-transform:uppercase;
-  color:var(--fire);margin-bottom:24px;
+  letter-spacing:.28em;text-transform:uppercase;
+  color:var(--rose);margin-bottom:22px;
   display:flex;align-items:center;gap:14px;
   opacity:0;transform:translateX(-20px)
 }
-.hero-kick::before{
-  content:'';display:block;
-  width:32px;height:2px;
-  background:var(--fire);flex-shrink:0
-}
+.hero-kick::before{content:'';display:block;width:28px;height:2px;background:var(--rose);flex-shrink:0}
 .hero-h1{
   font-family:var(--font-d);
-  font-size:clamp(48px,8vw,116px);
-  font-weight:900;line-height:.93;
-  letter-spacing:-.03em;
-  color:var(--carbon);
-  margin-bottom:28px;
-  opacity:0;transform:translateY(30px)
+  font-size:clamp(48px,8vw,110px);
+  font-weight:900;line-height:.95;
+  letter-spacing:-.03em;color:var(--carbon);
+  margin-bottom:26px;opacity:0;transform:translateY(28px)
 }
-.hero-h1 em{font-style:italic;color:var(--fire)}
+.hero-h1 em{font-style:italic;color:var(--rose)}
 .hero-sub{
-  font-size:clamp(15px,1.8vw,19px);font-weight:400;
-  color:var(--mid);max-width:520px;line-height:1.7;
-  margin-bottom:44px;
-  opacity:0;transform:translateY(20px)
+  font-size:clamp(15px,1.7vw,18px);font-weight:400;
+  color:var(--mid);max-width:500px;line-height:1.72;
+  margin-bottom:44px;opacity:0;transform:translateY(20px)
 }
 .hero-ctas{
   display:flex;flex-wrap:wrap;gap:14px;
-  margin-bottom:56px;
-  opacity:0;transform:translateY(20px)
+  margin-bottom:56px;opacity:0;transform:translateY(20px)
 }
-.btn-fire{
+.btn-rose{
   display:inline-flex;align-items:center;gap:10px;
-  padding:16px 36px;background:var(--fire);color:var(--white);
-  border-radius:var(--r);font-size:14px;font-weight:700;
-  letter-spacing:.05em;text-transform:uppercase;
-  border:2px solid var(--fire);
+  padding:16px 36px;background:var(--rose);color:var(--white);
+  border-radius:var(--r);font-family:var(--font-d);font-size:14px;font-weight:700;
+  letter-spacing:.04em;text-transform:uppercase;border:2px solid var(--rose);
   transition:background .3s,border-color .3s,transform .2s,box-shadow .3s
 }
-.btn-fire:hover{background:var(--fire-l);border-color:var(--fire-l);transform:translateY(-2px);box-shadow:0 10px 30px rgba(194,74,35,.35)}
+.btn-rose:hover{background:var(--rose-l);border-color:var(--rose-l);transform:translateY(-2px);box-shadow:0 10px 30px rgba(229,0,59,.35)}
 .btn-ghost{
   display:inline-flex;align-items:center;gap:10px;
   padding:16px 36px;background:transparent;color:var(--carbon);
-  border-radius:var(--r);font-size:14px;font-weight:700;
-  letter-spacing:.05em;text-transform:uppercase;
-  border:2px solid var(--carbon);
+  border-radius:var(--r);font-family:var(--font-d);font-size:14px;font-weight:700;
+  letter-spacing:.04em;text-transform:uppercase;border:2px solid var(--carbon);
   transition:background .3s,color .3s,transform .2s
 }
-.btn-ghost:hover{background:var(--carbon);color:var(--cream);transform:translateY(-2px)}
+.btn-ghost:hover{background:var(--carbon);color:var(--white);transform:translateY(-2px)}
 .hero-stats{
-  display:flex;flex-wrap:wrap;gap:clamp(24px,4vw,60px);
+  display:flex;flex-wrap:wrap;gap:clamp(24px,4vw,56px);
   align-items:center;padding-top:28px;
   border-top:1px solid var(--border);
   opacity:0;transform:translateY(20px)
 }
 .hstat-n{
   font-family:var(--font-d);
-  font-size:clamp(26px,4vw,50px);
-  font-weight:900;color:var(--carbon);
-  line-height:1;letter-spacing:-.02em
+  font-size:clamp(26px,4vw,48px);
+  font-weight:900;color:var(--rose);line-height:1
 }
 .hstat-lb{
   font-family:var(--font-m);font-size:9px;
-  letter-spacing:.2em;text-transform:uppercase;color:var(--mid);
-  margin-top:4px
+  letter-spacing:.18em;text-transform:uppercase;color:var(--mid);margin-top:4px
 }
 
 /* =====================
    MARQUEE
    ===================== */
 .mq{
-  background:var(--carbon);
-  padding:16px 0;overflow:hidden
+  background:var(--rose);padding:15px 0;overflow:hidden
 }
 .mq-track{
   display:flex;white-space:nowrap;
-  animation:mq-scroll 30s linear infinite
+  animation:mq-scroll 28s linear infinite
 }
 .mq-item{
   font-family:var(--font-m);font-size:11px;font-weight:700;
   letter-spacing:.25em;text-transform:uppercase;
-  color:rgba(247,244,239,.55);padding:0 36px;flex-shrink:0
+  color:rgba(255,255,255,.7);padding:0 32px;flex-shrink:0
 }
-.mq-item.fire{color:var(--fire)}
+.mq-item.white{color:var(--white);font-weight:700}
 @keyframes mq-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* =====================
@@ -349,57 +309,51 @@ button,input,select,textarea{font-family:inherit;cursor:none}
    ===================== */
 .slbl{
   font-family:var(--font-m);font-size:11px;font-weight:700;
-  letter-spacing:.28em;text-transform:uppercase;
-  color:var(--fire);margin-bottom:18px;
-  display:flex;align-items:center;gap:14px
+  letter-spacing:.26em;text-transform:uppercase;
+  color:var(--rose);margin-bottom:16px;
+  display:flex;align-items:center;gap:12px
 }
-.slbl::before{content:'';display:block;width:28px;height:2px;background:var(--fire);flex-shrink:0}
+.slbl::before{content:'';display:block;width:24px;height:2px;background:var(--rose);flex-shrink:0}
 .sh2{
   font-family:var(--font-d);
-  font-size:clamp(36px,5.5vw,72px);
-  font-weight:900;line-height:1;
+  font-size:clamp(34px,5.5vw,68px);
+  font-weight:900;line-height:1.02;
   letter-spacing:-.025em;color:var(--carbon)
 }
-.sh2 em{font-style:italic;color:var(--fire)}
+.sh2 em{font-style:italic;color:var(--rose)}
 .inner{max-width:var(--max);margin:0 auto}
 
 /* =====================
    GAMAS INTRO
    ===================== */
 #gamas-intro{
-  padding:clamp(80px,10vw,140px) clamp(24px,5.5vw,80px) 56px
+  padding:clamp(80px,10vw,140px) clamp(24px,5.5vw,80px) 52px;
+  background:var(--white)
 }
 
 /* =====================
    HORIZONTAL CAROUSEL
    ===================== */
-#carousel-wrap{
-  position:relative;
-}
+#carousel-wrap{position:relative}
 .car-sticky{
-  position:sticky;top:0;
-  height:100vh;overflow:hidden;
-  display:flex;align-items:stretch
+  position:sticky;top:0;height:100vh;
+  overflow:hidden;display:flex;align-items:stretch
 }
-.car-track{
-  display:flex;
-  will-change:transform
-}
+.car-track{display:flex;will-change:transform}
 .car-panel{
   min-width:100vw;height:100vh;
-  position:relative;display:flex;
-  align-items:flex-end;overflow:hidden
+  position:relative;display:flex;align-items:flex-end;overflow:hidden
 }
 .car-bg{position:absolute;inset:0}
 .car-bg img{width:100%;height:100%;object-fit:cover;display:block}
 .car-ov{
   position:absolute;inset:0;
-  background:linear-gradient(
-    to top,
-    rgba(26,26,26,.9) 0%,
-    rgba(26,26,26,.45) 40%,
-    rgba(26,26,26,.08) 100%
-  )
+  background:linear-gradient(to top,rgba(26,26,26,.88) 0%,rgba(26,26,26,.4) 40%,rgba(26,26,26,.06) 100%)
+}
+/* Pink accent stripe */
+.car-stripe{
+  position:absolute;bottom:0;left:0;
+  width:100%;height:4px;background:var(--rose);z-index:2
 }
 .car-c{
   position:relative;z-index:1;
@@ -409,52 +363,50 @@ button,input,select,textarea{font-family:inherit;cursor:none}
 .car-num{
   font-family:var(--font-m);font-size:11px;font-weight:700;
   letter-spacing:.28em;text-transform:uppercase;
-  color:var(--fire);margin-bottom:12px
+  color:var(--rose);margin-bottom:10px
 }
 .car-name{
   font-family:var(--font-d);
-  font-size:clamp(40px,6.5vw,88px);
-  font-weight:900;color:var(--cream);
-  line-height:.95;letter-spacing:-.025em;
-  margin-bottom:18px
+  font-size:clamp(40px,6.5vw,84px);
+  font-weight:900;color:var(--white);
+  line-height:.96;letter-spacing:-.025em;margin-bottom:16px
 }
 .car-desc{
   font-size:clamp(14px,1.6vw,17px);font-weight:400;
-  color:rgba(247,244,239,.68);line-height:1.65;
+  color:rgba(255,255,255,.65);line-height:1.65;
   max-width:420px;margin-bottom:24px
 }
-.car-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.car-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:30px}
 .car-tag{
   font-family:var(--font-m);font-size:10px;font-weight:700;
-  letter-spacing:.12em;text-transform:uppercase;
-  padding:5px 13px;
-  border:1px solid rgba(247,244,239,.2);border-radius:2px;
-  color:rgba(247,244,239,.55)
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:5px 12px;
+  border:1px solid rgba(229,0,59,.4);border-radius:4px;
+  color:rgba(255,255,255,.6)
 }
 .car-cta{
   display:inline-flex;align-items:center;gap:10px;
-  padding:13px 26px;background:var(--fire);color:var(--white);
-  border-radius:var(--r);font-size:13px;font-weight:700;
+  padding:13px 26px;background:var(--rose);color:var(--white);
+  border-radius:var(--r);font-family:var(--font-d);font-size:13px;font-weight:700;
   letter-spacing:.05em;text-transform:uppercase;border:none;
-  transition:background .3s,transform .2s;cursor:none
+  transition:background .3s,transform .2s
 }
-.car-cta:hover{background:var(--fire-l);transform:translateY(-1px)}
+.car-cta:hover{background:var(--rose-l);transform:translateY(-1px)}
 .car-progress{
   position:fixed;bottom:28px;left:50%;transform:translateX(-50%);
-  display:none;align-items:center;gap:7px;
-  z-index:200;
-  background:rgba(26,26,26,.55);backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px);
-  padding:10px 18px;border-radius:40px;
-  transition:opacity .3s
+  display:none;align-items:center;gap:7px;z-index:200;
+  background:rgba(229,0,59,.15);backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(229,0,59,.25);
+  padding:10px 18px;border-radius:40px
 }
 .car-progress.show{display:flex}
 .car-dot{
   width:7px;height:7px;border-radius:50%;
-  background:rgba(247,244,239,.25);
+  background:rgba(229,0,59,.3);
   cursor:pointer;transition:background .3s,transform .3s
 }
-.car-dot.on{background:var(--fire);transform:scale(1.45)}
+.car-dot.on{background:var(--rose);transform:scale(1.5)}
 
 /* =====================
    POR QUE KADAL
@@ -463,65 +415,58 @@ button,input,select,textarea{font-family:inherit;cursor:none}
   padding:clamp(80px,10vw,140px) clamp(24px,5.5vw,80px);
   background:var(--carbon)
 }
-#porque .slbl{color:rgba(194,74,35,.85)}
-#porque .slbl::before{background:rgba(194,74,35,.85)}
-#porque .sh2{color:var(--cream);margin-bottom:72px}
+#porque .slbl{color:var(--rose)}
+#porque .slbl::before{background:var(--rose)}
+#porque .sh2{color:var(--white);margin-bottom:64px}
 .pq-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:1px;
-  background:rgba(247,244,239,.06);
-  border:1px solid rgba(247,244,239,.06);
+  background:rgba(229,0,59,.1);
+  border:1px solid rgba(229,0,59,.1);
   border-radius:var(--r);overflow:hidden
 }
 .pq-item{
   padding:clamp(32px,4vw,52px) clamp(28px,3.5vw,44px);
-  background:var(--carbon);
-  transition:background .4s var(--ease)
+  background:var(--carbon);transition:background .4s var(--ease)
 }
 .pq-item:hover{background:#1e1e1e}
-.pq-ico{width:52px;height:52px;margin-bottom:24px;color:var(--fire)}
+.pq-ico{width:50px;height:50px;margin-bottom:22px}
 .pq-t{
   font-family:var(--font-d);
-  font-size:clamp(20px,2.5vw,27px);font-weight:700;
-  color:var(--cream);margin-bottom:12px;line-height:1.2
+  font-size:clamp(19px,2.2vw,24px);font-weight:700;
+  color:var(--white);margin-bottom:10px;line-height:1.25
 }
-.pq-d{
-  font-size:14px;font-weight:400;
-  color:rgba(247,244,239,.5);line-height:1.75
-}
+.pq-d{font-size:14px;color:rgba(255,255,255,.48);line-height:1.75}
 
 /* =====================
    STATS
    ===================== */
 #stats{
   padding:clamp(80px,9vw,120px) clamp(24px,5.5vw,80px);
-  background:var(--cream-d)
+  background:var(--rose-bg)
 }
 .stats-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
   gap:1px;background:var(--border);
   border:1px solid var(--border);
   border-radius:var(--r);overflow:hidden
 }
 .stat-it{
   padding:clamp(32px,4vw,52px) clamp(24px,3vw,40px);
-  background:var(--cream-d)
+  background:var(--rose-bg)
 }
 .stat-n{
   font-family:var(--font-d);
-  font-size:clamp(40px,6.5vw,84px);font-weight:900;
-  color:var(--fire);line-height:1;letter-spacing:-.03em;
-  margin-bottom:10px
+  font-size:clamp(40px,6.5vw,80px);font-weight:900;
+  color:var(--rose);line-height:1;letter-spacing:-.03em;margin-bottom:10px
 }
 .stat-lb{
-  font-family:var(--font-s);font-size:14px;font-weight:700;
+  font-family:var(--font-d);font-size:14px;font-weight:700;
   color:var(--carbon);margin-bottom:5px
 }
 .stat-sub{
   font-family:var(--font-m);font-size:10px;
-  letter-spacing:.15em;text-transform:uppercase;color:var(--mid)
+  letter-spacing:.13em;text-transform:uppercase;color:var(--mid)
 }
 
 /* =====================
@@ -529,54 +474,53 @@ button,input,select,textarea{font-family:inherit;cursor:none}
    ===================== */
 #testi{
   padding:clamp(80px,10vw,140px) clamp(24px,5.5vw,80px);
-  background:var(--cream);overflow:hidden
+  background:var(--white);overflow:hidden
 }
 .testi-head{
-  display:flex;align-items:flex-end;
-  justify-content:space-between;gap:32px;
-  margin-bottom:52px;flex-wrap:wrap
+  display:flex;align-items:flex-end;justify-content:space-between;
+  gap:32px;margin-bottom:48px;flex-wrap:wrap
 }
 .testi-nav{display:flex;gap:10px}
 .testi-btn{
   width:46px;height:46px;
-  border:1.5px solid var(--border);border-radius:50%;
+  border:2px solid var(--border);border-radius:50%;
   background:none;
   display:flex;align-items:center;justify-content:center;
   color:var(--carbon);
   transition:background .3s,border-color .3s,color .3s
 }
-.testi-btn:hover{background:var(--carbon);border-color:var(--carbon);color:var(--cream)}
+.testi-btn:hover{background:var(--rose);border-color:var(--rose);color:var(--white)}
 .testi-wrap{overflow:hidden}
-.testi-track{display:flex;gap:24px;transition:transform .5s var(--ease)}
+.testi-track{display:flex;gap:20px;transition:transform .5s var(--ease)}
 .testi-card{
-  min-width:calc(50% - 12px);
-  background:var(--cream-d);border-radius:var(--r);
-  padding:clamp(28px,3.5vw,48px);flex-shrink:0
+  min-width:calc(50% - 10px);
+  background:var(--rose-bg);
+  border-radius:var(--r);
+  padding:clamp(24px,3.5vw,44px);flex-shrink:0;
+  border:1px solid var(--border)
 }
 .testi-q{
   font-family:var(--font-d);font-size:52px;
-  color:var(--fire);line-height:.8;
-  margin-bottom:16px;font-weight:900;font-style:italic
+  color:var(--rose);line-height:.8;
+  margin-bottom:14px;font-weight:900;font-style:italic
 }
 .testi-txt{
-  font-family:var(--font-s);
-  font-size:clamp(15px,1.7vw,17px);font-weight:400;
-  color:var(--carbon);line-height:1.7;
-  margin-bottom:32px;font-style:italic
+  font-size:clamp(14px,1.6vw,16px);font-weight:400;
+  color:var(--carbon);line-height:1.72;
+  margin-bottom:28px;font-style:italic
 }
 .testi-auth{display:flex;align-items:center;gap:14px}
 .testi-av{
   width:44px;height:44px;border-radius:50%;
-  background:var(--fire);
+  background:var(--rose);
   display:flex;align-items:center;justify-content:center;
-  font-family:var(--font-d);font-weight:900;font-size:15px;
+  font-family:var(--font-d);font-weight:800;font-size:14px;
   color:var(--white);flex-shrink:0
 }
-.testi-nm{font-size:14px;font-weight:700;color:var(--carbon)}
+.testi-nm{font-family:var(--font-d);font-size:14px;font-weight:700;color:var(--carbon)}
 .testi-co{
   font-family:var(--font-m);font-size:10px;
-  letter-spacing:.12em;text-transform:uppercase;
-  color:var(--mid);margin-top:3px
+  letter-spacing:.1em;text-transform:uppercase;color:var(--mid);margin-top:3px
 }
 
 /* =====================
@@ -584,14 +528,14 @@ button,input,select,textarea{font-family:inherit;cursor:none}
    ===================== */
 #contacto{
   padding:clamp(80px,10vw,140px) clamp(24px,5.5vw,80px);
-  background:var(--steel);position:relative;overflow:hidden
+  background:var(--rose);position:relative;overflow:hidden
 }
 #contacto::before{
   content:'KADAL';position:absolute;
   right:-40px;bottom:-60px;
   font-family:var(--font-d);
   font-size:clamp(100px,20vw,280px);font-weight:900;
-  color:rgba(255,255,255,.04);letter-spacing:-.05em;
+  color:rgba(255,255,255,.07);letter-spacing:-.05em;
   pointer-events:none;line-height:1;user-select:none
 }
 .ct-grid{
@@ -599,54 +543,57 @@ button,input,select,textarea{font-family:inherit;cursor:none}
   gap:clamp(40px,6vw,100px);align-items:start;
   position:relative;z-index:1
 }
-.ct-left .slbl{color:rgba(194,74,35,.7)}
-.ct-left .slbl::before{background:rgba(194,74,35,.7)}
-.ct-left .sh2{color:var(--cream);margin-bottom:20px}
+.ct-left .slbl{color:rgba(255,255,255,.7)}
+.ct-left .slbl::before{background:rgba(255,255,255,.7)}
+.ct-left .sh2{color:var(--white);margin-bottom:20px}
 .ct-desc{
   font-size:clamp(15px,1.7vw,18px);font-weight:400;
-  color:rgba(247,244,239,.65);line-height:1.7;
-  margin-bottom:48px;max-width:440px
+  color:rgba(255,255,255,.7);line-height:1.72;
+  margin-bottom:44px;max-width:420px
 }
-.ct-info{display:flex;flex-direction:column;gap:0}
+.ct-info{display:flex;flex-direction:column}
 .ct-row{
   display:flex;align-items:center;gap:16px;
-  padding:16px 0;
-  border-bottom:1px solid rgba(247,244,239,.1)
+  padding:16px 0;border-bottom:1px solid rgba(255,255,255,.18)
 }
 .ct-ico{
   width:38px;height:38px;border-radius:50%;
-  background:rgba(247,244,239,.08);
+  background:rgba(255,255,255,.15);
   display:flex;align-items:center;justify-content:center;
-  color:var(--fire);flex-shrink:0
+  color:var(--white);flex-shrink:0
 }
-.ct-txt{font-size:14px;color:rgba(247,244,239,.65)}
-.ct-txt strong{display:block;color:var(--cream);font-size:14px;margin-bottom:2px}
-.ct-txt a{color:rgba(247,244,239,.65);text-decoration:underline;text-underline-offset:2px}
-.ct-txt a:hover{color:var(--cream)}
+.ct-txt{font-size:14px;color:rgba(255,255,255,.7)}
+.ct-txt strong{display:block;color:var(--white);font-size:14px;margin-bottom:2px}
+.ct-txt a{color:rgba(255,255,255,.7);text-decoration:underline;text-underline-offset:2px}
+.ct-txt a:hover{color:var(--white)}
 .form-box{
-  background:var(--cream);border-radius:10px;
-  padding:clamp(28px,4vw,52px)
+  background:var(--white);border-radius:12px;
+  padding:clamp(28px,4vw,52px);
+  box-shadow:0 20px 60px rgba(229,0,59,.2)
 }
 .form-t{
   font-family:var(--font-d);
-  font-size:clamp(22px,2.5vw,30px);font-weight:700;
+  font-size:clamp(22px,2.5vw,28px);font-weight:800;
   color:var(--carbon);margin-bottom:6px
 }
 .form-st{font-size:13px;color:var(--mid);margin-bottom:28px}
-.f-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.f-g{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.f-g{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
 .f-g label{
   font-family:var(--font-m);font-size:10px;font-weight:700;
-  letter-spacing:.13em;text-transform:uppercase;color:var(--carbon)
+  letter-spacing:.12em;text-transform:uppercase;color:var(--carbon)
 }
 .f-g input,.f-g select,.f-g textarea{
   font-family:var(--font-s);font-size:14px;
-  color:var(--carbon);background:var(--cream-d);
-  border:1.5px solid var(--border);border-radius:4px;
+  color:var(--carbon);background:var(--rose-bg);
+  border:1.5px solid var(--border);border-radius:6px;
   padding:12px 14px;outline:none;width:100%;
-  transition:border-color .3s
+  transition:border-color .3s,box-shadow .3s
 }
-.f-g input:focus,.f-g select:focus,.f-g textarea:focus{border-color:var(--fire)}
+.f-g input:focus,.f-g select:focus,.f-g textarea:focus{
+  border-color:var(--rose);
+  box-shadow:0 0 0 3px rgba(229,0,59,.1)
+}
 .f-g textarea{resize:vertical;min-height:80px}
 .f-g select{
   appearance:none;
@@ -656,16 +603,16 @@ button,input,select,textarea{font-family:inherit;cursor:none}
 }
 .f-submit{
   width:100%;padding:15px;
-  background:var(--fire);color:var(--white);
-  border:none;border-radius:4px;
-  font-size:14px;font-weight:700;
+  background:var(--rose);color:var(--white);
+  border:none;border-radius:6px;
+  font-family:var(--font-d);font-size:14px;font-weight:700;
   letter-spacing:.05em;text-transform:uppercase;
-  transition:background .3s,transform .2s;margin-top:6px
+  transition:background .3s,transform .2s,box-shadow .3s;margin-top:6px
 }
-.f-submit:hover{background:var(--fire-l);transform:translateY(-1px)}
+.f-submit:hover{background:var(--rose-l);transform:translateY(-1px);box-shadow:0 6px 20px rgba(229,0,59,.35)}
 .f-wa{
   display:flex;align-items:center;justify-content:center;gap:6px;
-  margin-top:16px;font-size:13px;color:var(--mid);text-align:center
+  margin-top:14px;font-size:13px;color:var(--mid);text-align:center
 }
 .f-wa a{color:#128C7E;font-weight:700;text-decoration:underline;text-underline-offset:2px}
 
@@ -674,71 +621,63 @@ button,input,select,textarea{font-family:inherit;cursor:none}
    ===================== */
 #footer{
   background:var(--carbon);
-  padding:clamp(60px,8vw,100px) clamp(24px,5.5vw,80px) 0;
-  overflow:hidden
+  padding:clamp(60px,8vw,100px) clamp(24px,5.5vw,80px) 0;overflow:hidden
 }
 .footer-big{
   font-family:var(--font-d);
   font-size:clamp(44px,9.5vw,140px);font-weight:900;
-  color:rgba(247,244,239,.05);letter-spacing:-.03em;
-  line-height:1;margin-bottom:56px;
-  white-space:nowrap;overflow:hidden
+  color:rgba(255,255,255,.04);letter-spacing:-.03em;
+  line-height:1;margin-bottom:52px;white-space:nowrap;overflow:hidden
 }
 .footer-grid{
-  display:grid;
-  grid-template-columns:2fr 1fr 1fr 1.5fr;
+  display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;
   gap:clamp(28px,4vw,56px);
-  padding-bottom:60px;
-  border-bottom:1px solid rgba(247,244,239,.07)
+  padding-bottom:56px;
+  border-bottom:1px solid rgba(255,255,255,.07)
 }
+.footer-logo img{height:44px;width:auto;object-fit:contain}
 .footer-desc{
-  font-size:14px;color:rgba(247,244,239,.45);
+  font-size:14px;color:rgba(255,255,255,.42);
   line-height:1.75;margin-top:20px;max-width:300px
 }
 .footer-ct{
   font-family:var(--font-m);font-size:10px;font-weight:700;
   letter-spacing:.22em;text-transform:uppercase;
-  color:var(--fire);margin-bottom:20px
+  color:var(--rose);margin-bottom:18px
 }
-.footer-links{list-style:none;display:flex;flex-direction:column;gap:12px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:11px}
 .footer-links a{
-  font-size:14px;color:rgba(247,244,239,.5);
+  font-size:14px;color:rgba(255,255,255,.48);
   transition:color .3s,padding-left .3s
 }
-.footer-links a:hover{color:var(--cream);padding-left:6px}
+.footer-links a:hover{color:var(--white);padding-left:6px}
 .footer-map{
   border-radius:var(--r);overflow:hidden;
-  height:170px;margin-top:4px;
-  border:1px solid rgba(247,244,239,.07)
+  height:168px;margin-top:4px;
+  border:1px solid rgba(255,255,255,.07)
 }
 .footer-map iframe{
   width:100%;height:100%;border:0;display:block;
-  filter:invert(.9) hue-rotate(180deg) saturate(.45) brightness(.85)
+  filter:invert(.9) hue-rotate(180deg) saturate(.4) brightness(.82)
 }
-.footer-addr{
-  font-size:13px;color:rgba(247,244,239,.4);
-  line-height:1.65;margin-top:12px
-}
+.footer-addr{font-size:13px;color:rgba(255,255,255,.38);line-height:1.65;margin-top:12px}
 .footer-bot{
-  padding:22px 0;
+  padding:20px 0;
   display:flex;align-items:center;justify-content:space-between;
   gap:16px;flex-wrap:wrap
 }
 .footer-bot-t{
   font-family:var(--font-m);font-size:10px;
-  letter-spacing:.13em;text-transform:uppercase;
-  color:rgba(247,244,239,.2)
+  letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.2)
 }
-.footer-bot-t a{color:rgba(247,244,239,.35);transition:color .3s}
-.footer-bot-t a:hover{color:var(--cream)}
+.footer-bot-t a{color:rgba(255,255,255,.35);transition:color .3s}
+.footer-bot-t a:hover{color:var(--white)}
 
 /* =====================
    SCROLL REVEAL
    ===================== */
-.rv{
-  opacity:0;transform:translateY(36px);
-  transition:opacity .7s var(--ease),transform .7s var(--ease)
-}
+.rv{opacity:0;transform:translateY(32px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .rv.in{opacity:1;transform:none}
 
 /* =====================
@@ -748,7 +687,7 @@ button,input,select,textarea{font-family:inherit;cursor:none}
   .nav-links{display:none}
   .nav-cta{display:none}
   #hamburger{display:flex}
-  .testi-card{min-width:calc(88% - 12px)}
+  .testi-card{min-width:calc(88% - 10px)}
   .ct-grid{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr 1fr}
   .f-row{grid-template-columns:1fr}
@@ -756,8 +695,8 @@ button,input,select,textarea{font-family:inherit;cursor:none}
 @media(max-width:620px){
   .footer-grid{grid-template-columns:1fr}
   .hero-ctas{flex-direction:column}
-  .hero-ctas .btn-fire,.hero-ctas .btn-ghost{width:100%;justify-content:center}
-  .testi-card{min-width:calc(100% - 24px)}
+  .hero-ctas .btn-rose,.hero-ctas .btn-ghost{width:100%;justify-content:center}
+  .testi-card{min-width:calc(100% - 20px)}
 }
 @media(hover:none){
   #cur,#cur-lbl{display:none}
@@ -767,14 +706,14 @@ button,input,select,textarea{font-family:inherit;cursor:none}
 </head>
 <body>
 
-<!-- CUSTOM CURSOR -->
+<!-- CURSOR -->
 <div id="cur" aria-hidden="true"></div>
 <div id="cur-lbl" aria-hidden="true"></div>
 
 <!-- SPLASH -->
-<div id="splash" role="status" aria-label="Cargando">
+<div id="splash" role="status" aria-label="Cargando Kadal Menaje">
   <div id="spl-logo" aria-hidden="true">
-    <span class="spl-l">K</span><span class="spl-l">A</span><span class="spl-l">D</span><span class="spl-l">A</span><span class="spl-l accent">L</span>
+    <span class="spl-l">K</span><span class="spl-l">A</span><span class="spl-l">D</span><span class="spl-l">A</span><span class="spl-l">L</span>
   </div>
   <p id="spl-tag">Si se puede dibujar, se puede fabricar.</p>
   <div id="spl-bar"></div>
@@ -783,10 +722,7 @@ button,input,select,textarea{font-family:inherit;cursor:none}
 <!-- NAV -->
 <nav id="nav" aria-label="Menú principal">
   <a href="#" class="nav-logo" aria-label="Kadal Menaje — Inicio">
-    <svg viewBox="0 0 210 52" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <text x="0" y="40" font-family="'Fraunces',Georgia,serif" font-weight="900" font-size="44" fill="#1A1A1A" letter-spacing="-2">kadal</text>
-      <text x="2" y="51" font-family="'Space Mono',monospace" font-weight="700" font-size="8.5" fill="#C24A23" letter-spacing="5.5">MENAJE</text>
-    </svg>
+    <img src="kadal-logo-dark.png" alt="Kadal Menaje" height="40">
   </a>
 
   <div class="nav-links" role="navigation">
@@ -823,10 +759,9 @@ button,input,select,textarea{font-family:inherit;cursor:none}
   <div class="hero-bg" aria-hidden="true">
     <img id="hero-img"
          src="https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=1600&q=90"
-         alt=""
-         loading="eager"
-         fetchpriority="high">
+         alt="" loading="eager" fetchpriority="high">
     <div class="hero-ov"></div>
+    <div class="hero-glow"></div>
   </div>
 
   <div class="hero-c">
@@ -837,10 +772,10 @@ button,input,select,textarea{font-family:inherit;cursor:none}
       se puede<br>
       fabricar.
     </h1>
-    <p class="hero-sub">Menaje de cocina profesional para ferreterías, supermercados y distribuidores. Más de 20 años de experiencia. +8.000 palets de capacidad en Santa Eulalia de Ronçana.</p>
+    <p class="hero-sub">Menaje de cocina profesional para ferreterías, supermercados y distribuidores. Más de 20 años de experiencia. +8.000 palets en Santa Eulalia de Ronçana.</p>
 
     <div class="hero-ctas">
-      <a href="#contacto" class="btn-fire" data-cursor="Pedir catálogo">
+      <a href="#contacto" class="btn-rose" data-cursor="Pedir catálogo">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
         Pedir catálogo
       </a>
@@ -862,44 +797,40 @@ button,input,select,textarea{font-family:inherit;cursor:none}
 <!-- MARQUEE -->
 <div class="mq" aria-hidden="true">
   <div class="mq-track">
-    <span class="mq-item">KADAL MENAJE</span><span class="mq-item fire">&nbsp;·&nbsp;</span>
-    <span class="mq-item">SOLO PROFESIONALES</span><span class="mq-item fire">&nbsp;·&nbsp;</span>
-    <span class="mq-item">DISTRIBUCIÓN MAYORISTA</span><span class="mq-item fire">&nbsp;·&nbsp;</span>
-    <span class="mq-item">EST. 2012</span><span class="mq-item fire">&nbsp;·&nbsp;</span>
-    <span class="mq-item">SANTA EULALIA DE RONÇANA</span><span class="mq-item fire">&nbsp;·&nbsp;</span>
-    <span class="mq-item">+8.000 PALETS</span><span class="mq-item fire">&nbsp;·&nbsp;</span>
-    <span class="mq-item">500+ REFERENCIAS</span><span class="mq-item fire">&nbsp;·&nbsp;</span>
-    <span class="mq-item">KADAL MENAJE</span><span class="mq-item fire">&nbsp;·&nbsp;</span>
-    <span class="mq-item">SOLO PROFESIONALES</span><span class="mq-item fire">&nbsp;·&nbsp;</span>
-    <span class="mq-item">DISTRIBUCIÓN MAYORISTA</span><span class="mq-item fire">&nbsp;·&nbsp;</span>
-    <span class="mq-item">EST. 2012</span><span class="mq-item fire">&nbsp;·&nbsp;</span>
-    <span class="mq-item">SANTA EULALIA DE RONÇANA</span><span class="mq-item fire">&nbsp;·&nbsp;</span>
-    <span class="mq-item">+8.000 PALETS</span><span class="mq-item fire">&nbsp;·&nbsp;</span>
-    <span class="mq-item">500+ REFERENCIAS</span><span class="mq-item fire">&nbsp;·&nbsp;</span>
+    <span class="mq-item white">KADAL MENAJE</span><span class="mq-item">&nbsp;·&nbsp;</span>
+    <span class="mq-item white">SOLO PROFESIONALES</span><span class="mq-item">&nbsp;·&nbsp;</span>
+    <span class="mq-item white">DISTRIBUCIÓN MAYORISTA</span><span class="mq-item">&nbsp;·&nbsp;</span>
+    <span class="mq-item white">EST. 2012</span><span class="mq-item">&nbsp;·&nbsp;</span>
+    <span class="mq-item white">SANTA EULALIA DE RONÇANA</span><span class="mq-item">&nbsp;·&nbsp;</span>
+    <span class="mq-item white">+8.000 PALETS</span><span class="mq-item">&nbsp;·&nbsp;</span>
+    <span class="mq-item white">500+ REFERENCIAS</span><span class="mq-item">&nbsp;·&nbsp;</span>
+    <span class="mq-item white">KADAL MENAJE</span><span class="mq-item">&nbsp;·&nbsp;</span>
+    <span class="mq-item white">SOLO PROFESIONALES</span><span class="mq-item">&nbsp;·&nbsp;</span>
+    <span class="mq-item white">DISTRIBUCIÓN MAYORISTA</span><span class="mq-item">&nbsp;·&nbsp;</span>
+    <span class="mq-item white">EST. 2012</span><span class="mq-item">&nbsp;·&nbsp;</span>
+    <span class="mq-item white">SANTA EULALIA DE RONÇANA</span><span class="mq-item">&nbsp;·&nbsp;</span>
+    <span class="mq-item white">+8.000 PALETS</span><span class="mq-item">&nbsp;·&nbsp;</span>
+    <span class="mq-item white">500+ REFERENCIAS</span><span class="mq-item">&nbsp;·&nbsp;</span>
   </div>
 </div>
 
 <!-- GAMAS INTRO -->
-<div id="gamas-intro" style="padding:clamp(80px,10vw,140px) clamp(24px,5.5vw,80px) 56px">
+<div id="gamas-intro" style="padding:clamp(80px,10vw,140px) clamp(24px,5.5vw,80px) 52px;background:var(--white)">
   <div class="inner">
     <p class="slbl rv">Nuestras gamas</p>
     <h2 class="sh2 rv" style="transition-delay:.1s">Diez gamas.<br><em>Un mismo compromiso.</em></h2>
-    <p class="rv" style="font-size:clamp(15px,1.7vw,18px);color:var(--mid);max-width:520px;margin-top:20px;line-height:1.7;transition-delay:.2s">
+    <p class="rv" style="font-size:clamp(15px,1.7vw,18px);color:var(--mid);max-width:500px;margin-top:18px;line-height:1.7;transition-delay:.2s">
       Desde antiadherentes de piedra para hostelería hasta soluciones eco-friendly certificadas. Todo disponible en stock permanente.
     </p>
   </div>
 </div>
 
-<!-- HORIZONTAL CAROUSEL -->
+<!-- CAROUSEL -->
 <div id="carousel-wrap" aria-label="Gamas de productos">
   <div class="car-sticky" id="carSticky">
-    <div class="car-track" id="carTrack">
-      <!-- Panels rendered by JS -->
-    </div>
+    <div class="car-track" id="carTrack"></div>
   </div>
 </div>
-
-<!-- Carousel progress -->
 <div class="car-progress" id="carProg" aria-hidden="true"></div>
 
 <!-- POR QUE KADAL -->
@@ -909,47 +840,47 @@ button,input,select,textarea{font-family:inherit;cursor:none}
     <h2 class="sh2" id="pq-h2">La ventaja del<br><em>mayorista experto.</em></h2>
   </div>
 
-  <div class="pq-grid" style="margin-top:72px">
+  <div class="pq-grid" style="margin-top:64px">
 
     <div class="pq-item rv">
-      <svg class="pq-ico" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <rect width="52" height="52" rx="8" fill="rgba(194,74,35,.1)"/>
-        <circle cx="26" cy="26" r="14" stroke="#C24A23" stroke-width="2" opacity=".3"/>
-        <path d="M17 26l7 7 11-13" stroke="#C24A23" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <svg class="pq-ico" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="50" height="50" rx="10" fill="rgba(229,0,59,.12)"/>
+        <circle cx="25" cy="25" r="13" stroke="#E5003B" stroke-width="2" opacity=".3"/>
+        <path d="M16 25l7 7 11-13" stroke="#E5003B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
       <h3 class="pq-t">Calidad certificada</h3>
-      <p class="pq-d">Todos nuestros productos cumplen normativas europeas CE y LFGB. Ensayos en laboratorios acreditados. Documentación técnica disponible para cualquier pedido.</p>
+      <p class="pq-d">Todos nuestros productos cumplen normativas CE y LFGB. Ensayos en laboratorios acreditados. Documentación técnica disponible.</p>
     </div>
 
     <div class="pq-item rv" style="transition-delay:.1s">
-      <svg class="pq-ico" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <rect width="52" height="52" rx="8" fill="rgba(194,74,35,.1)"/>
-        <rect x="14" y="14" width="24" height="24" rx="3" stroke="#C24A23" stroke-width="2"/>
-        <path d="M19 22h14M19 26h10M19 30h12" stroke="#C24A23" stroke-width="2" stroke-linecap="round"/>
+      <svg class="pq-ico" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="50" height="50" rx="10" fill="rgba(229,0,59,.12)"/>
+        <rect x="13" y="13" width="24" height="24" rx="3" stroke="#E5003B" stroke-width="2"/>
+        <path d="M18 21h14M18 25h10M18 29h12" stroke="#E5003B" stroke-width="2" stroke-linecap="round"/>
       </svg>
       <h3 class="pq-t">Catálogo amplio</h3>
-      <p class="pq-d">Más de 500 referencias activas en 10 gamas. Desde utensilios básicos hasta baterías de cocina premium. Stock permanente disponible para distribución inmediata.</p>
+      <p class="pq-d">500+ referencias activas en 10 gamas. Desde utensilios básicos hasta baterías premium. Stock permanente disponible siempre.</p>
     </div>
 
     <div class="pq-item rv" style="transition-delay:.2s">
-      <svg class="pq-ico" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <rect width="52" height="52" rx="8" fill="rgba(194,74,35,.1)"/>
-        <path d="M38 20c0-5.52-4.48-10-12-10S14 14.48 14 20c0 7.5 12 22 12 22s12-14.5 12-22z" stroke="#C24A23" stroke-width="2"/>
-        <circle cx="26" cy="20" r="3.5" fill="#C24A23"/>
+      <svg class="pq-ico" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="50" height="50" rx="10" fill="rgba(229,0,59,.12)"/>
+        <path d="M37 19c0-5.52-4.48-10-12-10S13 13.48 13 19c0 7.5 12 22 12 22S37 26.5 37 19z" stroke="#E5003B" stroke-width="2"/>
+        <circle cx="25" cy="19" r="3.5" fill="#E5003B"/>
       </svg>
       <h3 class="pq-t">Logística propia</h3>
-      <p class="pq-d">Almacén de +8.000 palets en Santa Eulalia de Ronçana. Envíos nacionales e internacionales. Plazos de entrega garantizados y equipo dedicado.</p>
+      <p class="pq-d">+8.000 palets en Santa Eulalia de Ronçana. Envíos nacionales e internacionales. Plazos garantizados y equipo dedicado.</p>
     </div>
 
     <div class="pq-item rv" style="transition-delay:.3s">
-      <svg class="pq-ico" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <rect width="52" height="52" rx="8" fill="rgba(194,74,35,.1)"/>
-        <path d="M26 14v5M26 33v5M14 26h5M33 26h5" stroke="#C24A23" stroke-width="2.5" stroke-linecap="round"/>
-        <circle cx="26" cy="26" r="7" stroke="#C24A23" stroke-width="2"/>
-        <circle cx="26" cy="26" r="2.5" fill="#C24A23"/>
+      <svg class="pq-ico" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="50" height="50" rx="10" fill="rgba(229,0,59,.12)"/>
+        <path d="M25 13v5M25 32v5M13 25h5M32 25h5" stroke="#E5003B" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="25" cy="25" r="7" stroke="#E5003B" stroke-width="2"/>
+        <circle cx="25" cy="25" r="2.5" fill="#E5003B"/>
       </svg>
       <h3 class="pq-t">Diseño personalizable</h3>
-      <p class="pq-d">Si se puede dibujar, se puede fabricar. Adaptamos gamas a marca blanca, etiquetado privado y packaging exclusivo. Desde el primer pedido.</p>
+      <p class="pq-d">Marca blanca, etiquetado privado y packaging exclusivo. Si se puede dibujar, se puede fabricar. Desde el primer pedido.</p>
     </div>
 
   </div>
@@ -1003,61 +934,46 @@ button,input,select,textarea{font-family:inherit;cursor:none}
 
       <div class="testi-card">
         <div class="testi-q">&ldquo;</div>
-        <p class="testi-txt">Llevamos tres años trabajando con Kadal en nuestra cadena de ferreterías y la relación ha sido impecable. El catálogo es amplio, los plazos se cumplen y el equipo comercial siempre responde. Es el proveedor de menaje que recomendaría sin dudarlo.</p>
+        <p class="testi-txt">Llevamos tres años trabajando con Kadal en nuestra cadena de ferreterías y la relación ha sido impecable. El catálogo es amplio, los plazos se cumplen y el equipo comercial siempre responde. Es el proveedor que recomendaría sin dudarlo.</p>
         <div class="testi-auth">
           <div class="testi-av">JP</div>
-          <div>
-            <div class="testi-nm">Juan Pérez</div>
-            <div class="testi-co">Director Comercial · Ferreterías Pérez Norte</div>
-          </div>
+          <div><div class="testi-nm">Juan Pérez</div><div class="testi-co">Director Comercial · Ferreterías Pérez Norte</div></div>
         </div>
       </div>
 
       <div class="testi-card">
         <div class="testi-q">&ldquo;</div>
-        <p class="testi-txt">Desde que introdujimos la gama Piedra Black en nuestros lineales, las ventas de menaje han crecido un 40%. Kadal nos aporta producto diferenciado, packaging atractivo y márgenes muy competitivos. Una apuesta segura para cualquier supermercado.</p>
+        <p class="testi-txt">Desde que introdujimos la gama Piedra Black, las ventas de menaje han crecido un 40%. Kadal nos aporta producto diferenciado, packaging atractivo y márgenes muy competitivos. Una apuesta segura para cualquier supermercado.</p>
         <div class="testi-auth">
           <div class="testi-av">ED</div>
-          <div>
-            <div class="testi-nm">Elena Díaz</div>
-            <div class="testi-co">Responsable de Compras · Supermercados ElDía</div>
-          </div>
+          <div><div class="testi-nm">Elena Díaz</div><div class="testi-co">Responsable de Compras · Supermercados ElDía</div></div>
         </div>
       </div>
 
       <div class="testi-card">
         <div class="testi-q">&ldquo;</div>
-        <p class="testi-txt">Lo que más valoro de Kadal es su flexibilidad. Nos adaptaron el packaging de la gama BlueNet con nuestra marca y el resultado fue espectacular. El cliente final percibe calidad, y eso se nota en la recompra. Colaboración total desde el primer día.</p>
+        <p class="testi-txt">Lo que más valoro de Kadal es su flexibilidad. Nos adaptaron el packaging de la gama BlueNet con nuestra marca y el resultado fue espectacular. El cliente final percibe calidad, y eso se nota en la recompra.</p>
         <div class="testi-auth">
           <div class="testi-av">AH</div>
-          <div>
-            <div class="testi-nm">Aurora Heredia</div>
-            <div class="testi-co">Gerente · Distribuciones Heredia Sur</div>
-          </div>
+          <div><div class="testi-nm">Aurora Heredia</div><div class="testi-co">Gerente · Distribuciones Heredia Sur</div></div>
         </div>
       </div>
 
       <div class="testi-card">
         <div class="testi-q">&ldquo;</div>
-        <p class="testi-txt">Probamos la gama ZERO como alternativa eco-friendly y superó todas las expectativas en el primer trimestre. El comprador de hoy busca sostenibilidad y Kadal lo tiene muy bien resuelto. Sin duda, seguiremos ampliando el pedido cada temporada.</p>
+        <p class="testi-txt">Probamos la gama ZERO como alternativa eco-friendly y superó todas las expectativas en el primer trimestre. El comprador de hoy busca sostenibilidad y Kadal lo tiene muy bien resuelto.</p>
         <div class="testi-auth">
           <div class="testi-av">IC</div>
-          <div>
-            <div class="testi-nm">Ignacio Cortés</div>
-            <div class="testi-co">Jefe de Sección · HogarMaxxi</div>
-          </div>
+          <div><div class="testi-nm">Ignacio Cortés</div><div class="testi-co">Jefe de Sección · HogarMaxxi</div></div>
         </div>
       </div>
 
       <div class="testi-card">
         <div class="testi-q">&ldquo;</div>
-        <p class="testi-txt">La logística de Kadal es un punto fuerte real. Almacén enorme, pedidos bien preparados y pocas incidencias. Para un distribuidor como nosotros eso es oro puro. Ahorramos tiempo y dinero desde que cambiamos de proveedor.</p>
+        <p class="testi-txt">La logística de Kadal es un punto fuerte real. Almacén enorme, pedidos bien preparados y pocas incidencias. Para un distribuidor como nosotros eso es oro puro. Ahorramos tiempo y dinero desde que cambiamos.</p>
         <div class="testi-auth">
           <div class="testi-av">RM</div>
-          <div>
-            <div class="testi-nm">Raúl Montesinos</div>
-            <div class="testi-co">CEO · Montesinos Distribución Levante</div>
-          </div>
+          <div><div class="testi-nm">Raúl Montesinos</div><div class="testi-co">CEO · Montesinos Distribución Levante</div></div>
         </div>
       </div>
 
@@ -1068,39 +984,29 @@ button,input,select,textarea{font-family:inherit;cursor:none}
 <!-- CONTACT -->
 <section id="contacto" aria-labelledby="ct-h2">
   <div class="ct-grid inner">
-
     <div class="ct-left">
       <p class="slbl">Únete a nuestra red</p>
       <h2 class="sh2" id="ct-h2">Empieza a<br><em>distribuir Kadal.</em></h2>
-      <p class="ct-desc">Venta exclusiva a profesionales. Si gestionas una ferretería, supermercado o empresa de distribución, contáctanos para recibir el catálogo completo y las condiciones mayoristas.</p>
+      <p class="ct-desc">Venta exclusiva a profesionales. Si gestionas una ferretería, supermercado o empresa de distribución, contáctanos para recibir el catálogo y condiciones mayoristas.</p>
 
       <div class="ct-info">
         <div class="ct-row">
           <div class="ct-ico">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.88a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.72 16z"/></svg>
           </div>
-          <div class="ct-txt">
-            <strong>WhatsApp comercial</strong>
-            <a href="https://wa.me/34674073787" target="_blank" rel="noopener noreferrer">+34 674 073 787</a>
-          </div>
+          <div class="ct-txt"><strong>WhatsApp comercial</strong><a href="https://wa.me/34674073787" target="_blank" rel="noopener noreferrer">+34 674 073 787</a></div>
         </div>
         <div class="ct-row">
           <div class="ct-ico">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           </div>
-          <div class="ct-txt">
-            <strong>Email comercial</strong>
-            <a href="mailto:comercial@kadalmenaje.es">comercial@kadalmenaje.es</a>
-          </div>
+          <div class="ct-txt"><strong>Email comercial</strong><a href="mailto:comercial@kadalmenaje.es">comercial@kadalmenaje.es</a></div>
         </div>
         <div class="ct-row">
           <div class="ct-ico">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </div>
-          <div class="ct-txt">
-            <strong>Almacén central</strong>
-            Santa Eulalia de Ronçana, Barcelona · +8.000 palets
-          </div>
+          <div class="ct-txt"><strong>Almacén central</strong>Santa Eulalia de Ronçana, Barcelona · +8.000 palets</div>
         </div>
       </div>
     </div>
@@ -1111,26 +1017,11 @@ button,input,select,textarea{font-family:inherit;cursor:none}
 
       <form id="ctForm" novalidate>
         <div class="f-row">
-          <div class="f-g">
-            <label for="f-nom">Nombre *</label>
-            <input type="text" id="f-nom" name="nombre" placeholder="Tu nombre" required>
-          </div>
-          <div class="f-g">
-            <label for="f-emp">Empresa *</label>
-            <input type="text" id="f-emp" name="empresa" placeholder="Nombre de empresa" required>
-          </div>
+          <div class="f-g"><label for="f-nom">Nombre *</label><input type="text" id="f-nom" name="nombre" placeholder="Tu nombre" required></div>
+          <div class="f-g"><label for="f-emp">Empresa *</label><input type="text" id="f-emp" name="empresa" placeholder="Nombre de empresa" required></div>
         </div>
-
-        <div class="f-g">
-          <label for="f-ema">Email *</label>
-          <input type="email" id="f-ema" name="email" placeholder="comercial@tuempresa.es" required>
-        </div>
-
-        <div class="f-g">
-          <label for="f-tel">Teléfono</label>
-          <input type="tel" id="f-tel" name="tel" placeholder="+34 600 000 000">
-        </div>
-
+        <div class="f-g"><label for="f-ema">Email *</label><input type="email" id="f-ema" name="email" placeholder="comercial@tuempresa.es" required></div>
+        <div class="f-g"><label for="f-tel">Teléfono</label><input type="tel" id="f-tel" name="tel" placeholder="+34 600 000 000"></div>
         <div class="f-g">
           <label for="f-tip">Tipo de negocio *</label>
           <select id="f-tip" name="tipo" required>
@@ -1141,23 +1032,11 @@ button,input,select,textarea{font-family:inherit;cursor:none}
             <option value="otro">Otro</option>
           </select>
         </div>
-
-        <div class="f-g">
-          <label for="f-msg">¿Qué gamas te interesan?</label>
-          <textarea id="f-msg" name="mensaje" placeholder="Cuéntanos qué buscas…"></textarea>
-        </div>
-
-        <button type="submit" class="f-submit" data-cursor="Enviar">
-          Solicitar catálogo
-        </button>
-
-        <p class="f-wa">
-          ¿Prefieres hablar ahora?&nbsp;
-          <a href="https://wa.me/34674073787?text=Hola%2C%20me%20interesa%20el%20cat%C3%A1logo%20de%20Kadal%20Menaje." target="_blank" rel="noopener noreferrer">WhatsApp directo</a>
-        </p>
+        <div class="f-g"><label for="f-msg">¿Qué gamas te interesan?</label><textarea id="f-msg" name="mensaje" placeholder="Cuéntanos qué buscas…"></textarea></div>
+        <button type="submit" class="f-submit" data-cursor="Enviar">Solicitar catálogo</button>
+        <p class="f-wa">¿Prefieres hablar ahora?&nbsp;<a href="https://wa.me/34674073787?text=Hola%2C%20me%20interesa%20el%20cat%C3%A1logo%20de%20Kadal%20Menaje." target="_blank" rel="noopener noreferrer">WhatsApp directo</a></p>
       </form>
     </div>
-
   </div>
 </section>
 
@@ -1166,13 +1045,9 @@ button,input,select,textarea{font-family:inherit;cursor:none}
   <div class="footer-big" aria-hidden="true">KADAL &nbsp;·&nbsp; MENAJE &nbsp;·&nbsp; KADAL &nbsp;·&nbsp; MENAJE &nbsp;·</div>
 
   <div class="footer-grid inner">
-
     <div>
-      <svg viewBox="0 0 210 52" style="height:38px;width:auto" xmlns="http://www.w3.org/2000/svg" aria-label="Kadal Menaje">
-        <text x="0" y="40" font-family="'Fraunces',Georgia,serif" font-weight="900" font-size="44" fill="#F7F4EF" letter-spacing="-2">kadal</text>
-        <text x="2" y="51" font-family="'Space Mono',monospace" font-weight="700" font-size="8.5" fill="#C24A23" letter-spacing="5.5">MENAJE</text>
-      </svg>
-      <p class="footer-desc">Distribución mayorista de menaje de cocina profesional. Solo para ferreterías, supermercados y distribuidores. EST. 2012. Barcelona, España.</p>
+      <div class="footer-logo"><img src="kadal-logo-color.png" alt="Kadal Menaje" height="44"></div>
+      <p class="footer-desc">Distribución mayorista de menaje de cocina profesional. Solo para ferreterías, supermercados y distribuidores. EST. 2012.</p>
     </div>
 
     <div>
@@ -1183,7 +1058,6 @@ button,input,select,textarea{font-family:inherit;cursor:none}
         <li><a href="#gamas-intro">Fjord</a></li>
         <li><a href="#gamas-intro">Nuuk</a></li>
         <li><a href="#gamas-intro">Firenze</a></li>
-        <li><a href="#gamas-intro">Alejandra</a></li>
         <li><a href="#gamas-intro">BlueNet</a></li>
         <li><a href="#gamas-intro">ZERO</a></li>
       </ul>
@@ -1195,7 +1069,6 @@ button,input,select,textarea{font-family:inherit;cursor:none}
         <li><a href="#porque">Por qué Kadal</a></li>
         <li><a href="#testi">Clientes</a></li>
         <li><a href="#contacto">Contacto</a></li>
-        <li><a href="#contacto">Pedir catálogo</a></li>
         <li><a href="https://wa.me/34674073787" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
         <li><a href="mailto:comercial@kadalmenaje.es">Email</a></li>
       </ul>
@@ -1206,18 +1079,12 @@ button,input,select,textarea{font-family:inherit;cursor:none}
       <div class="footer-map">
         <iframe
           src="https://maps.google.com/maps?q=Santa+Eulalia+de+Roncana,+Barcelona,+Spain&t=&z=13&ie=UTF8&iwloc=&output=embed"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="Almacén Kadal en Santa Eulalia de Ronçana, Barcelona">
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Almacén Kadal Menaje en Santa Eulalia de Ronçana">
         </iframe>
       </div>
-      <p class="footer-addr">
-        Santa Eulalia de Ronçana, Barcelona<br>
-        +8.000 palets de capacidad
-      </p>
+      <p class="footer-addr">Santa Eulalia de Ronçana, Barcelona<br>+8.000 palets de capacidad</p>
     </div>
-
   </div>
 
   <div class="footer-bot inner">
@@ -1226,7 +1093,6 @@ button,input,select,textarea{font-family:inherit;cursor:none}
   </div>
 </footer>
 
-<!-- GSAP -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" crossorigin="anonymous"></script>
 
@@ -1234,427 +1100,390 @@ button,input,select,textarea{font-family:inherit;cursor:none}
 (function(){
 'use strict';
 
-/* CLIENT MANIFEST */
 window.__KADAL__ = {
-  wa: '+34674073787',
-  waUrl: 'https://wa.me/34674073787',
-  email: 'comercial@kadalmenaje.es',
-  address: 'Santa Eulalia de Ronçana, Barcelona',
-  founded: 2012,
-  palets: 8000
+  waUrl:'https://wa.me/34674073787',
+  email:'comercial@kadalmenaje.es'
 };
 
-/* GAMAS DATA */
-var GAMAS = [
-  {
-    id:'piedra-black', num:'01',
-    name:'Piedra Black',
-    desc:'Antiadherente de piedra de alta resistencia. Diseñada para la exigencia de la hostelería profesional. Sin PFOA, sin compromiso.',
-    tags:['Antiadherente','Alta Resistencia','Sin PFOA','Hostelería'],
-    img:'https://images.unsplash.com/photo-1581873372796-635b67ca2008?w=1600&q=85'
-  },
-  {
-    id:'indublock', num:'02',
-    name:'InduBlock',
-    desc:'Inducción heavy-duty con base de acero reforzado. Compatibilidad universal, larga vida útil. El estándar de las cocinas industriales.',
-    tags:['Inducción','Heavy-Duty','Acero Reforzado','Universal'],
-    img:'https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?w=1600&q=85'
-  },
-  {
-    id:'fjord', num:'03',
-    name:'Fjord',
-    desc:'Serie nórdica de acero al carbono. Gana carácter con cada uso. La elegancia funcional de la cocina escandinava en tu lineal.',
-    tags:['Acero al Carbono','Nórdico','Sin Antiadherente','Versátil'],
-    img:'https://images.unsplash.com/photo-1590736704728-f4730bb30770?w=1600&q=85'
-  },
-  {
-    id:'nuuk', num:'04',
-    name:'Nuuk',
-    desc:'Woks y paellas de gran diámetro para cocina profesional. Bordes altos, fondo plano, distribución del calor excepcional.',
-    tags:['Wok','Paella','Gran Formato','Inducción'],
-    img:'https://images.unsplash.com/photo-1547592180-85f173990554?w=1600&q=85'
-  },
-  {
-    id:'firenze', num:'05',
-    name:'Firenze',
-    desc:'Aluminio fundido con acabado italiano. Peso equilibrado, distribución uniforme del calor. El clásico reinventado para el mayorista.',
-    tags:['Aluminio Fundido','Italiano','Premium','Equilibrado'],
-    img:'https://images.unsplash.com/photo-1585515320310-259814833e62?w=1600&q=85'
-  },
-  {
-    id:'alejandra', num:'06',
-    name:'Alejandra',
-    desc:'Acero inoxidable 18/10 de calidad premium. Superficie espejo, resistencia química máxima. Para el profesional más exigente.',
-    tags:['Inox 18/10','Premium','Espejo','Resistente'],
-    img:'https://images.unsplash.com/photo-1592417817098-8fd3d9eb14a5?w=1600&q=85'
-  },
-  {
-    id:'bluenet', num:'07',
-    name:'BlueNet',
-    desc:'Antiadherente azul marino de última generación. Textura reticulada anti-rayado. El más vendido en cadenas de supermercados.',
-    tags:['Antiadherente','Anti-Rayado','Top Ventas','Exclusivo'],
-    img:'https://images.unsplash.com/photo-1624375377394-b54cac3e57a9?w=1600&q=85'
-  },
-  {
-    id:'zero', num:'08',
-    name:'ZERO',
-    desc:'100% libre de PFAS, PTFE y PFOA. Recubrimiento mineral cerámico de origen natural. La gama eco-friendly que impulsa tus ventas.',
-    tags:['Sin PFAS','Cerámico','Eco-Friendly','Mineral Natural'],
-    img:'https://images.unsplash.com/photo-1616171662853-72b32ae44e82?w=1600&q=85'
-  },
-  {
-    id:'utensilios', num:'09',
-    name:'Utensilios',
-    desc:'Herramientas de cocina profesional: espátulas, cucharas, pinzas, tijeras. Acero inox + silicona de grado alimentario.',
-    tags:['Acero Inox','Silicona','Profesional','Colección Completa'],
-    img:'https://images.unsplash.com/photo-1617196034183-421b4040ed20?w=1600&q=85'
-  },
-  {
-    id:'cafe-moka', num:'10',
-    name:'Café & Moka',
-    desc:'Cafeteras italianas en 6 tamaños, filtros de café y accesorios de degustación. Para el comprador que busca el servicio completo.',
-    tags:['Cafetera Italiana','Moka','Café','Accesorios'],
-    img:'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1600&q=85'
-  }
+var GAMAS=[
+  {id:'piedra-black',num:'01',name:'Piedra Black',
+   desc:'Antiadherente de piedra de alta resistencia. Diseñada para la exigencia de la hostelería profesional. Sin PFOA, sin compromiso.',
+   tags:['Antiadherente','Alta Resistencia','Sin PFOA','Hostelería'],
+   img:'https://images.unsplash.com/photo-1581873372796-635b67ca2008?w=1600&q=85'},
+  {id:'indublock',num:'02',name:'InduBlock',
+   desc:'Inducción heavy-duty con base de acero reforzado. Compatibilidad universal, larga vida útil. El estándar de las cocinas industriales.',
+   tags:['Inducción','Heavy-Duty','Acero Reforzado','Universal'],
+   img:'https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?w=1600&q=85'},
+  {id:'fjord',num:'03',name:'Fjord',
+   desc:'Serie nórdica de acero al carbono. Gana carácter con cada uso. La elegancia funcional de la cocina escandinava en tu lineal.',
+   tags:['Acero al Carbono','Nórdico','Sin Antiadherente','Versátil'],
+   img:'https://images.unsplash.com/photo-1590736704728-f4730bb30770?w=1600&q=85'},
+  {id:'nuuk',num:'04',name:'Nuuk',
+   desc:'Woks y paellas de gran diámetro para cocina profesional. Bordes altos, fondo plano, distribución del calor excepcional.',
+   tags:['Wok','Paella','Gran Formato','Inducción'],
+   img:'https://images.unsplash.com/photo-1547592180-85f173990554?w=1600&q=85'},
+  {id:'firenze',num:'05',name:'Firenze',
+   desc:'Aluminio fundido con acabado italiano. Peso equilibrado, distribución uniforme del calor. El clásico reinventado para el mayorista.',
+   tags:['Aluminio Fundido','Italiano','Premium','Equilibrado'],
+   img:'https://images.unsplash.com/photo-1585515320310-259814833e62?w=1600&q=85'},
+  {id:'alejandra',num:'06',name:'Alejandra',
+   desc:'Acero inoxidable 18/10 de calidad premium. Superficie espejo, resistencia química máxima. Para el profesional más exigente.',
+   tags:['Inox 18/10','Premium','Espejo','Resistente'],
+   img:'https://images.unsplash.com/photo-1592417817098-8fd3d9eb14a5?w=1600&q=85'},
+  {id:'bluenet',num:'07',name:'BlueNet',
+   desc:'Antiadherente azul marino de última generación. Textura reticulada anti-rayado. El más vendido en cadenas de supermercados.',
+   tags:['Antiadherente','Anti-Rayado','Top Ventas','Exclusivo'],
+   img:'https://images.unsplash.com/photo-1624375377394-b54cac3e57a9?w=1600&q=85'},
+  {id:'zero',num:'08',name:'ZERO',
+   desc:'100% libre de PFAS, PTFE y PFOA. Recubrimiento mineral cerámico de origen natural. La gama eco-friendly que impulsa tus ventas.',
+   tags:['Sin PFAS','Cerámico','Eco-Friendly','Mineral Natural'],
+   img:'https://images.unsplash.com/photo-1616171662853-72b32ae44e82?w=1600&q=85'},
+  {id:'utensilios',num:'09',name:'Utensilios',
+   desc:'Herramientas de cocina profesional: espátulas, cucharas, pinzas, tijeras. Acero inox + silicona de grado alimentario.',
+   tags:['Acero Inox','Silicona','Profesional','Colección Completa'],
+   img:'https://images.unsplash.com/photo-1617196034183-421b4040ed20?w=1600&q=85'},
+  {id:'cafe-moka',num:'10',name:'Café & Moka',
+   desc:'Cafeteras italianas en 6 tamaños, filtros y accesorios de degustación. Para el comprador que busca el servicio completo.',
+   tags:['Cafetera Italiana','Moka','Café','Accesorios'],
+   img:'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1600&q=85'}
 ];
 
-/* UTILITY */
-function safe(fn, nm) { try { fn(); } catch(e) { console.warn('[Kadal] ' + nm + ':', e); } }
-function qs(s, c) { return (c || document).querySelector(s); }
-function qsa(s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); }
+function safe(fn,nm){try{fn()}catch(e){console.warn('[Kadal] '+nm+':',e)}}
+function qs(s,c){return(c||document).querySelector(s)}
+function qsa(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))}
 
 /* CURSOR */
-safe(function() {
-  var cur = qs('#cur'), lbl = qs('#cur-lbl');
-  if (!cur || !lbl) return;
-
-  document.addEventListener('mousemove', function(e) {
-    cur.style.left = e.clientX + 'px';
-    cur.style.top = e.clientY + 'px';
-    lbl.style.left = e.clientX + 'px';
-    lbl.style.top = e.clientY + 'px';
+safe(function(){
+  var cur=qs('#cur'),lbl=qs('#cur-lbl');
+  if(!cur||!lbl)return;
+  document.addEventListener('mousemove',function(e){
+    cur.style.left=e.clientX+'px';
+    cur.style.top=e.clientY+'px';
+    lbl.style.left=e.clientX+'px';
+    lbl.style.top=e.clientY+'px';
   });
-
-  function bindEl(el) {
-    el.addEventListener('mouseenter', function() {
-      var t = el.getAttribute('data-cursor');
-      if (t) { lbl.textContent = t; lbl.classList.add('show'); }
-      cur.style.width = '32px'; cur.style.height = '32px'; cur.style.opacity = '.4';
+  function bindCursor(el){
+    el.addEventListener('mouseenter',function(){
+      var t=el.getAttribute('data-cursor');
+      if(t){lbl.textContent=t;lbl.classList.add('show')}
+      cur.style.width='30px';cur.style.height='30px';cur.style.opacity='.4';
     });
-    el.addEventListener('mouseleave', function() {
+    el.addEventListener('mouseleave',function(){
       lbl.classList.remove('show');
-      cur.style.width = '18px'; cur.style.height = '18px'; cur.style.opacity = '1';
+      cur.style.width='16px';cur.style.height='16px';cur.style.opacity='1';
     });
   }
-
-  qsa('[data-cursor]').forEach(bindEl);
-  qsa('a, button').forEach(function(el) {
-    if (!el.getAttribute('data-cursor')) {
-      el.addEventListener('mouseenter', function() { cur.style.width='28px'; cur.style.height='28px'; cur.style.opacity='.6'; });
-      el.addEventListener('mouseleave', function() { cur.style.width='18px'; cur.style.height='18px'; cur.style.opacity='1'; });
-    }
-  });
-}, 'cursor');
+  function bindHover(el){
+    el.addEventListener('mouseenter',function(){
+      if(!el.getAttribute('data-cursor')){cur.style.width='26px';cur.style.height='26px';cur.style.opacity='.6';}
+    });
+    el.addEventListener('mouseleave',function(){
+      cur.style.width='16px';cur.style.height='16px';cur.style.opacity='1';
+    });
+  }
+  qsa('[data-cursor]').forEach(bindCursor);
+  qsa('a,button').forEach(bindHover);
+},'cursor');
 
 /* SPLASH */
-safe(function() {
-  var splash = qs('#splash');
-  if (!splash) return;
-  document.body.style.overflow = 'hidden';
-
-  var letters = qsa('.spl-l', splash);
-  var tag = qs('#spl-tag', splash);
-  var bar = qs('#spl-bar', splash);
-  var bw = 0;
-  var bi = setInterval(function() {
-    bw = Math.min(bw + 1.5, 100);
-    bar.style.width = bw + '%';
-    if (bw >= 100) clearInterval(bi);
-  }, 18);
-
-  function hideSplash() {
-    if (window.gsap) {
-      gsap.to(splash, { opacity: 0, duration: .55, ease: 'power2.inOut', onComplete: function() {
-        splash.style.display = 'none';
-        document.body.style.overflow = '';
+safe(function(){
+  var splash=qs('#splash');
+  if(!splash)return;
+  document.body.style.overflow='hidden';
+  var letters=qsa('.spl-l',splash);
+  var tag=qs('#spl-tag',splash);
+  var bar=qs('#spl-bar',splash);
+  var bw=0,bi=setInterval(function(){
+    bw=Math.min(bw+1.6,100);bar.style.width=bw+'%';
+    if(bw>=100)clearInterval(bi);
+  },18);
+  function hide(){
+    if(window.gsap){
+      gsap.to(splash,{opacity:0,duration:.55,ease:'power2.inOut',onComplete:function(){
+        splash.style.display='none';document.body.style.overflow='';
       }});
     } else {
-      splash.style.transition = 'opacity .55s';
-      splash.style.opacity = '0';
-      setTimeout(function() { splash.style.display = 'none'; document.body.style.overflow = ''; }, 600);
+      splash.style.transition='opacity .55s';splash.style.opacity='0';
+      setTimeout(function(){splash.style.display='none';document.body.style.overflow='';},600);
     }
   }
-
-  if (window.gsap) {
-    gsap.to(letters, {
-      y: 0, opacity: 1, duration: .75, ease: 'power3.out', stagger: .08, delay: .15,
-      onComplete: function() {
-        gsap.to(tag, { y: 0, opacity: 1, duration: .5, ease: 'power2.out', delay: .1 });
-        setTimeout(hideSplash, 1600);
+  if(window.gsap){
+    gsap.to(letters,{y:0,opacity:1,duration:.75,ease:'power3.out',stagger:.08,delay:.1,
+      onComplete:function(){
+        gsap.to(tag,{y:0,opacity:1,duration:.5,ease:'power2.out',delay:.1});
+        setTimeout(hide,1600);
       }
     });
   } else {
-    letters.forEach(function(l, i) {
-      setTimeout(function() {
-        l.style.transition = 'transform .7s cubic-bezier(.16,1,.3,1), opacity .7s';
-        l.style.transform = 'translateY(0)';
-        l.style.opacity = '1';
-      }, 150 + i * 90);
+    letters.forEach(function(l,i){
+      setTimeout(function(){
+        l.style.transition='transform .7s cubic-bezier(.16,1,.3,1),opacity .7s';
+        l.style.transform='translateY(0)';l.style.opacity='1';
+      },100+i*90);
     });
-    setTimeout(function() {
-      tag.style.transition = 'opacity .5s, transform .5s';
-      tag.style.opacity = '1'; tag.style.transform = 'translateY(0)';
-      setTimeout(hideSplash, 1500);
-    }, 700);
+    setTimeout(function(){
+      tag.style.transition='opacity .5s,transform .5s';
+      tag.style.opacity='1';tag.style.transform='translateY(0)';
+      setTimeout(hide,1400);
+    },650);
   }
-}, 'splash');
+},'splash');
 
 /* NAV */
-safe(function() {
-  var nav = qs('#nav');
-  window.addEventListener('scroll', function() {
-    nav.classList.toggle('stuck', window.scrollY > 50);
-  }, { passive: true });
-}, 'nav');
+safe(function(){
+  var nav=qs('#nav');
+  window.addEventListener('scroll',function(){
+    nav.classList.toggle('stuck',window.scrollY>50);
+  },{passive:true});
+},'nav');
 
-/* HAMBURGER */
-safe(function() {
-  var btn = qs('#hamburger'), menu = qs('#mob-menu');
-  btn.addEventListener('click', function() {
-    var open = menu.classList.toggle('open');
-    btn.classList.toggle('open', open);
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    document.body.style.overflow = open ? 'hidden' : '';
+/* HAMBURGER — BUG FIX: restore scroll on close */
+safe(function(){
+  var btn=qs('#hamburger'),menu=qs('#mob-menu');
+  btn.addEventListener('click',function(){
+    var open=menu.classList.toggle('open');
+    btn.classList.toggle('open',open);
+    btn.setAttribute('aria-expanded',open?'true':'false');
+    document.body.style.overflow=open?'hidden':'';
   });
-  window.closeMob = function() {
+  window.closeMob=function(){
     menu.classList.remove('open');
     btn.classList.remove('open');
-    btn.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
+    btn.setAttribute('aria-expanded','false');
+    document.body.style.overflow='';
   };
-}, 'hamburger');
+  /* Close on Escape */
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&menu.classList.contains('open'))window.closeMob();
+  });
+},'hamburger');
 
-/* PARALLAX HERO */
-safe(function() {
-  var img = qs('#hero-img');
-  if (!img) return;
-  var raf = null;
-  window.addEventListener('scroll', function() {
-    if (raf) return;
-    raf = requestAnimationFrame(function() {
-      var y = window.scrollY;
-      if (y < window.innerHeight * 1.5) {
-        img.style.transform = 'translateY(' + (y * .28) + 'px) scale(1.08)';
-      }
-      raf = null;
+/* PARALLAX */
+safe(function(){
+  var img=qs('#hero-img');
+  if(!img)return;
+  var raf=null;
+  window.addEventListener('scroll',function(){
+    if(raf)return;
+    raf=requestAnimationFrame(function(){
+      var y=window.scrollY;
+      if(y<window.innerHeight*1.5)img.style.transform='translateY('+(y*.28)+'px) scale(1.08)';
+      raf=null;
     });
-  }, { passive: true });
-}, 'parallax');
+  },{passive:true});
+},'parallax');
 
 /* HERO ENTRANCE */
-safe(function() {
-  if (!window.gsap) return;
-  var els = qsa('.hero-kick, .hero-h1, .hero-sub, .hero-ctas, .hero-stats');
-  gsap.to(els, { y: 0, opacity: 1, duration: .85, ease: 'power3.out', stagger: .1, delay: 2.0 });
-}, 'hero-enter');
+safe(function(){
+  if(!window.gsap)return;
+  var els=qsa('.hero-kick,.hero-h1,.hero-sub,.hero-ctas,.hero-stats');
+  gsap.to(els,{y:0,opacity:1,duration:.85,ease:'power3.out',stagger:.1,delay:2.0});
+},'hero-enter');
 
-/* HORIZONTAL CAROUSEL */
-safe(function() {
-  var wrap = qs('#carousel-wrap');
-  var track = qs('#carTrack');
-  var prog = qs('#carProg');
-  if (!wrap || !track || !prog) return;
+/* CAROUSEL */
+safe(function(){
+  var wrap=qs('#carousel-wrap');
+  var track=qs('#carTrack');
+  var prog=qs('#carProg');
+  if(!wrap||!track||!prog)return;
 
   /* Build panels */
-  var html = '';
-  GAMAS.forEach(function(g) {
-    html += '<div class="car-panel" id="panel-' + g.id + '">';
-    html += '<div class="car-bg"><img src="' + g.img + '" alt="' + g.name + '" loading="lazy"></div>';
-    html += '<div class="car-ov"></div>';
-    html += '<div class="car-c">';
-    html += '<div class="car-num">' + g.num + ' / ' + GAMAS.length + '</div>';
-    html += '<h3 class="car-name">' + g.name + '</h3>';
-    html += '<p class="car-desc">' + g.desc + '</p>';
-    html += '<div class="car-tags">';
-    g.tags.forEach(function(t) { html += '<span class="car-tag">' + t + '</span>'; });
-    html += '</div>';
-    html += '<a href="#contacto" class="car-cta" data-cursor="Pedir catálogo">Solicitar esta gama <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>';
-    html += '</div></div>';
+  var html='';
+  GAMAS.forEach(function(g){
+    html+='<div class="car-panel" id="panel-'+g.id+'">';
+    html+='<div class="car-bg"><img src="'+g.img+'" alt="'+g.name+'" loading="lazy"></div>';
+    html+='<div class="car-ov"></div>';
+    html+='<div class="car-stripe"></div>';
+    html+='<div class="car-c">';
+    html+='<div class="car-num">'+g.num+' / '+GAMAS.length+'</div>';
+    html+='<h3 class="car-name">'+g.name+'</h3>';
+    html+='<p class="car-desc">'+g.desc+'</p>';
+    html+='<div class="car-tags">';
+    g.tags.forEach(function(t){html+='<span class="car-tag">'+t+'</span>';});
+    html+='</div>';
+    html+='<a href="#contacto" class="car-cta" data-cursor="Pedir catálogo">Solicitar esta gama <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>';
+    html+='</div></div>';
   });
-  track.innerHTML = html;
+  track.innerHTML=html;
 
-  /* Bind cursor to new elements */
-  qsa('[data-cursor]', track).forEach(function(el) {
-    var cur = qs('#cur'), lbl = qs('#cur-lbl');
-    el.addEventListener('mouseenter', function() {
-      if (lbl) { lbl.textContent = el.getAttribute('data-cursor'); lbl.classList.add('show'); }
-      if (cur) { cur.style.width = '32px'; cur.style.height = '32px'; cur.style.opacity = '.4'; }
+  /* Bind cursor on new elements */
+  var cur=qs('#cur'),lbl=qs('#cur-lbl');
+  qsa('[data-cursor]',track).forEach(function(el){
+    el.addEventListener('mouseenter',function(){
+      if(lbl){lbl.textContent=el.getAttribute('data-cursor');lbl.classList.add('show');}
+      if(cur){cur.style.width='30px';cur.style.height='30px';cur.style.opacity='.4';}
     });
-    el.addEventListener('mouseleave', function() {
-      if (lbl) lbl.classList.remove('show');
-      if (cur) { cur.style.width = '18px'; cur.style.height = '18px'; cur.style.opacity = '1'; }
+    el.addEventListener('mouseleave',function(){
+      if(lbl)lbl.classList.remove('show');
+      if(cur){cur.style.width='16px';cur.style.height='16px';cur.style.opacity='1';}
     });
   });
 
-  /* Build dots */
-  var dHtml = '';
-  GAMAS.forEach(function(g, i) {
-    dHtml += '<button class="car-dot' + (i === 0 ? ' on' : '') + '" data-idx="' + i + '" aria-label="Gama ' + g.name + '"></button>';
+  /* Dots */
+  var dHtml='';
+  GAMAS.forEach(function(g,i){
+    dHtml+='<button class="car-dot'+(i===0?' on':'')+'" data-idx="'+i+'" aria-label="Gama '+g.name+'"></button>';
   });
-  prog.innerHTML = dHtml;
-  var dots = qsa('.car-dot', prog);
+  prog.innerHTML=dHtml;
+  var dots=qsa('.car-dot',prog);
 
-  if (window.gsap && window.ScrollTrigger) {
+  if(window.gsap&&window.ScrollTrigger){
     gsap.registerPlugin(ScrollTrigger);
+    var totalW=(GAMAS.length-1)*window.innerWidth;
+    wrap.style.height=(window.innerHeight+totalW)+'px';
 
-    var totalW = (GAMAS.length - 1) * window.innerWidth;
-    wrap.style.height = (window.innerHeight + totalW) + 'px';
-
-    gsap.to(track, {
-      x: -totalW,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: wrap,
-        start: 'top top',
-        end: '+=' + totalW,
-        scrub: 1.2,
-        pin: '#carSticky',
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-        onUpdate: function(self) {
-          var idx = Math.round(self.progress * (GAMAS.length - 1));
-          idx = Math.max(0, Math.min(idx, GAMAS.length - 1));
-          dots.forEach(function(d, i) { d.classList.toggle('on', i === idx); });
-          prog.classList.toggle('show', self.progress > 0.005 && self.progress < 0.996);
+    gsap.to(track,{
+      x:-totalW,ease:'none',
+      scrollTrigger:{
+        trigger:wrap,start:'top top',end:'+='+(totalW),
+        scrub:1.2,pin:'#carSticky',anticipatePin:1,invalidateOnRefresh:true,
+        onUpdate:function(self){
+          var idx=Math.round(self.progress*(GAMAS.length-1));
+          idx=Math.max(0,Math.min(idx,GAMAS.length-1));
+          dots.forEach(function(d,i){d.classList.toggle('on',i===idx);});
+          prog.classList.toggle('show',self.progress>0.005&&self.progress<0.996);
         }
       }
     });
 
-    dots.forEach(function(dot, i) {
-      dot.addEventListener('click', function() {
-        var target = wrap.offsetTop + (i / (GAMAS.length - 1)) * totalW;
-        window.scrollTo({ top: target, behavior: 'smooth' });
+    dots.forEach(function(dot,i){
+      dot.addEventListener('click',function(){
+        var target=wrap.offsetTop+(i/(GAMAS.length-1))*totalW;
+        window.scrollTo({top:target,behavior:'smooth'});
       });
     });
 
-    window.addEventListener('resize', function() {
-      totalW = (GAMAS.length - 1) * window.innerWidth;
-      wrap.style.height = (window.innerHeight + totalW) + 'px';
+    window.addEventListener('resize',function(){
+      totalW=(GAMAS.length-1)*window.innerWidth;
+      wrap.style.height=(window.innerHeight+totalW)+'px';
       ScrollTrigger.refresh();
     });
 
   } else {
-    /* CSS scroll-snap fallback */
-    var sticky = qs('#carSticky');
-    if (sticky) {
-      sticky.style.position = 'relative';
-      sticky.style.height = '100vh';
-      sticky.style.overflowX = 'auto';
-      sticky.style.scrollSnapType = 'x mandatory';
+    /* CSS fallback */
+    var sticky=qs('#carSticky');
+    if(sticky){
+      sticky.style.position='relative';
+      sticky.style.height='100vh';
+      sticky.style.overflowX='auto';
+      sticky.style.scrollSnapType='x mandatory';
     }
-    wrap.style.height = 'auto';
-    qsa('.car-panel', track).forEach(function(p) { p.style.scrollSnapAlign = 'start'; });
-    prog.style.display = 'none';
+    wrap.style.height='auto';
+    qsa('.car-panel',track).forEach(function(p){p.style.scrollSnapAlign='start';});
+    prog.style.display='none';
   }
-}, 'carousel');
+},'carousel');
 
-/* SCROLL REVEAL */
-safe(function() {
-  var els = qsa('.rv');
-  if (!els.length) return;
-  var io = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+/* SCROLL REVEAL — BUG FIX: guard against repeated observer calls */
+safe(function(){
+  var els=qsa('.rv');
+  if(!els.length)return;
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
     });
-  }, { threshold: .05, rootMargin: '0px 0px -40px 0px' });
-  els.forEach(function(el) {
+  },{threshold:.05,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(el){
     io.observe(el);
-    setTimeout(function() { el.classList.add('in'); }, 7000);
+    setTimeout(function(){el.classList.add('in');},7000); /* safety */
   });
-}, 'reveal');
+},'reveal');
 
-/* GSAP SCROLL ANIMATIONS */
-safe(function() {
-  if (!window.gsap || !window.ScrollTrigger) return;
+/* GSAP ANIMATIONS */
+safe(function(){
+  if(!window.gsap||!window.ScrollTrigger)return;
   gsap.registerPlugin(ScrollTrigger);
-
-  qsa('.stat-it').forEach(function(el, i) {
-    gsap.from(el, {
-      y: 48, opacity: 0, duration: .7, ease: 'power2.out',
-      delay: i * 0.09,
-      scrollTrigger: { trigger: el, start: 'top 85%' }
-    });
+  qsa('.stat-it').forEach(function(el,i){
+    gsap.from(el,{y:44,opacity:0,duration:.7,ease:'power2.out',delay:i*.09,
+      scrollTrigger:{trigger:el,start:'top 85%'}});
   });
-
-  qsa('.slbl').forEach(function(el) {
-    gsap.from(el, {
-      x: -20, opacity: 0, duration: .6, ease: 'power2.out',
-      scrollTrigger: { trigger: el, start: 'top 88%' }
-    });
+  qsa('.slbl').forEach(function(el){
+    gsap.from(el,{x:-18,opacity:0,duration:.6,ease:'power2.out',
+      scrollTrigger:{trigger:el,start:'top 88%'}});
   });
-}, 'gsap-anims');
+},'gsap-anims');
 
-/* TESTIMONIALS */
-safe(function() {
-  var track = qs('#tTrack');
-  var prev = qs('#tPrev'), next = qs('#tNext');
-  if (!track || !prev || !next) return;
+/* TESTIMONIALS — BUG FIX: correct max index for 2-card view */
+safe(function(){
+  var track=qs('#tTrack');
+  var prev=qs('#tPrev'),next=qs('#tNext');
+  if(!track||!prev||!next)return;
+  var cards=qsa('.testi-card',track);
+  var n=cards.length;
+  var cur=0;
 
-  var cards = qsa('.testi-card', track);
-  var n = cards.length;
-  var cur = 0;
-
-  function cardW() { return cards[0] ? (cards[0].offsetWidth + 24) : 0; }
-  function go(idx) {
-    cur = Math.max(0, Math.min(idx, n - 2));
-    track.style.transform = 'translateX(-' + (cur * cardW()) + 'px)';
+  function cardW(){return cards[0]?(cards[0].offsetWidth+20):0;}
+  function getMax(){
+    /* on narrow screens 1 card shows, on wide 2 */
+    var w=window.innerWidth;
+    return w<621?n-1:n-2;
+  }
+  function go(idx){
+    cur=Math.max(0,Math.min(idx,getMax()));
+    track.style.transform='translateX(-'+(cur*cardW())+'px)';
   }
 
-  prev.addEventListener('click', function() { go(cur - 1); });
-  next.addEventListener('click', function() { go(cur + 1); });
+  prev.addEventListener('click',function(){go(cur-1);});
+  next.addEventListener('click',function(){go(cur+1);});
 
-  var sx = 0;
-  track.addEventListener('touchstart', function(e) { sx = e.touches[0].clientX; }, { passive: true });
-  track.addEventListener('touchend', function(e) {
-    var dx = e.changedTouches[0].clientX - sx;
-    if (Math.abs(dx) > 50) go(cur + (dx < 0 ? 1 : -1));
+  /* Touch swipe */
+  var sx=0;
+  track.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+  track.addEventListener('touchend',function(e){
+    var dx=e.changedTouches[0].clientX-sx;
+    if(Math.abs(dx)>50)go(cur+(dx<0?1:-1));
   });
 
-  var at = setInterval(function() { go(cur + 1 < n - 1 ? cur + 1 : 0); }, 5200);
-  track.addEventListener('mouseenter', function() { clearInterval(at); });
-  track.addEventListener('mouseleave', function() {
-    at = setInterval(function() { go(cur + 1 < n - 1 ? cur + 1 : 0); }, 5200);
+  /* Auto-advance */
+  var at=setInterval(function(){
+    var mx=getMax();
+    go(cur<mx?cur+1:0);
+  },5200);
+  track.addEventListener('mouseenter',function(){clearInterval(at);});
+  track.addEventListener('mouseleave',function(){
+    at=setInterval(function(){var mx=getMax();go(cur<mx?cur+1:0);},5200);
   });
-}, 'testi');
 
-/* CONTACT FORM */
-safe(function() {
-  var form = qs('#ctForm');
-  if (!form) return;
-  form.addEventListener('submit', function(e) {
+  /* Recalc on resize */
+  window.addEventListener('resize',function(){go(Math.min(cur,getMax()));});
+},'testi');
+
+/* FORM */
+safe(function(){
+  var form=qs('#ctForm');
+  if(!form)return;
+  form.addEventListener('submit',function(e){
     e.preventDefault();
-    var nom = form.querySelector('[name=nombre]').value.trim();
-    var emp = form.querySelector('[name=empresa]').value.trim();
-    var ema = form.querySelector('[name=email]').value.trim();
-    var tip = form.querySelector('[name=tipo]').value;
-    var msg = form.querySelector('[name=mensaje]').value.trim();
-
-    if (!nom || !emp || !ema || !tip) {
-      alert('Por favor completa todos los campos obligatorios (*).');
+    var nom=form.querySelector('[name=nombre]').value.trim();
+    var emp=form.querySelector('[name=empresa]').value.trim();
+    var ema=form.querySelector('[name=email]').value.trim();
+    var tip=form.querySelector('[name=tipo]').value;
+    var msg=form.querySelector('[name=mensaje]').value.trim();
+    if(!nom||!emp||!ema||!tip){
+      /* BUG FIX: highlight missing fields instead of alert */
+      [['nombre',nom],['empresa',emp],['email',ema],['tipo',tip]].forEach(function(p){
+        var el=form.querySelector('[name='+p[0]+']');
+        if(el)el.style.borderColor=p[1]?'':'#E5003B';
+      });
       return;
     }
-
-    var txt = 'Hola%20Kadal%20Menaje%2C%0A%0ASolicitud%20de%20cat%C3%A1logo%20mayorista%3A%0A';
-    txt += '%E2%80%A2%20Nombre%3A%20' + encodeURIComponent(nom) + '%0A';
-    txt += '%E2%80%A2%20Empresa%3A%20' + encodeURIComponent(emp) + '%0A';
-    txt += '%E2%80%A2%20Email%3A%20' + encodeURIComponent(ema) + '%0A';
-    txt += '%E2%80%A2%20Tipo%3A%20' + encodeURIComponent(tip) + '%0A';
-    if (msg) txt += '%E2%80%A2%20Gamas%3A%20' + encodeURIComponent(msg) + '%0A';
-    txt += '%0AQuedo%20a%20la%20espera.%20Gracias.';
-
-    window.open(window.__KADAL__.waUrl + '?text=' + txt, '_blank', 'noopener,noreferrer');
+    var txt='Hola%20Kadal%20Menaje%2C%0A%0ASolicitud%20de%20cat%C3%A1logo%20mayorista%3A%0A';
+    txt+='%E2%80%A2%20Nombre%3A%20'+encodeURIComponent(nom)+'%0A';
+    txt+='%E2%80%A2%20Empresa%3A%20'+encodeURIComponent(emp)+'%0A';
+    txt+='%E2%80%A2%20Email%3A%20'+encodeURIComponent(ema)+'%0A';
+    txt+='%E2%80%A2%20Tipo%3A%20'+encodeURIComponent(tip)+'%0A';
+    if(msg)txt+='%E2%80%A2%20Gamas%3A%20'+encodeURIComponent(msg)+'%0A';
+    txt+='%0AQuedo%20a%20la%20espera.%20Gracias.';
+    window.open(window.__KADAL__.waUrl+'?text='+txt,'_blank','noopener,noreferrer');
   });
-}, 'form');
+  /* Clear red border on input */
+  qsa('input,select,textarea',form).forEach(function(el){
+    el.addEventListener('input',function(){el.style.borderColor='';});
+  });
+},'form');
 
 })();
 </script>
