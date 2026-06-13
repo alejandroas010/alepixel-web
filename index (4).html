@@ -290,7 +290,8 @@
     .project-visual .pv-barber,
     .project-visual .pv-bar,
     .project-visual .pv-travel,
-    .project-visual .pv-gym { position: absolute; inset: 0; z-index: 1; }
+    .project-visual .pv-gym,
+    .project-visual .pv-kadal { position: absolute; inset: 0; z-index: 1; }
     .project-name {
       font-family: var(--font-display);
       font-size: 1.35rem; letter-spacing: -0.015em;
@@ -581,6 +582,45 @@
       font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase;
       color: rgba(140,106,63,0.7); margin-top: 8px;
       font-family: var(--font-body); position: relative;
+    }
+
+    /* ─── KADAL MENAJE real client card ─── */
+    .project-card--real {
+      text-decoration: none; color: inherit;
+      border-top: 3px solid #E5003B;
+      cursor: pointer;
+    }
+    .project-card--real:hover { background: #FFF8FA; }
+    .project-tag--real {
+      color: #E5003B;
+      background: #FFF0F4; border-color: rgba(229,0,59,0.25);
+    }
+    .project-card--real .project-num { color: #E5003B; font-weight: 600; }
+    .pv-kadal {
+      background: #0D0D0D;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 20px 22px;
+      position: relative; overflow: hidden;
+    }
+    .pv-kadal::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #1c0006 0%, #0D0D0D 65%, #000 100%);
+    }
+    .pv-kadal::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 3px; background: #E5003B;
+    }
+    .pv-kadal-label {
+      font-size: 0.44rem; letter-spacing: 0.34em; text-transform: uppercase;
+      color: rgba(229,0,59,0.7); margin-bottom: 7px;
+      font-family: var(--font-body); position: relative;
+    }
+    .pv-kadal-name {
+      font-family: var(--font-display);
+      font-size: 1.75rem; color: #ffffff; line-height: 0.88;
+      letter-spacing: 0.01em; position: relative;
     }
 
     /* ─── PROCESS ─── */
@@ -946,11 +986,45 @@
       </div>
       <div class="section-text reveal d2">
         <p>Trabajo con negocios de distintos sectores. Aquí tienes una muestra del tipo de proyectos que desarrollo: cada uno con su identidad propia, su objetivo y su público.</p>
-        <p style="margin-top:10px; font-size:0.82rem; color:var(--ink-faint);">Ejemplos de referencia — el tuyo será único para tu negocio.</p>
+        <p style="margin-top:10px; font-size:0.82rem; color:var(--ink-faint);">El primero es un proyecto real entregado. El resto, ejemplos de referencia — el tuyo será único.</p>
       </div>
     </div>
 
     <div class="projects-grid">
+
+      <!-- Kadal Menaje — Proyecto real -->
+      <a class="project-card project-card--real reveal" href="kadal-menaje.html" target="_blank" rel="noopener">
+        <div class="project-top">
+          <span class="project-num">CLIENTE REAL</span>
+          <span class="project-tag project-tag--real">B2B · Distribución</span>
+        </div>
+        <div class="project-visual">
+          <div class="browser-bar">
+            <div class="browser-dots"><span></span><span></span><span></span></div>
+            <div class="browser-url">kadalmenaje.es</div>
+          </div>
+          <div class="browser-body">
+            <img class="pv-photo" src="https://images.unsplash.com/photo-1581873372796-635b67ca2008?auto=format&fit=crop&w=900&q=70" alt="Sartén profesional Piedra Black de Kadal Menaje" loading="lazy" onerror="this.remove()"/>
+            <div class="pv-caption">
+              <span class="c1">Kadal Menaje · B2B</span>
+              <span class="c2">Distribución</span>
+            </div>
+            <div class="pv-kadal">
+              <div class="pv-kadal-label">DISTRIBUCIÓN MAYORISTA</div>
+              <div class="pv-kadal-name">KADAL<br/>MENAJE</div>
+            </div>
+          </div>
+        </div>
+        <div class="project-name">Kadal Menaje — Menaje Profesional</div>
+        <p class="project-desc">Web B2B premium para distribuidora española de menaje de cocina. Carousel de 10 gamas con modal de detalle, catálogo de 43 productos y captación de distribuidores.</p>
+        <div class="project-features">
+          <span class="project-feat">10 gamas</span>
+          <span class="project-feat">43 productos</span>
+          <span class="project-feat">Catálogo modal</span>
+          <span class="project-feat">WhatsApp</span>
+          <span class="project-feat">Responsive</span>
+        </div>
+      </a>
 
       <!-- Restaurante -->
       <div class="project-card reveal">
