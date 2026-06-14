@@ -1,0 +1,1909 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clínica Dental Sonrisa — Sevilla | Implantes, Invisalign, Urgencias 24h</title>
+  <meta name="description" content="Clínica dental privada en Sevilla. Implantes desde 799€, Invisalign, estética dental y urgencias 24h. Financiación sin intereses." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #1B4FD8;
+      --blue-light: #EFF6FF;
+      --ink: #0F172A;
+      --ink-soft: #334155;
+      --ink-muted: #64748B;
+      --surface: #F8FAFC;
+      --white: #FFFFFF;
+      --border: #E2E8F0;
+      --green: #16A34A;
+      --red: #DC2626;
+      --red-light: #FEF2F2;
+      --radius: 12px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+      --shadow: 0 4px 16px rgba(0,0,0,.08), 0 1px 4px rgba(0,0,0,.05);
+      --shadow-lg: 0 12px 40px rgba(0,0,0,.12), 0 4px 12px rgba(0,0,0,.06);
+      --transition: .3s cubic-bezier(.4,0,.2,1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--ink);
+      background: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 { font-family: 'DM Serif Display', serif; line-height: 1.2; }
+
+    img { display: block; max-width: 100%; }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ── Scroll reveal ── */
+    .rv {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .rv.in {
+      opacity: 1;
+      transform: none;
+    }
+    .rv-delay-1 { transition-delay: .1s; }
+    .rv-delay-2 { transition-delay: .2s; }
+    .rv-delay-3 { transition-delay: .3s; }
+    .rv-delay-4 { transition-delay: .4s; }
+    .rv-delay-5 { transition-delay: .5s; }
+
+    /* ── Layout helpers ── */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section {
+      padding: 96px 0;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--blue);
+      background: var(--blue-light);
+      padding: 4px 14px;
+      border-radius: 99px;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: clamp(28px, 4vw, 44px);
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      font-size: 18px;
+      color: var(--ink-muted);
+      max-width: 560px;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .section-header .section-sub {
+      margin: 0 auto;
+    }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 26px;
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      color: var(--white);
+      box-shadow: 0 4px 14px rgba(27,79,216,.35);
+    }
+    .btn-primary:hover {
+      background: #163FB8;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(27,79,216,.45);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--blue);
+      border-color: var(--blue);
+    }
+    .btn-outline:hover {
+      background: var(--blue-light);
+    }
+
+    .btn-red-outline {
+      background: transparent;
+      color: var(--red);
+      border-color: var(--red);
+      font-size: 14px;
+      padding: 10px 18px;
+    }
+    .btn-red-outline:hover {
+      background: var(--red-light);
+    }
+
+    .btn-white {
+      background: var(--white);
+      color: var(--red);
+      border-color: var(--white);
+      box-shadow: var(--shadow);
+    }
+    .btn-white:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* ════════════════════════════════════════
+       NAV
+    ════════════════════════════════════════ */
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: var(--white);
+      transition: box-shadow var(--transition);
+    }
+    #navbar.scrolled {
+      box-shadow: 0 2px 20px rgba(0,0,0,.08);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      gap: 32px;
+    }
+
+    .nav-logo {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+    .nav-logo-main {
+      font-family: 'DM Serif Display', serif;
+      font-size: 22px;
+      color: var(--blue);
+      letter-spacing: .03em;
+    }
+    .nav-logo-sub {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--ink-muted);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+      flex: 1;
+      justify-content: center;
+    }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink-soft);
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--blue); }
+
+    .nav-ctas {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--ink);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0;
+      right: 0;
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      padding: 24px;
+      box-shadow: var(--shadow-lg);
+      z-index: 999;
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 20px;
+    }
+    .mobile-menu ul a {
+      display: block;
+      padding: 10px 0;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--ink-soft);
+      border-bottom: 1px solid var(--border);
+    }
+    .mobile-menu-ctas {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .mobile-menu-ctas .btn { justify-content: center; }
+
+    /* ════════════════════════════════════════
+       HERO
+    ════════════════════════════════════════ */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 72px;
+      background: linear-gradient(135deg, var(--blue-light) 0%, #F0F4FF 40%, var(--white) 100%);
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      padding: 80px 24px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 99px;
+      padding: 8px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--blue);
+      margin-bottom: 28px;
+      box-shadow: var(--shadow-sm);
+    }
+    .hero-badge-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--blue);
+      border-radius: 50%;
+    }
+
+    .hero-title {
+      font-size: clamp(34px, 5vw, 58px);
+      color: var(--ink);
+      margin-bottom: 24px;
+      line-height: 1.15;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--blue);
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      color: var(--ink-muted);
+      margin-bottom: 36px;
+      max-width: 480px;
+      line-height: 1.7;
+    }
+
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 99px;
+      padding: 7px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink-soft);
+      box-shadow: var(--shadow-sm);
+    }
+    .hero-pill .check { color: var(--green); font-size: 14px; }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .hero-phone {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+      transition: color var(--transition);
+    }
+    .hero-phone:hover { color: var(--blue); }
+    .hero-phone-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--blue-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .hero-img-wrap {
+      position: relative;
+    }
+    .hero-img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: var(--shadow-lg);
+    }
+    .hero-img-badge {
+      position: absolute;
+      bottom: 28px;
+      left: -28px;
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 200px;
+    }
+    .hero-badge-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--blue-light);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .hero-badge-text strong {
+      display: block;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1;
+    }
+    .hero-badge-text span {
+      font-size: 12px;
+      color: var(--ink-muted);
+    }
+
+    .hero-stars {
+      position: absolute;
+      top: 28px;
+      right: -20px;
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 14px 18px;
+      box-shadow: var(--shadow-lg);
+      text-align: center;
+    }
+    .hero-stars-row { color: #F59E0B; font-size: 16px; letter-spacing: 2px; }
+    .hero-stars-label { font-size: 11px; color: var(--ink-muted); font-weight: 600; margin-top: 2px; }
+
+    /* ════════════════════════════════════════
+       URGENCIAS BAND
+    ════════════════════════════════════════ */
+    #urgencias-band {
+      background: var(--red);
+      padding: 28px 0;
+    }
+    .urgencias-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .urgencias-text {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .urgencias-icon {
+      font-size: 32px;
+    }
+    .urgencias-headline {
+      font-family: 'DM Serif Display', serif;
+      font-size: 22px;
+      color: var(--white);
+      line-height: 1.2;
+    }
+    .urgencias-sub {
+      font-size: 14px;
+      color: rgba(255,255,255,.8);
+      margin-top: 2px;
+    }
+
+    /* ════════════════════════════════════════
+       SERVICIOS
+    ════════════════════════════════════════ */
+    #servicios { background: var(--surface); }
+
+    .servicios-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .servicio-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .servicio-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--blue);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition);
+    }
+    .servicio-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: transparent;
+    }
+    .servicio-card:hover::before { transform: scaleX(1); }
+
+    .servicio-icon {
+      font-size: 36px;
+      margin-bottom: 18px;
+    }
+    .servicio-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+    .servicio-desc {
+      font-size: 14px;
+      color: var(--ink-muted);
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+    .servicio-price {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--blue);
+      background: var(--blue-light);
+      padding: 5px 14px;
+      border-radius: 99px;
+    }
+
+    /* ════════════════════════════════════════
+       POR QUÉ ELEGIRNOS
+    ════════════════════════════════════════ */
+    #porque { background: var(--white); }
+
+    .porque-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+
+    .porque-item {
+      text-align: center;
+      padding: 32px 20px;
+    }
+    .porque-icon-wrap {
+      width: 72px;
+      height: 72px;
+      background: var(--blue-light);
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      margin: 0 auto 20px;
+    }
+    .porque-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+    .porque-desc {
+      font-size: 14px;
+      color: var(--ink-muted);
+      line-height: 1.65;
+    }
+
+    /* ════════════════════════════════════════
+       ABOUT / EQUIPO
+    ════════════════════════════════════════ */
+    #equipo { background: var(--surface); }
+
+    .equipo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .equipo-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      text-align: center;
+      transition: var(--transition);
+    }
+    .equipo-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .equipo-avatar {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Serif Display', serif;
+      font-size: 28px;
+      color: var(--white);
+      margin: 0 auto 20px;
+      position: relative;
+    }
+    .equipo-avatar-a { background: linear-gradient(135deg, #1B4FD8, #6366F1); }
+    .equipo-avatar-b { background: linear-gradient(135deg, #0F766E, #10B981); }
+    .equipo-avatar-c { background: linear-gradient(135deg, #BE185D, #EC4899); }
+
+    .equipo-name {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .equipo-role {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 14px;
+    }
+    .equipo-bio {
+      font-size: 14px;
+      color: var(--ink-muted);
+      line-height: 1.65;
+    }
+    .equipo-tag {
+      display: inline-block;
+      margin-top: 14px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--green);
+      background: #DCFCE7;
+      padding: 4px 12px;
+      border-radius: 99px;
+    }
+
+    /* ════════════════════════════════════════
+       PROCESO
+    ════════════════════════════════════════ */
+    #proceso { background: var(--blue); }
+    #proceso .section-label { background: rgba(255,255,255,.15); color: var(--white); }
+    #proceso .section-title { color: var(--white); }
+    #proceso .section-sub { color: rgba(255,255,255,.75); }
+
+    .proceso-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+    }
+    .proceso-grid::before {
+      content: '';
+      position: absolute;
+      top: 36px;
+      left: 12.5%;
+      right: 12.5%;
+      height: 2px;
+      background: rgba(255,255,255,.2);
+    }
+
+    .proceso-step {
+      text-align: center;
+      padding: 0 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .proceso-num {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.15);
+      border: 2px solid rgba(255,255,255,.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Serif Display', serif;
+      font-size: 26px;
+      color: var(--white);
+      margin: 0 auto 24px;
+      transition: var(--transition);
+    }
+    .proceso-step:hover .proceso-num {
+      background: var(--white);
+      color: var(--blue);
+    }
+
+    .proceso-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .proceso-desc {
+      font-size: 14px;
+      color: rgba(255,255,255,.7);
+      line-height: 1.6;
+    }
+
+    /* ════════════════════════════════════════
+       TESTIMONIALES
+    ════════════════════════════════════════ */
+    #testimoniales { background: var(--surface); }
+
+    .testimoniales-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      transition: var(--transition);
+    }
+    .testimonial-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-3px);
+    }
+
+    .testimonial-stars {
+      color: #F59E0B;
+      font-size: 18px;
+      letter-spacing: 3px;
+      margin-bottom: 18px;
+    }
+
+    .testimonial-text {
+      font-size: 15px;
+      color: var(--ink-soft);
+      line-height: 1.75;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .testimonial-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+    .ta-1 { background: linear-gradient(135deg, #F59E0B, #EF4444); }
+    .ta-2 { background: linear-gradient(135deg, #8B5CF6, #1B4FD8); }
+    .ta-3 { background: linear-gradient(135deg, #10B981, #0891B2); }
+
+    .testimonial-name {
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--ink);
+    }
+    .testimonial-meta {
+      font-size: 13px;
+      color: var(--ink-muted);
+    }
+
+    /* ════════════════════════════════════════
+       PRECIOS
+    ════════════════════════════════════════ */
+    #precios { background: var(--white); }
+
+    .precios-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .precio-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 24px;
+      text-align: center;
+      transition: var(--transition);
+    }
+    .precio-card:hover {
+      border-color: var(--blue);
+      background: var(--blue-light);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+    .precio-icon { font-size: 32px; margin-bottom: 14px; }
+    .precio-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink-soft);
+      margin-bottom: 10px;
+    }
+    .precio-amount {
+      font-family: 'DM Serif Display', serif;
+      font-size: 34px;
+      color: var(--blue);
+      line-height: 1;
+    }
+    .precio-note {
+      font-size: 12px;
+      color: var(--ink-muted);
+      margin-top: 4px;
+    }
+
+    .precios-footer {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .precios-finance {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .finance-icon {
+      font-size: 28px;
+    }
+    .finance-text strong {
+      display: block;
+      font-size: 16px;
+      color: var(--ink);
+    }
+    .finance-text span {
+      font-size: 13px;
+      color: var(--ink-muted);
+    }
+    .seguros-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .seguro-tag {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 5px 12px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink-soft);
+    }
+
+    /* ════════════════════════════════════════
+       CONTACTO
+    ════════════════════════════════════════ */
+    #contacto { background: var(--surface); }
+
+    .contacto-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .contacto-form {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: var(--shadow);
+    }
+    .contacto-form-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .contacto-form-sub {
+      font-size: 14px;
+      color: var(--ink-muted);
+      margin-bottom: 28px;
+    }
+
+    .form-row { margin-bottom: 18px; }
+    .form-row label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink-soft);
+      margin-bottom: 6px;
+    }
+    .form-row input,
+    .form-row select,
+    .form-row textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      color: var(--ink);
+      background: var(--white);
+      transition: border-color var(--transition);
+      outline: none;
+      appearance: none;
+    }
+    .form-row input:focus,
+    .form-row select:focus,
+    .form-row textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(27,79,216,.1);
+    }
+    .form-row textarea { resize: vertical; min-height: 120px; }
+
+    .form-note {
+      font-size: 12px;
+      color: var(--ink-muted);
+      margin-top: 14px;
+    }
+
+    .contacto-info { padding-top: 12px; }
+    .contacto-info-title {
+      font-size: 28px;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+    .contacto-info-sub {
+      font-size: 15px;
+      color: var(--ink-muted);
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+
+    .info-items {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .info-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--blue-light);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .info-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--ink-muted);
+      margin-bottom: 3px;
+    }
+    .info-value {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+    .info-value a {
+      color: var(--blue);
+      transition: color var(--transition);
+    }
+    .info-value a:hover { color: #163FB8; }
+
+    /* ════════════════════════════════════════
+       FOOTER
+    ════════════════════════════════════════ */
+    #footer {
+      background: var(--ink);
+      padding: 60px 0 32px;
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand {}
+    .footer-logo-main {
+      font-family: 'DM Serif Display', serif;
+      font-size: 24px;
+      color: var(--white);
+      letter-spacing: .03em;
+    }
+    .footer-logo-sub {
+      font-size: 11px;
+      color: rgba(255,255,255,.4);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .footer-brand-desc {
+      font-size: 14px;
+      color: rgba(255,255,255,.55);
+      line-height: 1.7;
+      max-width: 260px;
+      margin-bottom: 24px;
+    }
+    .footer-socials {
+      display: flex;
+      gap: 10px;
+    }
+    .footer-social {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(255,255,255,.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      transition: background var(--transition);
+    }
+    .footer-social:hover { background: rgba(255,255,255,.15); }
+
+    .footer-col-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: rgba(255,255,255,.5);
+      margin-bottom: 18px;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-links a {
+      font-size: 14px;
+      color: rgba(255,255,255,.65);
+      transition: color var(--transition);
+    }
+    .footer-links a:hover { color: var(--white); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding-top: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-copy {
+      font-size: 13px;
+      color: rgba(255,255,255,.4);
+    }
+    .footer-legal {
+      display: flex;
+      gap: 24px;
+    }
+    .footer-legal a {
+      font-size: 13px;
+      color: rgba(255,255,255,.4);
+      transition: color var(--transition);
+    }
+    .footer-legal a:hover { color: rgba(255,255,255,.7); }
+
+    /* ════════════════════════════════════════
+       WHATSAPP FAB
+    ════════════════════════════════════════ */
+    #whatsapp-fab {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 900;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #25D366;
+      box-shadow: 0 4px 20px rgba(37,211,102,.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform var(--transition), box-shadow var(--transition);
+      cursor: pointer;
+    }
+    #whatsapp-fab:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 28px rgba(37,211,102,.55);
+    }
+    #whatsapp-fab svg {
+      width: 30px;
+      height: 30px;
+      fill: var(--white);
+    }
+
+    .fab-tooltip {
+      position: absolute;
+      right: 70px;
+      background: var(--ink);
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 8px;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateX(8px);
+      transition: var(--transition);
+    }
+    #whatsapp-fab:hover .fab-tooltip {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* ════════════════════════════════════════
+       RESPONSIVE
+    ════════════════════════════════════════ */
+    @media (max-width: 1024px) {
+      .servicios-grid { grid-template-columns: repeat(2, 1fr); }
+      .porque-grid { grid-template-columns: repeat(2, 1fr); }
+      .precios-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .section { padding: 72px 0; }
+
+      /* Nav */
+      .nav-links, .nav-ctas { display: none; }
+      .hamburger { display: flex; }
+
+      /* Hero */
+      .hero-inner {
+        grid-template-columns: 1fr;
+        padding: 48px 24px 60px;
+        gap: 48px;
+      }
+      .hero-img-badge { left: 0; }
+      .hero-stars { right: 0; }
+
+      /* Servicios */
+      .servicios-grid { grid-template-columns: 1fr; }
+
+      /* Porque */
+      .porque-grid { grid-template-columns: 1fr 1fr; }
+
+      /* Equipo */
+      .equipo-grid { grid-template-columns: 1fr; }
+
+      /* Proceso */
+      .proceso-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+      .proceso-grid::before { display: none; }
+
+      /* Testimoniales */
+      .testimoniales-grid { grid-template-columns: 1fr; }
+
+      /* Precios */
+      .precios-grid { grid-template-columns: 1fr 1fr; }
+
+      /* Contacto */
+      .contacto-grid { grid-template-columns: 1fr; gap: 40px; }
+
+      /* Footer */
+      .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      .porque-grid { grid-template-columns: 1fr; }
+      .proceso-grid { grid-template-columns: 1fr; }
+      .precios-grid { grid-template-columns: 1fr; }
+      .urgencias-inner { flex-direction: column; text-align: center; }
+      .precios-footer { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     NAV
+═══════════════════════════════════════ -->
+<header id="navbar">
+  <div class="container">
+    <nav class="nav-inner">
+      <a href="#" class="nav-logo">
+        <span class="nav-logo-main">SONRISA</span>
+        <span class="nav-logo-sub">Clínica Dental</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#servicios">Tratamientos</a></li>
+        <li><a href="#equipo">Equipo</a></li>
+        <li><a href="#precios">Precios</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+
+      <div class="nav-ctas">
+        <a href="tel:+34600000000" class="btn btn-red-outline">🚨 Urgencias 24h</a>
+        <a href="#contacto" class="btn btn-primary">Pedir cita</a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <ul>
+    <li><a href="#servicios" class="mobile-nav-link">Servicios</a></li>
+    <li><a href="#servicios" class="mobile-nav-link">Tratamientos</a></li>
+    <li><a href="#equipo" class="mobile-nav-link">Equipo</a></li>
+    <li><a href="#precios" class="mobile-nav-link">Precios</a></li>
+    <li><a href="#contacto" class="mobile-nav-link">Contacto</a></li>
+  </ul>
+  <div class="mobile-menu-ctas">
+    <a href="tel:+34600000000" class="btn btn-red-outline">🚨 Urgencias 24h — Llamar ahora</a>
+    <a href="#contacto" class="btn btn-primary mobile-nav-link">Pedir cita online</a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     HERO
+═══════════════════════════════════════ -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <!-- Left -->
+      <div class="hero-content">
+        <div class="hero-badge rv">
+          <div class="hero-badge-dot"></div>
+          ✓ Más de 15 años de experiencia
+        </div>
+
+        <h1 class="hero-title rv rv-delay-1">
+          Tu <em>sonrisa perfecta</em> está más cerca de lo que crees
+        </h1>
+
+        <p class="hero-sub rv rv-delay-2">
+          Tratamientos dentales de alta calidad en Sevilla. Tecnología de vanguardia, equipo especializado y financiación sin intereses.
+        </p>
+
+        <div class="hero-pills rv rv-delay-3">
+          <span class="hero-pill"><span class="check">✓</span> Sin dolor</span>
+          <span class="hero-pill"><span class="check">✓</span> Financiación 0%</span>
+          <span class="hero-pill"><span class="check">✓</span> Urgencias 24h</span>
+        </div>
+
+        <div class="hero-ctas rv rv-delay-4">
+          <a href="#contacto" class="btn btn-primary" style="font-size:16px; padding:16px 32px;">
+            📅 Pedir cita ahora
+          </a>
+          <a href="tel:+34600000000" class="hero-phone">
+            <div class="hero-phone-icon">📞</div>
+            <div>
+              <div style="font-size:12px;color:var(--ink-muted);font-weight:500;">Llámanos</div>
+              600 000 000
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right -->
+      <div class="hero-img-wrap rv rv-delay-2">
+        <img
+          class="hero-img"
+          src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=1200&q=80"
+          alt="Clínica Dental Sonrisa Sevilla"
+          loading="eager"
+        />
+        <div class="hero-img-badge">
+          <div class="hero-badge-icon">🏆</div>
+          <div class="hero-badge-text">
+            <strong>+2.400</strong>
+            <span>Pacientes satisfechos</span>
+          </div>
+        </div>
+        <div class="hero-stars">
+          <div class="hero-stars-row">★★★★★</div>
+          <div class="hero-stars-label">4.9 en Google</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     URGENCIAS BAND
+═══════════════════════════════════════ -->
+<div id="urgencias-band">
+  <div class="container">
+    <div class="urgencias-inner">
+      <div class="urgencias-text">
+        <div class="urgencias-icon">🚨</div>
+        <div>
+          <div class="urgencias-headline">¿Tienes una urgencia dental?</div>
+          <div class="urgencias-sub">Atención inmediata — disponibles 24 horas, todos los días del año</div>
+        </div>
+      </div>
+      <a href="tel:+34600000000" class="btn btn-white" style="font-size:15px;">
+        📞 Llamar ahora — 600 000 000
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     SERVICIOS
+═══════════════════════════════════════ -->
+<section id="servicios" class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label rv">Nuestros servicios</span>
+      <h2 class="section-title rv rv-delay-1">Todo lo que necesitas en una sola clínica</h2>
+      <p class="section-sub rv rv-delay-2">Tratamientos personalizados con la tecnología más avanzada para devolverte la confianza en tu sonrisa.</p>
+    </div>
+
+    <div class="servicios-grid">
+      <div class="servicio-card rv">
+        <div class="servicio-icon">🦷</div>
+        <div class="servicio-title">Implantes dentales</div>
+        <p class="servicio-desc">Recupera tu sonrisa de forma permanente con implantes de titanio de última generación. Resultado natural y duradero.</p>
+        <span class="servicio-price">Desde 799 €</span>
+      </div>
+
+      <div class="servicio-card rv rv-delay-1">
+        <div class="servicio-icon">✨</div>
+        <div class="servicio-title">Estética dental</div>
+        <p class="servicio-desc">Carillas de porcelana, blanqueamiento profesional y diseño digital de sonrisa para un resultado espectacular.</p>
+        <span class="servicio-price">Desde 299 €</span>
+      </div>
+
+      <div class="servicio-card rv rv-delay-2">
+        <div class="servicio-icon">🔵</div>
+        <div class="servicio-title">Ortodoncia invisible</div>
+        <p class="servicio-desc">Invisalign Gold Provider. Alineadores transparentes y cómodos que nadie notará. Revisiones incluidas.</p>
+        <span class="servicio-price">Desde 1.800 €</span>
+      </div>
+
+      <div class="servicio-card rv">
+        <div class="servicio-icon">🏥</div>
+        <div class="servicio-title">Odontología general</div>
+        <p class="servicio-desc">Revisiones, limpiezas, empastes y endodoncias. Cuidamos de tu salud bucodental con la mayor precisión.</p>
+        <span class="servicio-price">Desde 35 €</span>
+      </div>
+
+      <div class="servicio-card rv rv-delay-1">
+        <div class="servicio-icon">👶</div>
+        <div class="servicio-title">Odontopediatría</div>
+        <p class="servicio-desc">Dentistas especializados en niños. Un entorno amigable y técnicas sin dolor para que los más pequeños no tengan miedo.</p>
+        <span class="servicio-price">1ª visita gratuita</span>
+      </div>
+
+      <div class="servicio-card rv rv-delay-2">
+        <div class="servicio-icon">🌙</div>
+        <div class="servicio-title">Urgencias 24h</div>
+        <p class="servicio-desc">Dolor de muelas, fractura dental, infección... estamos disponibles las 24 horas los 365 días del año.</p>
+        <span class="servicio-price">Atención inmediata</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     POR QUÉ ELEGIRNOS
+═══════════════════════════════════════ -->
+<section id="porque" class="section" style="background: var(--white); border-top: 1px solid var(--border);">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label rv">¿Por qué elegirnos?</span>
+      <h2 class="section-title rv rv-delay-1">La excelencia en cada detalle</h2>
+      <p class="section-sub rv rv-delay-2">Nos comprometemos con tu bienestar y con los mejores resultados. Esto es lo que nos diferencia.</p>
+    </div>
+
+    <div class="porque-grid">
+      <div class="porque-item rv">
+        <div class="porque-icon-wrap">🔬</div>
+        <div class="porque-title">Tecnología 3D</div>
+        <p class="porque-desc">Escáner intraoral de última generación, radiografía digital de baja radiación y diseño de sonrisa digital antes del tratamiento.</p>
+      </div>
+
+      <div class="porque-item rv rv-delay-1">
+        <div class="porque-icon-wrap">💉</div>
+        <div class="porque-title">Sin dolor</div>
+        <p class="porque-desc">Anestesia de última generación con técnicas de administración indolora. Tus tratamientos serán más cómodos de lo que imaginas.</p>
+      </div>
+
+      <div class="porque-item rv rv-delay-2">
+        <div class="porque-icon-wrap">💳</div>
+        <div class="porque-title">Financiación 0%</div>
+        <p class="porque-desc">Divide el coste de tu tratamiento en hasta 24 cómodas cuotas sin ningún tipo de interés. Tu sonrisa no puede esperar.</p>
+      </div>
+
+      <div class="porque-item rv rv-delay-3">
+        <div class="porque-icon-wrap">📋</div>
+        <div class="porque-title">Garantía escrita</div>
+        <p class="porque-desc">Todos nuestros tratamientos incluyen garantía escrita. Trabajamos con los mejores materiales para que tu resultado dure años.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     EQUIPO
+═══════════════════════════════════════ -->
+<section id="equipo" class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label rv">Nuestro equipo</span>
+      <h2 class="section-title rv rv-delay-1">Los mejores especialistas a tu servicio</h2>
+      <p class="section-sub rv rv-delay-2">Un equipo multidisciplinar formado en las mejores instituciones, dedicado a darte la mejor experiencia dental.</p>
+    </div>
+
+    <div class="equipo-grid">
+      <div class="equipo-card rv">
+        <div class="equipo-avatar equipo-avatar-a">AR</div>
+        <div class="equipo-name">Dra. Ana Romero</div>
+        <div class="equipo-role">Directora Clínica</div>
+        <p class="equipo-bio">Especialista en Implantología y Cirugía Oral con más de 20 años de experiencia. Formada en la Universidad de Sevilla y máster por la Universidad Complutense. Más de 3.000 implantes realizados.</p>
+        <span class="equipo-tag">✓ 20 años de experiencia</span>
+      </div>
+
+      <div class="equipo-card rv rv-delay-1">
+        <div class="equipo-avatar equipo-avatar-b">PM</div>
+        <div class="equipo-name">Dr. Pablo Martín</div>
+        <div class="equipo-role">Ortodoncista</div>
+        <p class="equipo-bio">Especialista en Ortodoncia e Invisalign Gold Provider. Doctor en Ciencias de la Salud. Premio al Mejor Caso Clínico de Ortodoncia 2023 del Colegio de Dentistas de Sevilla.</p>
+        <span class="equipo-tag">🏆 Invisalign Gold Provider</span>
+      </div>
+
+      <div class="equipo-card rv rv-delay-2">
+        <div class="equipo-avatar equipo-avatar-c">SL</div>
+        <div class="equipo-name">Dra. Sara López</div>
+        <div class="equipo-role">Odontología Estética</div>
+        <p class="equipo-bio">Especialista en Estética Dental y diseño de sonrisa digital. Experta en carillas de porcelana y composite. Formada en el Institut Straumann (Basilea) y Biomimetic Dentistry.</p>
+        <span class="equipo-tag">✨ Diseño de sonrisa digital</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     PROCESO
+═══════════════════════════════════════ -->
+<section id="proceso" class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label rv">Cómo funciona</span>
+      <h2 class="section-title rv rv-delay-1">Tu camino hacia la sonrisa perfecta</h2>
+      <p class="section-sub rv rv-delay-2" style="margin: 0 auto; color: rgba(255,255,255,.7);">Un proceso sencillo, transparente y totalmente personalizado para ti.</p>
+    </div>
+
+    <div class="proceso-grid">
+      <div class="proceso-step rv">
+        <div class="proceso-num">1</div>
+        <div class="proceso-title">Pide cita</div>
+        <p class="proceso-desc">Llámanos, escríbenos por WhatsApp o rellena el formulario online. Te respondemos en menos de 2 horas.</p>
+      </div>
+
+      <div class="proceso-step rv rv-delay-1">
+        <div class="proceso-num">2</div>
+        <div class="proceso-title">Valoración gratuita</div>
+        <p class="proceso-desc">Primera visita sin coste. Exploración completa, radiografía panorámica digital y diagnóstico personalizado.</p>
+      </div>
+
+      <div class="proceso-step rv rv-delay-2">
+        <div class="proceso-num">3</div>
+        <div class="proceso-title">Plan personalizado</div>
+        <p class="proceso-desc">Te presentamos tu plan de tratamiento con el diseño digital de tu sonrisa, plazos y opciones de financiación.</p>
+      </div>
+
+      <div class="proceso-step rv rv-delay-3">
+        <div class="proceso-num">4</div>
+        <div class="proceso-title">Empieza tu tratamiento</div>
+        <p class="proceso-desc">Comenzamos cuando tú quieras. Seguimiento continuado y garantía escrita en todos los tratamientos realizados.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     TESTIMONIALES
+═══════════════════════════════════════ -->
+<section id="testimoniales" class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label rv">Opiniones</span>
+      <h2 class="section-title rv rv-delay-1">Lo que dicen nuestros pacientes</h2>
+      <p class="section-sub rv rv-delay-2">Más de 2.400 pacientes satisfechos avalan nuestro trabajo. Esto es lo que nos cuentan.</p>
+    </div>
+
+    <div class="testimoniales-grid">
+      <div class="testimonial-card rv">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Llevaba años sin ir al dentista por miedo, pero desde el primer momento me sentí cómoda. La Dra. Romero es increíble, muy profesional y cercana. Me colocaron dos implantes y el resultado es espectacular. Los recomiendo al 100%."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar ta-1">MC</div>
+          <div>
+            <div class="testimonial-name">María Carmen Flores</div>
+            <div class="testimonial-meta">Paciente · Implantes · Sevilla</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card rv rv-delay-1">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Contraté el tratamiento Invisalign con el Dr. Martín y ha sido una pasada. Nadie se daba cuenta de que llevaba alineadores. En 14 meses tengo los dientes perfectos. La financiación en cuotas me facilitó mucho la decisión. Clínica de 10."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar ta-2">JL</div>
+          <div>
+            <div class="testimonial-name">Javier Leal Moreno</div>
+            <div class="testimonial-meta">Paciente · Invisalign · Sevilla</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card rv rv-delay-2">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Vine con una urgencia un sábado por la tarde y me atendieron enseguida. Sin cita, sin esperas, con mucha amabilidad. Después me hice las carillas con la Dra. López y quedé enamorada de mi sonrisa. Es la clínica dental más profesional que he conocido."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar ta-3">LV</div>
+          <div>
+            <div class="testimonial-name">Laura Vega Ruiz</div>
+            <div class="testimonial-meta">Paciente · Carillas + Urgencias · Sevilla</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     PRECIOS
+═══════════════════════════════════════ -->
+<section id="precios" class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label rv">Tarifas</span>
+      <h2 class="section-title rv rv-delay-1">Precios claros y sin sorpresas</h2>
+      <p class="section-sub rv rv-delay-2">Transparencia total desde el primer momento. El precio que te decimos es el precio que pagas.</p>
+    </div>
+
+    <div class="precios-grid">
+      <div class="precio-card rv">
+        <div class="precio-icon">🔍</div>
+        <div class="precio-name">Revisión + limpieza</div>
+        <div class="precio-amount">35€</div>
+        <div class="precio-note">Primera visita de valoración</div>
+      </div>
+
+      <div class="precio-card rv rv-delay-1">
+        <div class="precio-icon">🦷</div>
+        <div class="precio-name">Empaste</div>
+        <div class="precio-amount">50€</div>
+        <div class="precio-note">desde, según complejidad</div>
+      </div>
+
+      <div class="precio-card rv rv-delay-2">
+        <div class="precio-icon">✨</div>
+        <div class="precio-name">Blanqueamiento</div>
+        <div class="precio-amount">299€</div>
+        <div class="precio-note">desde, clínico profesional</div>
+      </div>
+
+      <div class="precio-card rv rv-delay-3">
+        <div class="precio-icon">🔩</div>
+        <div class="precio-name">Implante dental</div>
+        <div class="precio-amount">799€</div>
+        <div class="precio-note">desde, titanio de grado médico</div>
+      </div>
+    </div>
+
+    <div class="precios-footer rv">
+      <div class="precios-finance">
+        <div class="finance-icon">💳</div>
+        <div class="finance-text">
+          <strong>Financiación hasta 24 meses sin intereses</strong>
+          <span>Aprobación inmediata · Sin papeleos</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;font-weight:600;color:var(--ink-muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.06em;">Seguros aceptados</div>
+        <div class="seguros-list">
+          <span class="seguro-tag">Adeslas</span>
+          <span class="seguro-tag">Sanitas</span>
+          <span class="seguro-tag">Mapfre</span>
+          <span class="seguro-tag">DKV</span>
+          <span class="seguro-tag">Asisa</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     CONTACTO
+═══════════════════════════════════════ -->
+<section id="contacto" class="section">
+  <div class="container">
+    <div class="contacto-grid">
+      <!-- Form -->
+      <div class="contacto-form rv">
+        <div class="contacto-form-title">Pide tu cita</div>
+        <div class="contacto-form-sub">Primera valoración gratuita. Te llamamos en menos de 2 horas.</div>
+
+        <form onsubmit="handleForm(event)">
+          <div class="form-row">
+            <label for="nombre">Nombre completo *</label>
+            <input type="text" id="nombre" placeholder="Tu nombre y apellidos" required />
+          </div>
+          <div class="form-row">
+            <label for="telefono">Teléfono *</label>
+            <input type="tel" id="telefono" placeholder="6xx xxx xxx" required />
+          </div>
+          <div class="form-row">
+            <label for="servicio">Tratamiento de interés</label>
+            <select id="servicio">
+              <option value="">Selecciona un tratamiento...</option>
+              <option>Implantes dentales</option>
+              <option>Estética dental / Carillas</option>
+              <option>Ortodoncia invisible (Invisalign)</option>
+              <option>Blanqueamiento dental</option>
+              <option>Odontología general</option>
+              <option>Odontopediatría</option>
+              <option>Urgencia dental</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="mensaje">¿Cuándo prefieres la visita? (opcional)</label>
+            <textarea id="mensaje" placeholder="Ej: Mañanas, tardes, fines de semana... cualquier detalle que quieras añadir."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;font-size:16px;padding:15px;">
+            📅 Solicitar cita gratuita
+          </button>
+
+          <p class="form-note">🔒 Tus datos están protegidos conforme al RGPD. No compartimos tu información con terceros.</p>
+        </form>
+      </div>
+
+      <!-- Info -->
+      <div class="contacto-info rv rv-delay-1">
+        <span class="section-label">Encuéntranos</span>
+        <h2 class="contacto-info-title">Estamos en el corazón de Sevilla</h2>
+        <p class="contacto-info-sub">A pocos pasos de la Calle Sierpes, con fácil acceso en transporte público y parking cercano. Ven a visitarnos.</p>
+
+        <div class="info-items">
+          <div class="info-item">
+            <div class="info-icon">📍</div>
+            <div>
+              <div class="info-label">Dirección</div>
+              <div class="info-value">C/ Sierpes, 45 — 1ª planta<br>41004 Sevilla, España</div>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">📞</div>
+            <div>
+              <div class="info-label">Teléfono</div>
+              <div class="info-value"><a href="tel:+34600000000">600 000 000</a></div>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">✉️</div>
+            <div>
+              <div class="info-label">Email</div>
+              <div class="info-value"><a href="mailto:citas@clinicasonrisa.es">citas@clinicasonrisa.es</a></div>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">🕐</div>
+            <div>
+              <div class="info-label">Horario</div>
+              <div class="info-value">
+                Lun – Vie: 9:00 – 21:00<br>
+                Sábados: 9:00 – 14:00<br>
+                <span style="color:var(--red);font-size:13px;">Urgencias 24h · 365 días</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Map placeholder -->
+        <div style="margin-top:28px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);height:180px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;">
+          <div style="text-align:center;">
+            <div style="font-size:36px;margin-bottom:8px;">📍</div>
+            <div style="font-size:14px;font-weight:600;color:var(--ink-soft);">C/ Sierpes, 45 · Sevilla</div>
+            <a href="https://maps.google.com" target="_blank" style="display:inline-block;margin-top:8px;font-size:13px;color:var(--blue);font-weight:600;">Ver en Google Maps →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════ -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <!-- Brand -->
+      <div class="footer-brand">
+        <div class="footer-logo-main">SONRISA</div>
+        <div class="footer-logo-sub">Clínica Dental · Sevilla</div>
+        <p class="footer-brand-desc">Clínica dental privada en Sevilla con más de 15 años de experiencia. Tecnología de última generación al servicio de tu sonrisa.</p>
+        <div class="footer-socials">
+          <a href="#" class="footer-social" aria-label="Facebook">📘</a>
+          <a href="#" class="footer-social" aria-label="Instagram">📷</a>
+          <a href="#" class="footer-social" aria-label="YouTube">▶️</a>
+          <a href="#" class="footer-social" aria-label="WhatsApp">💬</a>
+        </div>
+      </div>
+
+      <!-- Tratamientos -->
+      <div>
+        <div class="footer-col-title">Tratamientos</div>
+        <ul class="footer-links">
+          <li><a href="#servicios">Implantes dentales</a></li>
+          <li><a href="#servicios">Estética dental</a></li>
+          <li><a href="#servicios">Invisalign</a></li>
+          <li><a href="#servicios">Blanqueamiento</a></li>
+          <li><a href="#servicios">Odontopediatría</a></li>
+          <li><a href="#servicios">Urgencias 24h</a></li>
+        </ul>
+      </div>
+
+      <!-- Clínica -->
+      <div>
+        <div class="footer-col-title">La Clínica</div>
+        <ul class="footer-links">
+          <li><a href="#equipo">Nuestro equipo</a></li>
+          <li><a href="#porque">Por qué elegirnos</a></li>
+          <li><a href="#precios">Tarifas y precios</a></li>
+          <li><a href="#proceso">Cómo funciona</a></li>
+          <li><a href="#testimoniales">Opiniones</a></li>
+        </ul>
+      </div>
+
+      <!-- Contacto -->
+      <div>
+        <div class="footer-col-title">Contacto</div>
+        <ul class="footer-links">
+          <li><a href="#contacto">Pedir cita</a></li>
+          <li><a href="tel:+34600000000">600 000 000</a></li>
+          <li><a href="mailto:citas@clinicasonrisa.es">citas@clinicasonrisa.es</a></li>
+          <li><a href="#">C/ Sierpes 45, Sevilla</a></li>
+        </ul>
+        <div style="margin-top:20px;">
+          <a href="tel:+34600000000" class="btn btn-red-outline" style="font-size:13px;width:100%;justify-content:center;">🚨 Urgencias 24h</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Clínica Dental Sonrisa · Sevilla · Todos los derechos reservados</div>
+      <div class="footer-legal">
+        <a href="#">Aviso legal</a>
+        <a href="#">Política de privacidad</a>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════
+     WHATSAPP FAB
+═══════════════════════════════════════ -->
+<a
+  id="whatsapp-fab"
+  href="https://wa.me/34600000000?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20cita%20en%20Cl%C3%ADnica%20Dental%20Sonrisa"
+  target="_blank"
+  rel="noopener"
+  aria-label="Contactar por WhatsApp"
+>
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+  </svg>
+  <div class="fab-tooltip">Escríbenos por WhatsApp</div>
+</a>
+
+<!-- ═══════════════════════════════════════
+     JS
+═══════════════════════════════════════ -->
+<script>
+  // ── Nav shadow on scroll ──
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  // ── Hamburger menu ──
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Close on outside click
+  document.addEventListener('click', (e) => {
+    if (!navbar.contains(e.target) && !mobileMenu.contains(e.target)) {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+
+  // ── IntersectionObserver scroll reveal ──
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.rv').forEach(el => revealObserver.observe(el));
+
+  // ── Form handler ──
+  function handleForm(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button[type="submit"]');
+    const original = btn.innerHTML;
+    btn.innerHTML = '✅ ¡Solicitud enviada! Te llamamos pronto.';
+    btn.style.background = 'var(--green)';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.innerHTML = original;
+      btn.style.background = '';
+      btn.disabled = false;
+      e.target.reset();
+    }, 4000);
+  }
+
+  // ── Smooth scroll for anchor links ──
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const offset = 80;
+        const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
