@@ -775,6 +775,13 @@
       font-family: 'DM Serif Display', serif;
       font-size: 4.5rem;
       color: rgba(255,255,255,0.9);
+      position: relative;
+      overflow: hidden;
+    }
+    .team-card__photo img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
     }
 
     .team-card__photo--1 { background: linear-gradient(145deg, #1B4FD8 0%, #4F75E0 100%); }
@@ -1887,7 +1894,9 @@
       </div>
       <div class="team__grid">
         <div class="team-card reveal">
-          <div class="team-card__photo team-card__photo--1" aria-hidden="true">A</div>
+          <div class="team-card__photo team-card__photo--1">
+            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&q=80" alt="Dra. Ana Romero" loading="lazy" onerror="this.remove()"/>
+          </div>
           <div class="team-card__body">
             <div class="team-card__role">Directora · Implantología y Cirugía Oral</div>
             <h3 class="team-card__name">Dra. Ana Romero</h3>
@@ -1896,7 +1905,9 @@
           </div>
         </div>
         <div class="team-card reveal reveal-delay-1">
-          <div class="team-card__photo team-card__photo--2" aria-hidden="true">P</div>
+          <div class="team-card__photo team-card__photo--2">
+            <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&q=80" alt="Dr. Pablo Martín" loading="lazy" onerror="this.remove()"/>
+          </div>
           <div class="team-card__body">
             <div class="team-card__role">Ortodoncista · Invisalign Gold Provider</div>
             <h3 class="team-card__name">Dr. Pablo Martín</h3>
@@ -1905,7 +1916,9 @@
           </div>
         </div>
         <div class="team-card reveal reveal-delay-2">
-          <div class="team-card__photo team-card__photo--3" aria-hidden="true">S</div>
+          <div class="team-card__photo team-card__photo--3">
+            <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=600&q=80" alt="Dra. Sara López" loading="lazy" onerror="this.remove()"/>
+          </div>
           <div class="team-card__body">
             <div class="team-card__role">Odontología Estética · Diseño de Sonrisa</div>
             <h3 class="team-card__name">Dra. Sara López</h3>
