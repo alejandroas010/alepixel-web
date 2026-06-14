@@ -1,0 +1,1716 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NOCHE — Coctelería & Lounge · Barcelona</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── RESET & BASE ─── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --void:    #03020A;
+      --deep:    #0A0812;
+      --purple:  #4A1F8A;
+      --purple-2:#6B35C0;
+      --amber:   #D4A017;
+      --amber-2: #F0C030;
+      --rose:    #C4566A;
+      --white:   #F0EDF8;
+      --muted:   rgba(240,237,248,0.45);
+      --border:  rgba(212,160,23,0.15);
+      --glow:    rgba(107,53,192,0.3);
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--void);
+      color: var(--white);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--void); }
+    ::-webkit-scrollbar-thumb { background: var(--amber); border-radius: 3px; }
+
+    /* ─── UTILITY ─── */
+    .section-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 1.2rem;
+    }
+
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      color: var(--amber);
+      line-height: 1.1;
+    }
+
+    .section-subtitle {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 300;
+      color: var(--muted);
+      margin-top: 1rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      border-radius: 3px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+    }
+
+    .btn-amber {
+      background: var(--amber);
+      color: var(--void);
+    }
+    .btn-amber:hover {
+      background: var(--amber-2);
+      box-shadow: 0 0 30px rgba(212,160,23,0.4);
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(240,237,248,0.3);
+    }
+    .btn-ghost:hover {
+      border-color: var(--amber);
+      color: var(--amber);
+      box-shadow: 0 0 20px rgba(212,160,23,0.15);
+      transform: translateY(-2px);
+    }
+
+    /* ─── SCROLL REVEAL ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 1.4rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.4s ease, backdrop-filter 0.4s ease, padding 0.4s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(3,2,10,0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 1rem 4rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+    .nav-logo-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--amber);
+      letter-spacing: 0.25em;
+      line-height: 1;
+    }
+    .nav-logo-sub {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 400;
+      letter-spacing: 0.3em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-top: 0.25rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.25s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0; right: 0;
+      height: 1px;
+      background: var(--amber);
+      transform: scaleX(0);
+      transition: transform 0.25s ease;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    .nav-cta { margin-left: 1rem; }
+
+    /* Hamburger */
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-burger span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background: var(--amber);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    /* Mobile nav */
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(3,2,10,0.98);
+      backdrop-filter: blur(20px);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a {
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.1em;
+      transition: color 0.2s;
+    }
+    .nav-mobile a:hover { color: var(--amber); }
+    .nav-mobile-close {
+      position: absolute;
+      top: 1.5rem; right: 2rem;
+      font-size: 2rem;
+      color: var(--muted);
+      cursor: pointer;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+    .nav-mobile-close:hover { color: var(--amber); }
+
+    /* ─── HERO ─── */
+    #hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      transform: scale(1.05);
+      transition: transform 0.5s ease;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(3,2,10,0.55) 0%,
+        rgba(3,2,10,0.72) 50%,
+        rgba(3,2,10,0.9) 100%
+      );
+    }
+
+    /* Purple glow orb */
+    .hero-glow {
+      position: absolute;
+      width: 60vw;
+      height: 60vw;
+      max-width: 700px;
+      max-height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(107,53,192,0.25) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: pulse-glow 5s ease-in-out infinite;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
+      50% { opacity: 1; transform: translate(-50%, -50%) scale(1.08); }
+    }
+
+    /* Floating particles */
+    .hero-particles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(212,160,23,0.6);
+      animation: float-up linear infinite;
+    }
+
+    @keyframes float-up {
+      0% { opacity: 0; transform: translateY(0) scale(0.5); }
+      10% { opacity: 1; }
+      90% { opacity: 0.4; }
+      100% { opacity: 0; transform: translateY(-120vh) scale(1); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      padding: 0 2rem;
+    }
+
+    .hero-city {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fade-in-up 1s ease 0.3s forwards;
+    }
+
+    .hero-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(5rem, 13vw, 14rem);
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.15em;
+      line-height: 0.9;
+      opacity: 0;
+      animation: fade-in-up 1s ease 0.6s forwards;
+      text-shadow: 0 0 80px rgba(212,160,23,0.2);
+    }
+
+    .hero-divider {
+      width: 60px;
+      height: 1px;
+      background: var(--amber);
+      margin: 2rem auto;
+      opacity: 0;
+      animation: fade-in 1s ease 0.9s forwards;
+    }
+
+    .hero-sub {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      font-weight: 300;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      line-height: 1.5;
+      opacity: 0;
+      animation: fade-in-up 1s ease 1s forwards;
+    }
+    .hero-sub em {
+      font-style: italic;
+      color: rgba(240,237,248,0.65);
+    }
+
+    .hero-hours {
+      margin-top: 1.8rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--amber);
+      opacity: 0;
+      animation: fade-in 1s ease 1.2s forwards;
+    }
+
+    .hero-actions {
+      margin-top: 2.5rem;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fade-in-up 1s ease 1.4s forwards;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0;
+      animation: fade-in 1.5s ease 2s forwards;
+    }
+    .hero-scroll span {
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .hero-scroll-line {
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, var(--amber), transparent);
+      animation: scroll-line 2s ease-in-out infinite;
+    }
+
+    @keyframes scroll-line {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(0.5); transform-origin: top; }
+    }
+
+    @keyframes fade-in-up {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fade-in {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* ─── GENERIC SECTION WRAPPER ─── */
+    .section {
+      padding: 8rem 4rem;
+      position: relative;
+    }
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-head {
+      margin-bottom: 4rem;
+    }
+
+    /* Decorative number */
+    .deco-num {
+      position: absolute;
+      font-family: 'Cinzel', serif;
+      font-size: clamp(6rem, 14vw, 16rem);
+      font-weight: 700;
+      color: rgba(212,160,23,0.04);
+      line-height: 1;
+      top: 3rem;
+      left: 4rem;
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: -0.05em;
+    }
+
+    /* ─── CÓCTELES ─── */
+    #cocktails {
+      background: var(--deep);
+    }
+
+    .cocktail-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .cocktail-card {
+      background: rgba(10,8,18,0.8);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+      transition: border-color 0.35s, box-shadow 0.35s, transform 0.35s;
+      cursor: default;
+    }
+    .cocktail-card:hover {
+      border-color: rgba(212,160,23,0.45);
+      box-shadow: 0 0 40px rgba(212,160,23,0.1), 0 0 80px rgba(107,53,192,0.1);
+      transform: translateY(-6px);
+    }
+
+    .cocktail-card-img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      filter: brightness(0.75) saturate(0.85);
+      transition: filter 0.4s, transform 0.4s;
+    }
+    .cocktail-card:hover .cocktail-card-img {
+      filter: brightness(0.9) saturate(1);
+      transform: scale(1.03);
+    }
+
+    .cocktail-card-img-wrap {
+      overflow: hidden;
+      position: relative;
+    }
+    .cocktail-card-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,8,18,1) 0%, transparent 60%);
+    }
+
+    .cocktail-card-body {
+      padding: 1.8rem;
+    }
+
+    .cocktail-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--amber);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.6rem;
+    }
+
+    .cocktail-ingredients {
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 1.2rem;
+    }
+
+    .cocktail-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .cocktail-price {
+      font-family: 'Cinzel', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .cocktail-tag {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--amber);
+      border: 1px solid rgba(212,160,23,0.3);
+      padding: 0.3rem 0.7rem;
+      border-radius: 2px;
+    }
+
+    /* ─── DESTILADOS ─── */
+    #destilados {
+      background: var(--void);
+    }
+
+    .destilados-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .destilado-card {
+      padding: 2.5rem 2rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .destilado-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(107,53,192,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .destilado-card:hover {
+      border-color: rgba(107,53,192,0.4);
+      box-shadow: 0 0 40px rgba(107,53,192,0.08);
+    }
+
+    .destilado-icon {
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+      filter: grayscale(0.3);
+    }
+
+    .destilado-cat {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--amber);
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+
+    .destilado-desc {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .destilado-count {
+      margin-top: 1.5rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--purple-2);
+    }
+
+    /* ─── AMBIENTE ─── */
+    #ambiente {
+      position: relative;
+      height: 70vh;
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .ambiente-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center 40%;
+      background-attachment: fixed;
+    }
+
+    .ambiente-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(3,2,10,0.72);
+    }
+
+    .ambiente-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 800px;
+      padding: 0 2rem;
+    }
+
+    .ambiente-quote {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.6rem, 4vw, 3rem);
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.3;
+      letter-spacing: 0.05em;
+    }
+
+    .ambiente-line {
+      width: 80px;
+      height: 1px;
+      background: var(--amber);
+      margin: 2rem auto;
+    }
+
+    .ambiente-sub {
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+
+    /* ─── MÚSICA ─── */
+    #musica {
+      background: var(--deep);
+    }
+
+    .music-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+      margin-bottom: 4rem;
+    }
+
+    .genres-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .genre-tag {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: rgba(107,53,192,0.2);
+      border: 1px solid rgba(107,53,192,0.35);
+      padding: 0.45rem 1rem;
+      border-radius: 2px;
+      transition: background 0.25s, border-color 0.25s;
+    }
+    .genre-tag:hover {
+      background: rgba(107,53,192,0.35);
+      border-color: rgba(107,53,192,0.6);
+    }
+
+    .music-note {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .events-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .event-item {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 2rem;
+      padding: 1.8rem 0;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.25s;
+    }
+    .event-item:first-child { border-top: 1px solid var(--border); }
+
+    .event-date {
+      text-align: center;
+      min-width: 70px;
+    }
+    .event-date-day {
+      font-family: 'Cinzel', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--amber);
+      line-height: 1;
+    }
+    .event-date-month {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+
+    .event-info {}
+    .event-artist {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.04em;
+    }
+    .event-genre {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--muted);
+      margin-top: 0.25rem;
+    }
+
+    .event-badge {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+    .event-badge-sold {
+      background: rgba(196,86,106,0.15);
+      border: 1px solid rgba(196,86,106,0.3);
+      color: var(--rose);
+    }
+    .event-badge-avail {
+      background: rgba(212,160,23,0.1);
+      border: 1px solid rgba(212,160,23,0.3);
+      color: var(--amber);
+    }
+
+    /* ─── RESERVAS ─── */
+    #reservas {
+      background: var(--void);
+    }
+
+    .reservas-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .reservas-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--amber);
+      border: 1px solid rgba(212,160,23,0.3);
+      padding: 0.4rem 1.2rem;
+      border-radius: 2px;
+      margin-bottom: 2rem;
+    }
+
+    .reservas-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+    }
+
+    .reservas-desc {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+    }
+
+    .reservas-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .reservas-note {
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(240,237,248,0.3);
+    }
+    .reservas-note span {
+      color: var(--rose);
+      margin-right: 0.5rem;
+    }
+
+    /* ─── HORARIO ─── */
+    #horario {
+      background: var(--deep);
+      padding: 5rem 4rem;
+    }
+
+    .horario-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .horario-block-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--amber);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .horario-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(212,160,23,0.06);
+    }
+    .horario-day {
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: var(--muted);
+    }
+    .horario-time {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--white);
+    }
+    .horario-closed {
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: rgba(196,86,106,0.7);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .address-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .address-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .address-item-icon {
+      color: var(--amber);
+      font-size: 1rem;
+      margin-top: 0.1rem;
+      flex-shrink: 0;
+    }
+
+    .address-item-text {
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .address-item-text strong {
+      display: block;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 0.2rem;
+    }
+
+    /* Map placeholder */
+    .map-placeholder {
+      background: rgba(10,8,18,0.8);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .map-placeholder-icon {
+      font-size: 1.8rem;
+      color: var(--amber);
+      margin-bottom: 0.5rem;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--void);
+      border-top: 1px solid var(--amber);
+      padding: 4rem 4rem 2.5rem;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 4rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .footer-logo-title {
+      font-family: 'Cinzel', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--amber);
+      letter-spacing: 0.25em;
+      line-height: 1;
+    }
+    .footer-logo-sub {
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.4rem;
+      margin-bottom: 1.2rem;
+    }
+    .footer-tagline {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .footer-col-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--amber);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+    .footer-links a {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--white); }
+
+    .footer-social {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-btn {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 1.1rem;
+      transition: border-color 0.25s, color 0.25s, background 0.25s;
+    }
+    .social-btn:hover {
+      border-color: var(--amber);
+      color: var(--amber);
+      background: rgba(212,160,23,0.08);
+    }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      font-weight: 300;
+      color: rgba(240,237,248,0.25);
+    }
+
+    .footer-credit a {
+      color: rgba(212,160,23,0.5);
+      transition: color 0.2s;
+    }
+    .footer-credit a:hover { color: var(--amber); }
+
+    /* ─── WHATSAPP BUTTON ─── */
+    .wa-btn {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 900;
+      width: 56px;
+      height: 56px;
+      background: var(--void);
+      border: 1.5px solid var(--amber);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+    .wa-btn:hover {
+      background: rgba(212,160,23,0.12);
+      box-shadow: 0 4px 30px rgba(212,160,23,0.3);
+      transform: scale(1.08);
+    }
+    .wa-btn svg {
+      width: 26px;
+      height: 26px;
+      fill: var(--amber);
+    }
+
+    .wa-tooltip {
+      position: absolute;
+      right: 70px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(10,8,18,0.95);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.5rem 0.9rem;
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: var(--white);
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+    .wa-btn:hover .wa-tooltip { opacity: 1; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      nav { padding: 1.2rem 2rem; }
+      nav.scrolled { padding: 0.9rem 2rem; }
+      .section { padding: 6rem 2rem; }
+      .cocktail-grid { grid-template-columns: repeat(2, 1fr); }
+      .destilados-grid { grid-template-columns: repeat(3, 1fr); }
+      .music-header { grid-template-columns: 1fr; gap: 2rem; }
+      .horario-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-top { grid-template-columns: 1fr; gap: 2.5rem; }
+      .deco-num { font-size: 8rem; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .nav-burger { display: flex; }
+
+      .hero-title { font-size: clamp(4rem, 20vw, 7rem); }
+
+      .section { padding: 5rem 1.5rem; }
+
+      .cocktail-grid { grid-template-columns: 1fr; }
+      .destilados-grid { grid-template-columns: 1fr; gap: 1rem; }
+
+      .music-header { grid-template-columns: 1fr; gap: 2rem; }
+
+      .event-item {
+        grid-template-columns: auto 1fr;
+        gap: 1.2rem;
+      }
+      .event-badge { display: none; }
+
+      #horario { padding: 4rem 1.5rem; }
+      .horario-grid { grid-template-columns: 1fr; gap: 2rem; }
+
+      footer { padding: 3rem 1.5rem 2rem; }
+      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+
+      .deco-num { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAV ─── -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">
+      <span class="nav-logo-title">NOCHE</span>
+      <span class="nav-logo-sub">Coctelería &amp; Lounge</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#cocktails">Cócteles</a></li>
+      <li><a href="#musica">Música</a></li>
+      <li><a href="#musica">Eventos</a></li>
+      <li><a href="#reservas">Reservas</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#reservas" class="btn btn-amber">Reservar mesa</a>
+    </div>
+    <div class="nav-burger" id="burger" role="button" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div class="nav-mobile" id="mobileNav">
+    <div class="nav-mobile-close" id="mobileClose">×</div>
+    <a href="#cocktails" class="mobile-link">Cócteles</a>
+    <a href="#musica" class="mobile-link">Música</a>
+    <a href="#musica" class="mobile-link">Eventos</a>
+    <a href="#reservas" class="mobile-link">Reservas</a>
+    <a href="#reservas" class="btn btn-amber" style="margin-top:1rem;">Reservar mesa</a>
+  </div>
+
+  <!-- ─── HERO ─── -->
+  <section id="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-particles" id="particles"></div>
+
+    <div class="hero-content">
+      <p class="hero-city">Barcelona &nbsp;·&nbsp; Born</p>
+      <h1 class="hero-title">NOCHE</h1>
+      <div class="hero-divider"></div>
+      <p class="hero-sub">Cada copa, una historia.<br><em>Cada noche, un viaje.</em></p>
+      <p class="hero-hours">Mar — Dom &nbsp;·&nbsp; 20:00 — 03:00</p>
+      <div class="hero-actions">
+        <a href="#reservas" class="btn btn-amber">Reservar mesa</a>
+        <a href="#cocktails" class="btn btn-ghost">Ver cócteles</a>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="hero-scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ─── CÓCTELES ─── -->
+  <section id="cocktails" class="section">
+    <span class="deco-num" aria-hidden="true">01</span>
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <p class="section-label">Barra de autor</p>
+        <h2 class="section-title" style="font-size: clamp(2rem,5vw,3.2rem);">Nuestras Creaciones</h2>
+        <p class="section-subtitle" style="max-width:520px;font-size:1rem;">
+          Cócteles diseñados por nuestro bartender jefe. Cada uno, una experiencia única elaborada con destilados premium e ingredientes de temporada.
+        </p>
+      </div>
+
+      <div class="cocktail-grid">
+
+        <!-- Eclipse -->
+        <div class="cocktail-card reveal reveal-delay-1">
+          <div class="cocktail-card-img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1536935338788-846bb9981813?auto=format&fit=crop&w=1200&q=80"
+              alt="Cóctel Eclipse"
+              class="cocktail-card-img"
+            />
+            <div class="cocktail-card-img-overlay"></div>
+          </div>
+          <div class="cocktail-card-body">
+            <h3 class="cocktail-name">Eclipse</h3>
+            <p class="cocktail-ingredients">Ron añejo · bitter de naranja · sirope de hibisco · espuma de lima</p>
+            <div class="cocktail-footer">
+              <span class="cocktail-price">14 €</span>
+              <span class="cocktail-tag">Firma</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Violeta -->
+        <div class="cocktail-card reveal reveal-delay-2">
+          <div class="cocktail-card-img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1200&q=80"
+              alt="Cóctel Violeta"
+              class="cocktail-card-img"
+            />
+            <div class="cocktail-card-img-overlay"></div>
+          </div>
+          <div class="cocktail-card-body">
+            <h3 class="cocktail-name">Violeta</h3>
+            <p class="cocktail-ingredients">Gin London Dry · crème de violette · pepino · agua tónica premium</p>
+            <div class="cocktail-footer">
+              <span class="cocktail-price">13 €</span>
+              <span class="cocktail-tag">Floral</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Obsidiana -->
+        <div class="cocktail-card reveal reveal-delay-3">
+          <div class="cocktail-card-img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80"
+              alt="Cóctel Obsidiana"
+              class="cocktail-card-img"
+            />
+            <div class="cocktail-card-img-overlay"></div>
+          </div>
+          <div class="cocktail-card-body">
+            <h3 class="cocktail-name">Obsidiana</h3>
+            <p class="cocktail-ingredients">Mezcal ahumado · agave · lima · sal negra volcánica</p>
+            <div class="cocktail-footer">
+              <span class="cocktail-price">15 €</span>
+              <span class="cocktail-tag">Ahumado</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Oro Negro -->
+        <div class="cocktail-card reveal reveal-delay-4">
+          <div class="cocktail-card-img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1536935338788-846bb9981813?auto=format&fit=crop&w=1200&q=80&sat=-20&bri=-10"
+              alt="Cóctel Oro Negro"
+              class="cocktail-card-img"
+              style="filter: brightness(0.6) saturate(0.7) sepia(0.4);"
+            />
+            <div class="cocktail-card-img-overlay"></div>
+          </div>
+          <div class="cocktail-card-body">
+            <h3 class="cocktail-name">Oro Negro</h3>
+            <p class="cocktail-ingredients">Bourbon · café frío de especialidad · sirope de caramelo salado · bitters de chocolate</p>
+            <div class="cocktail-footer">
+              <span class="cocktail-price">14 €</span>
+              <span class="cocktail-tag">Dark</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /cocktail-grid -->
+    </div>
+  </section>
+
+  <!-- ─── DESTILADOS ─── -->
+  <section id="destilados" class="section">
+    <span class="deco-num" aria-hidden="true">02</span>
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <p class="section-label">Selección Premium</p>
+        <h2 class="section-title" style="font-size: clamp(2rem,5vw,3.2rem);">Destilados de Excepción</h2>
+        <p class="section-subtitle" style="max-width:540px;font-size:1rem;">
+          Más de 180 referencias seleccionadas con criterio. Solo entra lo que nos apasiona.
+        </p>
+      </div>
+
+      <div class="destilados-grid">
+        <div class="destilado-card reveal reveal-delay-1">
+          <div class="destilado-icon">🥃</div>
+          <h3 class="destilado-cat">Whiskies</h3>
+          <p class="destilado-desc">Single malts de las Highlands, bourbons de pequeños productores americanos y expresiones japonesas de culto. Más de 60 referencias de 12 a 30+ años.</p>
+          <p class="destilado-count">+60 referencias</p>
+        </div>
+        <div class="destilado-card reveal reveal-delay-2">
+          <div class="destilado-icon">🫒</div>
+          <h3 class="destilado-cat">Ginebras</h3>
+          <p class="destilado-desc">Botánicos mediterráneos, floras alpinas y destilerías artesanas de toda Europa. De las más florales a las más secas y junipéricas.</p>
+          <p class="destilado-count">+45 referencias</p>
+        </div>
+        <div class="destilado-card reveal reveal-delay-3">
+          <div class="destilado-icon">🌿</div>
+          <h3 class="destilado-cat">Rones Premium</h3>
+          <p class="destilado-desc">Añejos del Caribe, agricoles de Martinica y reservas especiales de Cuba y Venezuela. El alma del trópico embotellada.</p>
+          <p class="destilado-count">+40 referencias</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── AMBIENTE ─── -->
+  <section id="ambiente">
+    <div class="ambiente-bg"></div>
+    <div class="ambiente-overlay"></div>
+    <div class="ambiente-content reveal">
+      <p class="section-label" style="letter-spacing: 0.4em;">El espacio</p>
+      <blockquote class="ambiente-quote">
+        "Un espacio diseñado<br>para perderse en la noche."
+      </blockquote>
+      <div class="ambiente-line"></div>
+      <p class="ambiente-sub">Barcelona · Born · Abierto cada martes</p>
+    </div>
+  </section>
+
+  <!-- ─── MÚSICA ─── -->
+  <section id="musica" class="section">
+    <span class="deco-num" aria-hidden="true">03</span>
+    <div class="section-inner">
+
+      <div class="music-header">
+        <div class="reveal">
+          <p class="section-label">Viernes &amp; Sábados</p>
+          <h2 class="section-title" style="font-size: clamp(1.8rem,4vw,3rem); margin-bottom: 1rem;">
+            La noche<br>cobra vida.
+          </h2>
+          <p class="music-note">
+            Los fines de semana, NOCHE se transforma. Artistas en directo, sonidos que van desde el jazz más íntimo hasta la electrónica orgánica más hipnótica.
+          </p>
+          <div class="genres-row" style="margin-top:1.5rem;">
+            <span class="genre-tag">Jazz contemporáneo</span>
+            <span class="genre-tag">Soul</span>
+            <span class="genre-tag">Electrónica orgánica</span>
+            <span class="genre-tag">Nu-jazz</span>
+            <span class="genre-tag">Ambient</span>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-2" style="display:flex; align-items:center;">
+          <div style="background: rgba(107,53,192,0.08); border: 1px solid rgba(107,53,192,0.2); border-radius:4px; padding:2.5rem; width:100%;">
+            <p class="section-label" style="margin-bottom:0.5rem;">Próximas sesiones</p>
+            <p style="font-size:0.82rem; font-weight:300; color:var(--muted); line-height:1.6;">
+              Consulta la agenda completa y sigue nuestra cuenta de Instagram para no perderte ninguna fecha especial.
+            </p>
+            <a href="#reservas" class="btn btn-ghost" style="margin-top:1.5rem; font-size:0.72rem;">Ver agenda completa</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Events -->
+      <div class="events-list">
+        <div class="event-item reveal">
+          <div class="event-date">
+            <div class="event-date-day">20</div>
+            <div class="event-date-month">Jun</div>
+          </div>
+          <div class="event-info">
+            <div class="event-artist">Trío Chet · Jazz Night</div>
+            <div class="event-genre">Jazz contemporáneo &nbsp;·&nbsp; Viernes &nbsp;·&nbsp; 22:30h</div>
+          </div>
+          <span class="event-badge event-badge-sold">Sold out</span>
+        </div>
+        <div class="event-item reveal reveal-delay-1">
+          <div class="event-date">
+            <div class="event-date-day">21</div>
+            <div class="event-date-month">Jun</div>
+          </div>
+          <div class="event-info">
+            <div class="event-artist">Marta Llull</div>
+            <div class="event-genre">Soul · Neo R&amp;B &nbsp;·&nbsp; Sábado &nbsp;·&nbsp; 23:00h</div>
+          </div>
+          <span class="event-badge event-badge-avail">Últimas plazas</span>
+        </div>
+        <div class="event-item reveal reveal-delay-2">
+          <div class="event-date">
+            <div class="event-date-day">28</div>
+            <div class="event-date-month">Jun</div>
+          </div>
+          <div class="event-info">
+            <div class="event-artist">ORQV · Electrónica Orgánica</div>
+            <div class="event-genre">Electrónica orgánica · Ambient &nbsp;·&nbsp; Sábado &nbsp;·&nbsp; 23:30h</div>
+          </div>
+          <span class="event-badge event-badge-avail">Disponible</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── RESERVAS ─── -->
+  <section id="reservas" class="section" style="background: var(--void);">
+    <span class="deco-num" aria-hidden="true">04</span>
+    <div class="section-inner">
+      <div class="reservas-inner reveal">
+        <span class="reservas-badge">Reserva tu noche</span>
+        <h2 class="reservas-title">¿Buscas una<br>noche especial?</h2>
+        <p class="reservas-desc">
+          Grupos a partir de 6 personas. Eventos privados, cumpleaños, despedidas de soltero/a — lo que sea que quieras celebrar, nosotros lo convertimos en una noche inolvidable.
+        </p>
+        <div class="reservas-actions">
+          <a
+            href="https://wa.me/34934000000?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20mesa%20en%20Noche%20Bar"
+            target="_blank"
+            class="btn btn-amber"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Reservar por WhatsApp
+          </a>
+          <a href="tel:+34934000000" class="btn btn-ghost">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l1.27-.83a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            Llamar
+          </a>
+        </div>
+        <p class="reservas-note">
+          <span>●</span>
+          Aforo limitado — recomendamos reserva previa
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── HORARIO & UBICACIÓN ─── -->
+  <section id="horario">
+    <div class="horario-grid">
+
+      <!-- Horario -->
+      <div class="reveal">
+        <h3 class="horario-block-title">Horario</h3>
+        <div class="horario-row">
+          <span class="horario-day">Martes — Jueves</span>
+          <span class="horario-time">20:00 – 02:00</span>
+        </div>
+        <div class="horario-row">
+          <span class="horario-day">Viernes – Sábado</span>
+          <span class="horario-time">20:00 – 03:30</span>
+        </div>
+        <div class="horario-row">
+          <span class="horario-day">Domingo</span>
+          <span class="horario-time">20:00 – 01:00</span>
+        </div>
+        <div class="horario-row">
+          <span class="horario-day">Lunes</span>
+          <span class="horario-closed">Cerrado</span>
+        </div>
+      </div>
+
+      <!-- Ubicación -->
+      <div class="reveal reveal-delay-1">
+        <h3 class="horario-block-title">Ubicación</h3>
+        <div class="address-info">
+          <div class="address-item">
+            <span class="address-item-icon">📍</span>
+            <div class="address-item-text">
+              <strong>C/ del Born, 15</strong>
+              08003 Barcelona · El Born
+            </div>
+          </div>
+          <div class="address-item">
+            <span class="address-item-icon">📞</span>
+            <div class="address-item-text">
+              <strong>+34 934 XXX XXX</strong>
+              Reservas y consultas
+            </div>
+          </div>
+          <div class="address-item">
+            <span class="address-item-icon">✉</span>
+            <div class="address-item-text">
+              <strong>hola@nochebarcelona.com</strong>
+              Eventos privados
+            </div>
+          </div>
+          <div class="address-item">
+            <span class="address-item-icon">🚇</span>
+            <div class="address-item-text">
+              Metro L4 · Jaume I (5 min a pie)
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Map -->
+      <div class="reveal reveal-delay-2">
+        <h3 class="horario-block-title">Mapa</h3>
+        <div class="map-placeholder">
+          <div class="map-placeholder-icon">📍</div>
+          <span>C/ del Born, 15</span>
+          <span style="color: var(--amber); margin-top:0.3rem;">Barcelona · El Born</span>
+        </div>
+        <p style="font-size:0.75rem; font-weight:300; color: rgba(240,237,248,0.25); margin-top:0.75rem; text-align:center;">
+          Metro L4 · Jaume I · 5 min a pie
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <!-- Brand -->
+        <div>
+          <div class="footer-logo-title">NOCHE</div>
+          <div class="footer-logo-sub">Coctelería &amp; Lounge · Barcelona</div>
+          <p class="footer-tagline">
+            Un espacio íntimo en el corazón de El Born. Cócteles de autor, destilados premium y música en vivo los fines de semana.
+          </p>
+          <div class="footer-social" style="margin-top:1.5rem;">
+            <a href="#" class="social-btn" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="TikTok">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.74a4.85 4.85 0 01-1.01-.05z"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Nav -->
+        <div>
+          <div class="footer-col-title">Navegar</div>
+          <ul class="footer-links">
+            <li><a href="#cocktails">Cócteles de autor</a></li>
+            <li><a href="#destilados">Selección de destilados</a></li>
+            <li><a href="#musica">Música en vivo</a></li>
+            <li><a href="#musica">Próximos eventos</a></li>
+            <li><a href="#reservas">Reservar mesa</a></li>
+            <li><a href="#horario">Cómo llegar</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <div class="footer-col-title">Contacto</div>
+          <ul class="footer-links">
+            <li><a href="tel:+34934000000">+34 934 XXX XXX</a></li>
+            <li><a href="mailto:hola@nochebarcelona.com">hola@nochebarcelona.com</a></li>
+            <li><a href="#">C/ del Born, 15 · Barcelona</a></li>
+          </ul>
+          <div style="margin-top:2rem;">
+            <div class="footer-col-title">Síguenos</div>
+            <p style="font-size:0.82rem; font-weight:300; color:var(--muted);">
+              @nochebarcelona
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2025 NOCHE Barcelona · Todos los derechos reservados</span>
+        <span class="footer-credit">
+          Diseño web por <a href="https://alepixel.com" target="_blank">Alepixel</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ─── WHATSAPP BUTTON ─── -->
+  <a
+    href="https://wa.me/34934000000?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20mesa%20en%20Noche%20Bar"
+    target="_blank"
+    class="wa-btn"
+    aria-label="Contactar por WhatsApp"
+  >
+    <div class="wa-tooltip">Reservar por WhatsApp</div>
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <!-- ─── JS ─── -->
+  <script>
+    // ── Nav scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 60) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    }, { passive: true });
+
+    // ── Mobile nav
+    const burger = document.getElementById('burger');
+    const mobileNav = document.getElementById('mobileNav');
+    const mobileClose = document.getElementById('mobileClose');
+    const mobileLinks = document.querySelectorAll('.mobile-link, .nav-mobile .btn');
+
+    burger.addEventListener('click', () => { mobileNav.classList.add('open'); });
+    mobileClose.addEventListener('click', () => { mobileNav.classList.remove('open'); });
+    mobileLinks.forEach(l => {
+      l.addEventListener('click', () => { mobileNav.classList.remove('open'); });
+    });
+
+    // ── Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    // ── Floating particles
+    (function createParticles() {
+      const container = document.getElementById('particles');
+      const count = 18;
+      for (let i = 0; i < count; i++) {
+        const p = document.createElement('span');
+        p.classList.add('particle');
+        const size = Math.random() * 3 + 1;
+        p.style.cssText = `
+          width: ${size}px;
+          height: ${size}px;
+          left: ${Math.random() * 100}%;
+          bottom: -10px;
+          animation-duration: ${Math.random() * 12 + 8}s;
+          animation-delay: ${Math.random() * 10}s;
+          opacity: ${Math.random() * 0.5 + 0.2};
+        `;
+        container.appendChild(p);
+      }
+    })();
+
+    // ── Subtle parallax on hero bg (JS fallback for mobile where fixed doesn't work)
+    const heroBg = document.getElementById('heroBg');
+    let ticking = false;
+    function onScroll() {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrollY = window.scrollY;
+          const heroH = document.getElementById('hero').offsetHeight;
+          if (scrollY < heroH) {
+            heroBg.style.transform = `scale(1.05) translateY(${scrollY * 0.25}px)`;
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+    // Only use JS parallax on mobile (where CSS fixed doesn't work well)
+    if ('ontouchstart' in window) {
+      window.addEventListener('scroll', onScroll, { passive: true });
+    }
+
+    // ── Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          const navH = navbar.offsetHeight;
+          const targetTop = target.getBoundingClientRect().top + window.scrollY - navH;
+          window.scrollTo({ top: targetTop, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
