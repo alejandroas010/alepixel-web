@@ -941,17 +941,25 @@
     }
 
     /* Map placeholder */
-    .map-embed {
+    .map-placeholder {
+      background: rgba(10,8,18,0.8);
       border: 1px solid var(--border);
       border-radius: 4px;
-      overflow: hidden;
       height: 200px;
-      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      flex-direction: column;
+      gap: 0.5rem;
     }
-    .map-embed iframe {
-      width: 100%; height: 100%;
-      border: none; display: block;
-      filter: invert(0.92) hue-rotate(180deg) saturate(0.6) brightness(0.85);
+    .map-placeholder-icon {
+      font-size: 1.8rem;
+      color: var(--amber);
+      margin-bottom: 0.5rem;
     }
 
     /* ─── FOOTER ─── */
@@ -1524,14 +1532,10 @@
       <!-- Map -->
       <div class="reveal reveal-delay-2">
         <h3 class="horario-block-title">Mapa</h3>
-        <div class="map-embed">
-          <iframe
-            src="https://maps.google.com/maps?q=El+Born,+Barcelona&output=embed&z=15&hl=es"
-            title="Ubicación Noche Bar · El Born, Barcelona"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            allowfullscreen>
-          </iframe>
+        <div class="map-placeholder">
+          <div class="map-placeholder-icon">📍</div>
+          <span>C/ del Born, 15</span>
+          <span style="color: var(--amber); margin-top:0.3rem;">Barcelona · El Born</span>
         </div>
         <p style="font-size:0.75rem; font-weight:300; color: rgba(240,237,248,0.25); margin-top:0.75rem; text-align:center;">
           Metro L4 · Jaume I · 5 min a pie
