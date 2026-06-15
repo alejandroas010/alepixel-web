@@ -246,7 +246,7 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      background-image: url('https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=1200&q=80');
+      background-image: url('https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=1920&q=85');
       background-size: cover;
       background-position: center 30%;
       transform: scale(1.05);
@@ -609,7 +609,7 @@
     .gallery { background: var(--black-3); }
     .gallery-grid {
       display: grid;
-      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      grid-template-columns: 1.4fr 1fr 1fr;
       gap: 12px;
     }
     .gallery-item {
@@ -855,6 +855,13 @@
       width: 100%; height: 100%;
       object-fit: cover; object-position: center top;
       border-radius: 50%;
+      z-index: 1;
+    }
+    .av-initial {
+      position: relative; z-index: 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem; font-weight: 600;
+      color: var(--black);
     }
     .team-name {
       font-family: 'Cormorant Garamond', serif;
@@ -1224,7 +1231,7 @@
       .nav-links { display: none; }
       .hamburger { display: flex; }
       .services-grid { grid-template-columns: 1fr; }
-      .gallery-grid { grid-template-columns: 1fr 1fr 1fr; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
       .gallery-item:first-child { aspect-ratio: 3/4; }
       .about { grid-template-columns: 1fr; }
       .about-image { height: 400px; }
@@ -1646,6 +1653,7 @@
 
       <div class="team-card reveal delay-1">
         <div class="team-avatar avatar-laura">
+          <span class="av-initial">L</span>
           <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=400&q=80" alt="Laura Martín" loading="lazy" onerror="this.remove()"/>
         </div>
         <h3 class="team-name">Laura Martín</h3>
@@ -1656,6 +1664,7 @@
 
       <div class="team-card reveal delay-2">
         <div class="team-avatar avatar-carlos">
+          <span class="av-initial">C</span>
           <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" alt="Carlos Ruiz" loading="lazy" onerror="this.remove()"/>
         </div>
         <h3 class="team-name">Carlos Ruiz</h3>
@@ -1666,6 +1675,7 @@
 
       <div class="team-card reveal delay-3">
         <div class="team-avatar avatar-ana">
+          <span class="av-initial">A</span>
           <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80" alt="Ana Torres" loading="lazy" onerror="this.remove()"/>
         </div>
         <h3 class="team-name">Ana Torres</h3>
