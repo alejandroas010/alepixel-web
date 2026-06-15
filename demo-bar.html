@@ -941,25 +941,17 @@
     }
 
     /* Map placeholder */
-    .map-placeholder {
-      background: rgba(10,8,18,0.8);
+    .map-embed {
       border: 1px solid var(--border);
       border-radius: 4px;
+      overflow: hidden;
       height: 200px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--muted);
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      flex-direction: column;
-      gap: 0.5rem;
+      position: relative;
     }
-    .map-placeholder-icon {
-      font-size: 1.8rem;
-      color: var(--amber);
-      margin-bottom: 0.5rem;
+    .map-embed iframe {
+      width: 100%; height: 100%;
+      border: none; display: block;
+      filter: invert(0.92) hue-rotate(180deg) saturate(0.6) brightness(0.85);
     }
 
     /* ─── FOOTER ─── */
@@ -1295,10 +1287,10 @@
         <div class="cocktail-card reveal reveal-delay-4">
           <div class="cocktail-card-img-wrap">
             <img
-              src="https://images.unsplash.com/photo-1548198471-b55e1cd2ad89?auto=format&fit=crop&w=1200&q=80"
+              src="https://images.unsplash.com/photo-1569529465841-dfecdab7503b?auto=format&fit=crop&w=1200&q=80"
               alt="Cóctel Oro Negro"
               class="cocktail-card-img"
-              style="filter: brightness(0.65) saturate(0.8);"
+              style="filter: brightness(0.7) saturate(0.75);"
             />
             <div class="cocktail-card-img-overlay"></div>
           </div>
@@ -1532,10 +1524,14 @@
       <!-- Map -->
       <div class="reveal reveal-delay-2">
         <h3 class="horario-block-title">Mapa</h3>
-        <div class="map-placeholder">
-          <div class="map-placeholder-icon">📍</div>
-          <span>C/ del Born, 15</span>
-          <span style="color: var(--amber); margin-top:0.3rem;">Barcelona · El Born</span>
+        <div class="map-embed">
+          <iframe
+            src="https://maps.google.com/maps?q=El+Born,+Barcelona&output=embed&z=15&hl=es"
+            title="Ubicación Noche Bar · El Born, Barcelona"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen>
+          </iframe>
         </div>
         <p style="font-size:0.75rem; font-weight:300; color: rgba(240,237,248,0.25); margin-top:0.75rem; text-align:center;">
           Metro L4 · Jaume I · 5 min a pie
