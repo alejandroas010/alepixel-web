@@ -1,0 +1,1915 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MAISON HAIR — Peluquería & Salón de Belleza · Madrid</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ===========================
+       RESET & TOKENS
+    =========================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:   #0A0A0A;
+      --black-2: #141414;
+      --black-3: #1E1E1E;
+      --gold:    #C9A96E;
+      --gold-2:  #E8D5A3;
+      --white:   #FAFAFA;
+      --white-2: #F0EDE8;
+      --muted:   #8A8A8A;
+      --border:  rgba(201,169,110,0.2);
+      --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'Raleway', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ===========================
+       SCROLL REVEAL
+    =========================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+    .delay-5 { transition-delay: 0.5s; }
+
+    /* ===========================
+       TYPOGRAPHY HELPERS
+    =========================== */
+    .cormorant { font-family: 'Cormorant Garamond', serif; }
+    .raleway   { font-family: 'Raleway', sans-serif; }
+
+    .section-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-label::before {
+      content: '';
+      display: inline-block;
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    /* ===========================
+       NAVIGATION
+    =========================== */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 24px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background var(--transition), padding var(--transition), box-shadow var(--transition);
+    }
+    .nav.scrolled {
+      background: rgba(10, 10, 10, 0.97);
+      padding: 16px 60px;
+      box-shadow: 0 1px 0 var(--border);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      letter-spacing: 0.06em;
+    }
+    .nav-logo .logo-maison {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.65rem;
+      font-weight: 600;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .nav-logo .logo-hair {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.65rem;
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+    .nav-links a {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--white-2);
+      position: relative;
+      transition: color 0.3s;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 1px;
+      background: var(--gold);
+      transition: width 0.35s ease;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--black) !important;
+      font-weight: 600 !important;
+      padding: 10px 24px;
+      letter-spacing: 0.12em !important;
+      transition: background 0.3s, transform 0.2s !important;
+    }
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover { background: var(--gold-2) !important; transform: translateY(-1px); }
+
+    /* Mobile hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 1.5px;
+      background: var(--white);
+      transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10,10,10,0.98);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      backdrop-filter: blur(16px);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 300;
+      color: var(--white);
+      letter-spacing: 0.05em;
+      transition: color 0.3s;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-menu .m-cta {
+      background: var(--gold);
+      color: var(--black) !important;
+      font-family: 'Raleway', sans-serif !important;
+      font-size: 0.85rem !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.18em !important;
+      text-transform: uppercase;
+      padding: 14px 36px;
+      margin-top: 8px;
+    }
+
+    /* ===========================
+       HERO
+    =========================== */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 640px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=1920&q=85');
+      background-size: cover;
+      background-position: center 30%;
+      transform: scale(1.05);
+      transition: transform 10s ease;
+    }
+    .hero-bg.loaded { transform: scale(1); }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        105deg,
+        rgba(10,10,10,0.82) 0%,
+        rgba(10,10,10,0.55) 60%,
+        rgba(10,10,10,0.3) 100%
+      );
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 60px;
+      max-width: 780px;
+    }
+    .hero-badge {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      opacity: 0;
+      animation: fadeSlideUp 0.9s 0.3s forwards;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 40px; height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(4rem, 8vw, 8rem);
+      font-weight: 300;
+      line-height: 1.02;
+      color: var(--white);
+      letter-spacing: -0.01em;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeSlideUp 0.9s 0.5s forwards;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold-2);
+      font-weight: 300;
+    }
+    .hero-line {
+      width: 80px; height: 1px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeSlideUp 0.9s 0.65s forwards;
+    }
+    .hero-sub {
+      font-family: 'Raleway', sans-serif;
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: rgba(250,250,250,0.75);
+      max-width: 440px;
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: fadeSlideUp 0.9s 0.75s forwards;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeSlideUp 0.9s 0.9s forwards;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--black);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+      display: inline-block;
+    }
+    .btn-primary:hover {
+      background: var(--gold-2);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(201,169,110,0.3);
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 15px 36px;
+      border: 1px solid rgba(250,250,250,0.3);
+      transition: border-color 0.3s, color 0.3s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-ghost:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    /* Scroll indicator */
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 60px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(250,250,250,0.45);
+      opacity: 0;
+      animation: fadeSlideUp 0.9s 1.2s forwards;
+      z-index: 2;
+    }
+    .scroll-line {
+      width: 1px; height: 40px;
+      background: linear-gradient(to bottom, rgba(250,250,250,0.5), transparent);
+      animation: scrollPulse 2.4s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
+    }
+    @keyframes fadeSlideUp {
+      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(24px); }
+    }
+
+    /* ===========================
+       STATS BAND
+    =========================== */
+    .stats {
+      background: var(--black-2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 60px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    .stat-item {
+      text-align: center;
+      padding: 20px 24px;
+      position: relative;
+    }
+    .stat-item + .stat-item::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 20%; bottom: 20%;
+      width: 1px;
+      background: var(--border);
+    }
+    .stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 4vw, 3.4rem);
+      font-weight: 600;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+    .stat-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ===========================
+       SECTIONS COMMON
+    =========================== */
+    .section {
+      padding: 120px 60px;
+    }
+    .section-header {
+      margin-bottom: 72px;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.1;
+      margin-top: 20px;
+    }
+    .section-title em {
+      font-style: italic;
+      color: var(--gold-2);
+    }
+    .section-subtitle {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 440px;
+      margin-top: 16px;
+      line-height: 1.9;
+    }
+
+    /* ===========================
+       SERVICIOS
+    =========================== */
+    .services { background: var(--black); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+    .service-card {
+      background: var(--black-2);
+      padding: 52px 48px;
+      position: relative;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: border-color 0.4s;
+      cursor: default;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--gold);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform 0.4s ease;
+    }
+    .service-card:hover::before { transform: scaleY(1); transform-origin: top; }
+    .service-card:hover { border-color: rgba(201,169,110,0.5); }
+
+    .service-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4.5rem;
+      font-weight: 700;
+      color: rgba(201,169,110,0.12);
+      line-height: 1;
+      position: absolute;
+      top: 28px; right: 36px;
+      transition: color 0.4s;
+      user-select: none;
+    }
+    .service-card:hover .service-number { color: rgba(201,169,110,0.22); }
+
+    .service-icon {
+      width: 40px; height: 40px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .service-icon svg {
+      width: 28px; height: 28px;
+      stroke: var(--gold);
+      fill: none;
+      stroke-width: 1.2;
+    }
+    .service-tag {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .service-tag::before {
+      content: '';
+      width: 18px; height: 1px;
+      background: var(--gold);
+    }
+    .service-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.85rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+    .service-desc {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.87rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.9;
+      margin-bottom: 32px;
+    }
+    .service-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+    }
+    .service-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--gold);
+    }
+    .service-price span {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 400;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 2px;
+    }
+    .service-link {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: gap 0.3s;
+    }
+    .service-link:hover { gap: 14px; }
+    .service-link svg {
+      width: 16px; height: 16px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+    }
+
+    /* ===========================
+       GALERÍA
+    =========================== */
+    .gallery { background: var(--black-3); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 12px;
+    }
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      cursor: pointer;
+    }
+    .gallery-item:first-child { aspect-ratio: 3/5; }
+    .gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.07); }
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,10,10,0.75) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.5s;
+      display: flex;
+      align-items: flex-end;
+      padding: 28px 24px;
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .gallery-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .gallery-label::after {
+      content: '→';
+      font-size: 1rem;
+    }
+    .gallery-col {
+      display: grid;
+      gap: 12px;
+    }
+
+    /* ===========================
+       ABOUT
+    =========================== */
+    .about {
+      background: var(--black-2);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      padding: 0;
+      min-height: 640px;
+    }
+    .about-image {
+      position: relative;
+      overflow: hidden;
+    }
+    .about-image img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .about-image-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent 60%, var(--black-2) 100%);
+    }
+    .about-content {
+      padding: 100px 80px 100px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .about-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--white-2);
+      line-height: 1.6;
+      margin: 32px 0;
+      padding-left: 24px;
+      border-left: 2px solid var(--gold);
+    }
+    .about-text {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 2;
+      margin-bottom: 16px;
+    }
+    .about-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 36px;
+    }
+    .chip {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--border);
+      padding: 8px 18px;
+      transition: background 0.3s, color 0.3s;
+    }
+    .chip:hover { background: rgba(201,169,110,0.1); }
+
+    /* ===========================
+       PRECIOS
+    =========================== */
+    .precios { background: var(--black); }
+    .precios-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    .precio-col {
+      border: 1px solid var(--border);
+      padding: 0;
+      overflow: hidden;
+    }
+    .precio-col-header {
+      background: var(--black-2);
+      padding: 28px 40px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .precio-col-icon {
+      width: 36px; height: 36px;
+      border: 1px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .precio-col-icon svg {
+      width: 18px; height: 18px;
+      stroke: var(--gold);
+      fill: none;
+      stroke-width: 1.5;
+    }
+    .precio-col-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.05em;
+    }
+    .precio-list { padding: 12px 0; }
+    .precio-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 40px;
+      border-bottom: 1px solid rgba(201,169,110,0.08);
+      transition: background 0.25s;
+    }
+    .precio-item:last-child { border-bottom: none; }
+    .precio-item:hover { background: rgba(201,169,110,0.05); }
+    .precio-item-name {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: var(--white-2);
+    }
+    .precio-item-dots {
+      flex: 1;
+      height: 1px;
+      background: repeating-linear-gradient(
+        90deg,
+        rgba(201,169,110,0.2) 0,
+        rgba(201,169,110,0.2) 3px,
+        transparent 3px,
+        transparent 10px
+      );
+      margin: 0 16px;
+    }
+    .precio-item-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+
+    /* ===========================
+       EQUIPO
+    =========================== */
+    .equipo { background: var(--black-3); }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .team-card {
+      text-align: center;
+      padding: 52px 32px 44px;
+      border: 1px solid var(--border);
+      background: var(--black-2);
+      transition: transform 0.4s, border-color 0.4s;
+    }
+    .team-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(201,169,110,0.5);
+    }
+    .team-avatar {
+      width: 96px; height: 96px;
+      border-radius: 50%;
+      margin: 0 auto 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: var(--black);
+      position: relative;
+      overflow: hidden;
+    }
+    .avatar-laura { background: linear-gradient(135deg, #C9A96E 0%, #E8D5A3 100%); }
+    .avatar-carlos { background: linear-gradient(135deg, #8A8A8A 0%, #C9A96E 100%); }
+    .avatar-ana { background: linear-gradient(135deg, #C9A96E 0%, #E8D5A3 60%, #f7ecd4 100%); }
+    .team-avatar::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 2px solid rgba(201,169,110,0.4);
+      z-index: 1;
+    }
+    .team-avatar img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      border-radius: 50%;
+      z-index: 1;
+    }
+    .av-initial {
+      position: relative; z-index: 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem; font-weight: 600;
+      color: var(--black);
+    }
+    .team-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.45rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .team-role {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .team-bio {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.83rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+    .team-social {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: rgba(201,169,110,0.7);
+      letter-spacing: 0.08em;
+      transition: color 0.3s;
+    }
+    .team-social:hover { color: var(--gold); }
+
+    /* ===========================
+       CTA SECTION
+    =========================== */
+    .cta-section {
+      background: var(--black-2);
+      padding: 140px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(201,169,110,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+    }
+    .cta-label::before, .cta-label::after {
+      content: '';
+      width: 32px; height: 1px;
+      background: var(--gold);
+    }
+    .cta-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .cta-title em { font-style: italic; color: var(--gold-2); }
+    .cta-sub {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 460px;
+      margin: 0 auto 52px;
+      line-height: 1.9;
+    }
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--gold);
+      color: var(--black);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 20px 44px;
+      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+    }
+    .btn-whatsapp:hover {
+      background: var(--gold-2);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(201,169,110,0.35);
+    }
+    .btn-whatsapp svg {
+      width: 20px; height: 20px;
+      fill: var(--black);
+    }
+
+    /* ===========================
+       CONTACTO
+    =========================== */
+    .contacto {
+      background: var(--black);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-top: 1px solid var(--border);
+    }
+    .contacto-info {
+      padding: 100px 80px 100px 60px;
+      border-right: 1px solid var(--border);
+    }
+    .contacto-map {
+      position: relative;
+      min-height: 500px;
+      background: var(--black-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .map-placeholder {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(201,169,110,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,169,110,0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .map-pin {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+    .map-pin-icon {
+      width: 52px; height: 52px;
+      background: var(--gold);
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(201,169,110,0.4);
+    }
+    .map-pin-icon::after {
+      content: '';
+      transform: rotate(45deg);
+      width: 16px; height: 16px;
+      background: var(--black);
+      border-radius: 50%;
+    }
+    .map-address {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+    .contact-items { margin-top: 48px; }
+    .contact-item {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      margin-bottom: 36px;
+    }
+    .contact-item-icon {
+      width: 36px; height: 36px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .contact-item-icon svg {
+      width: 16px; height: 16px;
+      stroke: var(--gold);
+      fill: none;
+      stroke-width: 1.5;
+    }
+    .contact-item-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .contact-item-value {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--white-2);
+      line-height: 1.7;
+    }
+
+    /* ===========================
+       FOOTER
+    =========================== */
+    .footer {
+      background: var(--black-2);
+      border-top: 1px solid var(--border);
+      padding: 60px;
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 52px;
+    }
+    .footer-brand .nav-logo { margin-bottom: 20px; }
+    .footer-tagline {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.9;
+      max-width: 280px;
+    }
+    .footer-heading {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .footer-links a {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.84rem;
+      font-weight: 300;
+      color: var(--muted);
+      transition: color 0.3s, padding-left 0.3s;
+    }
+    .footer-links a:hover { color: var(--gold); padding-left: 6px; }
+    .footer-socials {
+      display: flex;
+      gap: 14px;
+      margin-top: 28px;
+    }
+    .social-icon {
+      width: 36px; height: 36px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .social-icon:hover { border-color: var(--gold); background: rgba(201,169,110,0.1); }
+    .social-icon svg {
+      width: 16px; height: 16px;
+      stroke: var(--muted);
+      fill: none;
+      stroke-width: 1.5;
+      transition: stroke 0.3s;
+    }
+    .social-icon:hover svg { stroke: var(--gold); }
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-copy {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.74rem;
+      font-weight: 300;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+    .footer-copy a { color: var(--gold); transition: opacity 0.3s; }
+    .footer-copy a:hover { opacity: 0.75; }
+    .footer-legal {
+      display: flex;
+      gap: 24px;
+    }
+    .footer-legal a {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 300;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      transition: color 0.3s;
+    }
+    .footer-legal a:hover { color: var(--gold); }
+
+    /* ===========================
+       WHATSAPP FAB
+    =========================== */
+    .wa-fab {
+      position: fixed;
+      bottom: 32px; right: 32px;
+      width: 56px; height: 56px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 900;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.45);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+    .wa-fab:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 28px rgba(37,211,102,0.6);
+    }
+    .wa-fab svg {
+      width: 28px; height: 28px;
+      fill: white;
+    }
+    .wa-tooltip {
+      position: absolute;
+      right: 68px;
+      background: var(--black-2);
+      color: var(--white);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      white-space: nowrap;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(6px);
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    .wa-fab:hover .wa-tooltip { opacity: 1; transform: translateX(0); }
+
+    /* ===========================
+       RESPONSIVE
+    =========================== */
+    @media (max-width: 1100px) {
+      .nav { padding: 22px 40px; }
+      .nav.scrolled { padding: 14px 40px; }
+      .section { padding: 100px 40px; }
+      .stats { padding: 52px 40px; }
+      .footer { padding: 60px 40px; }
+    }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .services-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-item:first-child { aspect-ratio: 3/4; }
+      .about { grid-template-columns: 1fr; }
+      .about-image { height: 400px; }
+      .precios-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr 1fr; }
+      .contacto { grid-template-columns: 1fr; }
+      .contacto-info { border-right: none; border-bottom: 1px solid var(--border); padding: 80px 40px; }
+      .contacto-map { min-height: 320px; }
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 48px; }
+      .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+      .stats { grid-template-columns: 1fr 1fr; }
+      .stat-item + .stat-item::before { display: none; }
+      .stat-item { border-bottom: 1px solid var(--border); }
+      .stat-item:nth-child(3), .stat-item:nth-child(4) { border-bottom: none; }
+    }
+
+    @media (max-width: 640px) {
+      .nav { padding: 18px 24px; }
+      .nav.scrolled { padding: 14px 24px; }
+      .hero-content { padding: 0 24px; }
+      .hero-scroll { left: 24px; }
+      .section { padding: 80px 24px; }
+      .stats { padding: 40px 24px; grid-template-columns: 1fr 1fr; gap: 0; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-col { display: contents; }
+      .team-grid { grid-template-columns: 1fr; }
+      .footer { padding: 48px 24px; }
+      .footer-inner { grid-template-columns: 1fr; gap: 40px; }
+      .cta-section { padding: 100px 24px; }
+      .service-card { padding: 40px 28px; }
+      .contacto-info { padding: 60px 24px; }
+      .precios-grid { gap: 20px; }
+      .footer-legal { flex-direction: column; align-items: center; gap: 12px; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===========================
+       NAV
+  =========================== -->
+  <nav class="nav" id="mainNav">
+    <a href="#" class="nav-logo">
+      <span class="logo-maison">MAISON</span>
+      <span class="logo-hair">HAIR</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#precios">Precios</a></li>
+      <li><a href="#galeria">Galería</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#cita" class="nav-cta">Pedir Cita</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#servicios" onclick="closeMenu()">Servicios</a>
+    <a href="#precios" onclick="closeMenu()">Precios</a>
+    <a href="#galeria" onclick="closeMenu()">Galería</a>
+    <a href="#nosotros" onclick="closeMenu()">Nosotros</a>
+    <a href="#cita" class="m-cta" onclick="closeMenu()">Pedir Cita</a>
+  </div>
+
+  <!-- ===========================
+       HERO
+  =========================== -->
+  <section class="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-badge">Madrid &nbsp;·&nbsp; Est. 2018</p>
+      <h1 class="hero-title">
+        Tu mejor<br /><em>versión</em>
+      </h1>
+      <div class="hero-line"></div>
+      <p class="hero-sub">
+        El arte del cuidado personal. Especialistas en corte, coloración y tratamientos que transforman.
+      </p>
+      <div class="hero-actions">
+        <a href="#cita" class="btn-primary">Reservar ahora</a>
+        <a href="#servicios" class="btn-ghost">Ver servicios</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      Scroll
+    </div>
+  </section>
+
+  <!-- ===========================
+       STATS
+  =========================== -->
+  <div class="stats">
+    <div class="stat-item reveal delay-1">
+      <div class="stat-number">8+</div>
+      <div class="stat-label">Años de experiencia</div>
+    </div>
+    <div class="stat-item reveal delay-2">
+      <div class="stat-number">2.400+</div>
+      <div class="stat-label">Clientes satisfechos</div>
+    </div>
+    <div class="stat-item reveal delay-3">
+      <div class="stat-number">4.9★</div>
+      <div class="stat-label">Valoración media</div>
+    </div>
+    <div class="stat-item reveal delay-4">
+      <div class="stat-number">12</div>
+      <div class="stat-label">Especialistas certificados</div>
+    </div>
+  </div>
+
+  <!-- ===========================
+       SERVICIOS
+  =========================== -->
+  <section class="section services" id="servicios">
+    <div class="section-header reveal">
+      <div class="section-label">Nuestros servicios</div>
+      <h2 class="section-title">El cuidado que<br /><em>mereces</em></h2>
+      <p class="section-subtitle">Cada servicio es diseñado a medida, con productos de alta gama y la técnica de los mejores profesionales de Madrid.</p>
+    </div>
+    <div class="services-grid">
+
+      <!-- Servicio 1 -->
+      <div class="service-card reveal delay-1">
+        <div class="service-number">01</div>
+        <div class="service-tag">Estilismo</div>
+        <h3 class="service-name">Corte &amp; Estilismo</h3>
+        <p class="service-desc">Corte personalizado según tu tipo de cabello, textura y morfología facial. Incluye lavado con productos premium, masaje capilar, secado y acabado profesional con plancha o rizado según prefieras.</p>
+        <div class="service-footer">
+          <div class="service-price">
+            <span>Desde</span>
+            45€
+          </div>
+          <a href="#cita" class="service-link">
+            Reservar
+            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Servicio 2 -->
+      <div class="service-card reveal delay-2">
+        <div class="service-number">02</div>
+        <div class="service-tag">Coloración</div>
+        <h3 class="service-name">Coloración Avanzada</h3>
+        <p class="service-desc">Balayage, mechas californianas, tinte global y corrección de color. Utilizamos fórmulas sin amoniaco de Wella Professionals y Schwarzkopf para un color luminoso y duradero que no daña el cabello.</p>
+        <div class="service-footer">
+          <div class="service-price">
+            <span>Desde</span>
+            80€
+          </div>
+          <a href="#cita" class="service-link">
+            Reservar
+            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Servicio 3 -->
+      <div class="service-card reveal delay-3">
+        <div class="service-number">03</div>
+        <div class="service-tag">Tratamientos</div>
+        <h3 class="service-name">Tratamientos Capilares</h3>
+        <p class="service-desc">Keratina brasileña, hidratación profunda con mascarillas de ácido hialurónico, reconstrucción capilar y tratamientos anti-frizz. Resultados visibles desde la primera sesión. Cabello liso, suave y sano.</p>
+        <div class="service-footer">
+          <div class="service-price">
+            <span>Desde</span>
+            60€
+          </div>
+          <a href="#cita" class="service-link">
+            Reservar
+            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Servicio 4 -->
+      <div class="service-card reveal delay-4">
+        <div class="service-number">04</div>
+        <div class="service-tag">Barbería</div>
+        <h3 class="service-name">Barbería Clásica</h3>
+        <p class="service-desc">Afeitado con navaja tradicional, perfilado y arreglo de barba con aceites esenciales, tratamientos faciales hidratantes y exfoliantes. La experiencia de la barbería de caballero del siglo XXI.</p>
+        <div class="service-footer">
+          <div class="service-price">
+            <span>Desde</span>
+            25€
+          </div>
+          <a href="#cita" class="service-link">
+            Reservar
+            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===========================
+       GALERÍA
+  =========================== -->
+  <section class="section gallery" id="galeria">
+    <div class="section-header reveal">
+      <div class="section-label">Galería</div>
+      <h2 class="section-title">Nuestro<br /><em>trabajo habla</em></h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item reveal-left">
+        <img src="https://images.unsplash.com/photo-1560869713-bf8dca9048e8?auto=format&fit=crop&w=1200&q=80" alt="Estilismo capilar profesional" loading="lazy" />
+        <div class="gallery-overlay">
+          <span class="gallery-label">Ver galería</span>
+        </div>
+      </div>
+      <div class="gallery-col">
+        <div class="gallery-item reveal delay-2">
+          <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80" alt="Coloración de cabello rubio" loading="lazy" />
+          <div class="gallery-overlay">
+            <span class="gallery-label">Ver galería</span>
+          </div>
+        </div>
+        <div class="gallery-item reveal delay-3">
+          <img src="https://images.unsplash.com/photo-1523263685509-57c1d050d19b?auto=format&fit=crop&w=800&q=80" alt="Interior del salón" loading="lazy" />
+          <div class="gallery-overlay">
+            <span class="gallery-label">Ver galería</span>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-col">
+        <div class="gallery-item reveal delay-4">
+          <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=800&q=80" alt="Proceso de coloración" loading="lazy" />
+          <div class="gallery-overlay">
+            <span class="gallery-label">Ver galería</span>
+          </div>
+        </div>
+        <div class="gallery-item reveal delay-5">
+          <img src="https://images.unsplash.com/photo-1487412912498-0447578fcca8?auto=format&fit=crop&w=800&q=80" alt="Resultado final" loading="lazy" />
+          <div class="gallery-overlay">
+            <span class="gallery-label">Ver galería</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       ABOUT
+  =========================== -->
+  <div class="about" id="nosotros">
+    <div class="about-image reveal-left">
+      <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1200&q=80" alt="Barbero profesional trabajando" loading="lazy" />
+      <div class="about-image-overlay"></div>
+    </div>
+    <div class="about-content reveal-right">
+      <div class="section-label">Nuestra historia</div>
+      <h2 class="section-title" style="margin-top: 20px;">Más que<br /><em>una peluquería</em></h2>
+      <blockquote class="about-quote">
+        "Creemos que cuidar tu imagen es una forma de respetarte a ti mismo."
+      </blockquote>
+      <p class="about-text">
+        Nacimos en 2018 con la visión de crear un espacio donde el arte de la peluquería se funde con una experiencia boutique de lujo. En pleno corazón de Salamanca, nuestro salón es un refugio de calma y sofisticación.
+      </p>
+      <p class="about-text">
+        Cada miembro de nuestro equipo ha sido formado en las mejores escuelas de Europa y se mantiene actualizado con las últimas técnicas y tendencias globales.
+      </p>
+      <div class="about-chips">
+        <span class="chip">Wella Professionals</span>
+        <span class="chip">Schwarzkopf Expert</span>
+        <span class="chip">Olaplex Certified</span>
+        <span class="chip">Barbería Clásica</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===========================
+       PRECIOS
+  =========================== -->
+  <section class="section precios" id="precios">
+    <div class="section-header reveal">
+      <div class="section-label">Tarifas</div>
+      <h2 class="section-title">Precios<br /><em>transparentes</em></h2>
+      <p class="section-subtitle">Sin sorpresas. Calidad premium a precios justos. Consulta previa gratuita incluida en todos los servicios.</p>
+    </div>
+    <div class="precios-grid">
+
+      <!-- MUJER -->
+      <div class="precio-col reveal-left">
+        <div class="precio-col-header">
+          <div class="precio-col-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path stroke-linecap="round" d="M12 12v8M9 17h6M12 20v2"/></svg>
+          </div>
+          <h3 class="precio-col-title">Mujer</h3>
+        </div>
+        <ul class="precio-list">
+          <li class="precio-item">
+            <span class="precio-item-name">Corte y secado</span>
+            <span class="precio-item-dots"></span>
+            <span class="precio-item-price">45€</span>
+          </li>
+          <li class="precio-item">
+            <span class="precio-item-name">Corte con brushing</span>
+            <span class="precio-item-dots"></span>
+            <span class="precio-item-price">55€</span>
+          </li>
+          <li class="precio-item">
+            <span class="precio-item-name">Tinte global</span>
+            <span class="precio-item-dots"></span>
+            <span class="precio-item-price">80€</span>
+          </li>
+          <li class="precio-item">
+            <span class="precio-item-name">Balayage / Mechas</span>
+            <span class="precio-item-dots"></span>
+            <span class="precio-item-price">desde 110€</span>
+          </li>
+          <li class="precio-item">
+            <span class="precio-item-name">Coloración completa</span>
+            <span class="precio-item-dots"></span>
+            <span class="precio-item-price">desde 140€</span>
+          </li>
+          <li class="precio-item">
+            <span class="precio-item-name">Keratina brasileña</span>
+            <span class="precio-item-dots"></span>
+            <span class="precio-item-price">desde 120€</span>
+          </li>
+          <li class="precio-item">
+            <span class="precio-item-name">Hidratación profunda</span>
+            <span class="precio-item-dots"></span>
+            <span class="precio-item-price">60€</span>
+          </li>
+          <li class="precio-item">
+            <span class="precio-item-name">Recogido / Peinado</span>
+            <span class="precio-item-dots"></span>
+            <span class="precio-item-price">65€</span>
+          </li>
+          <li class="precio-item">
+            <span class="precio-item-name">Tratamiento Olaplex</span>
+            <span class="precio-item-dots"></span>
+            <span class="precio-item-price">75€</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- HOMBRE -->
+      <div class="precio-col reveal-right">
+        <div class="precio-col-header">
+          <div class="precio-col-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path stroke-linecap="round" d="M12 12v4M18 9a6 6 0 01-12 0"/></svg>
+          </div>
+          <h3 class="precio-col-title">Hombre</h3>
+        </div>
+        <ul class="precio-list">
+          <li class="precio-item">
+            <span class="precio-item-name">Corte de cabello</span>
+            <span class="precio-item-dots"></span>
+            <span class="precio-item-price">25€</span>
+          </li>
+          <li class="precio-item">
+            <span class="precio-item-name">Corte + lavado</span>
+            <span class="precio-item-dots"></span>
+            <span class="precio-item-price">32€</span>
+          </li>
+          <li class="precio-item">
+            <span class="precio-item-name">Arreglo de barba</span>
+            <span class="precio-item-dots"></span>
+            <span class="precio-item-price">18€</span>
+          </li>
+          <li class="precio-item">
+            <span class="precio-item-name">Afeitado con navaja</span>
+            <span class="precio-item-dots"></span>
+            <span class="precio-item-price">28€</span>
+          </li>
+          <li class="precio-item">
+            <span class="precio-item-name">Corte + barba</span>
+            <span class="precio-item-dots"></span>
+            <span class="precio-item-price">38€</span>
+          </li>
+          <li class="precio-item">
+            <span class="precio-item-name">Coloración cabello</span>
+            <span class="precio-item-dots"></span>
+            <span class="precio-item-price">45€</span>
+          </li>
+          <li class="precio-item">
+            <span class="precio-item-name">Coloración barba</span>
+            <span class="precio-item-dots"></span>
+            <span class="precio-item-price">22€</span>
+          </li>
+          <li class="precio-item">
+            <span class="precio-item-name">Tratamiento facial</span>
+            <span class="precio-item-dots"></span>
+            <span class="precio-item-price">40€</span>
+          </li>
+          <li class="precio-item">
+            <span class="precio-item-name">Pack VIP Hombre</span>
+            <span class="precio-item-dots"></span>
+            <span class="precio-item-price">70€</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===========================
+       EQUIPO
+  =========================== -->
+  <section class="section equipo">
+    <div class="section-header reveal" style="text-align: center;">
+      <div class="section-label" style="justify-content: center;">
+        <span style="display:inline-block;width:28px;height:1px;background:var(--gold);"></span>
+        Nuestro equipo
+        <span style="display:inline-block;width:28px;height:1px;background:var(--gold);"></span>
+      </div>
+      <h2 class="section-title">Las manos<br /><em>detrás del arte</em></h2>
+    </div>
+    <div class="team-grid">
+
+      <div class="team-card reveal delay-1">
+        <div class="team-avatar avatar-laura">
+          <span class="av-initial">L</span>
+          <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=400&q=80" alt="Laura Martín" loading="lazy" onerror="this.remove()"/>
+        </div>
+        <h3 class="team-name">Laura Martín</h3>
+        <p class="team-role">Directora &amp; Colorista Experta</p>
+        <p class="team-bio">15 años de experiencia en los mejores salones de Madrid y París. Especialista en técnicas de balayage y coloración de alta definición. Formada en L'Oréal Professionnel.</p>
+        <a href="#" class="team-social">@lauramartin.hair</a>
+      </div>
+
+      <div class="team-card reveal delay-2">
+        <div class="team-avatar avatar-carlos">
+          <span class="av-initial">C</span>
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" alt="Carlos Ruiz" loading="lazy" onerror="this.remove()"/>
+        </div>
+        <h3 class="team-name">Carlos Ruiz</h3>
+        <p class="team-role">Especialista en Corte &amp; Barbería</p>
+        <p class="team-bio">Barbero de tercera generación y estilista con formación en Londres. Domina las técnicas de corte clásico y moderno, fade y diseño de barba artístico.</p>
+        <a href="#" class="team-social">@carlosruiz.barber</a>
+      </div>
+
+      <div class="team-card reveal delay-3">
+        <div class="team-avatar avatar-ana">
+          <span class="av-initial">A</span>
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80" alt="Ana Torres" loading="lazy" onerror="this.remove()"/>
+        </div>
+        <h3 class="team-name">Ana Torres</h3>
+        <p class="team-role">Tratamientos &amp; Keratina</p>
+        <p class="team-bio">Certificada por Cadiveu Professional y especialista en tratamientos de queratina, reconstrucción capilar y terapias capilares de alto rendimiento para cabellos dañados.</p>
+        <a href="#" class="team-social">@anatorres.salon</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===========================
+       CTA
+  =========================== -->
+  <section class="cta-section" id="cita">
+    <p class="cta-label reveal">Reserva online</p>
+    <h2 class="cta-title reveal delay-1">
+      Tu transformación<br /><em>empieza aquí</em>
+    </h2>
+    <p class="cta-sub reveal delay-2">
+      Reserva tu cita en menos de 2 minutos. Sin esperas, sin llamadas. Confirmación inmediata por WhatsApp.
+    </p>
+    <a href="https://wa.me/34910000000?text=Hola,%20me%20gustaría%20pedir%20cita%20en%20Maison%20Hair" class="btn-whatsapp reveal delay-3" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      Pedir cita por WhatsApp
+    </a>
+  </section>
+
+  <!-- ===========================
+       CONTACTO
+  =========================== -->
+  <section class="contacto">
+    <div class="contacto-info reveal-left">
+      <div class="section-label">Encuéntranos</div>
+      <h2 class="section-title" style="margin-top: 20px; margin-bottom: 0;">Visítanos<br /><em>en Madrid</em></h2>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="contact-item-icon">
+            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <div>
+            <p class="contact-item-label">Dirección</p>
+            <p class="contact-item-value">C/ Velázquez, 34<br />28001 Madrid (Barrio de Salamanca)</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">
+            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          </div>
+          <div>
+            <p class="contact-item-label">Teléfono</p>
+            <p class="contact-item-value">+34 910 234 567</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">
+            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <div>
+            <p class="contact-item-label">Horario</p>
+            <p class="contact-item-value">
+              Lunes – Viernes: 9:00 – 20:00<br />
+              Sábados: 9:00 – 18:00<br />
+              Domingos: Cerrado
+            </p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">
+            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <div>
+            <p class="contact-item-label">Email</p>
+            <p class="contact-item-value">hola@maisonhair.es</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contacto-map reveal-right">
+      <div class="map-placeholder"></div>
+      <div class="map-pin">
+        <div class="map-pin-icon"></div>
+        <p class="map-address">C/ Velázquez, 34 · Madrid</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       FOOTER
+  =========================== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" style="display:inline-flex; margin-bottom: 20px;">
+          <span class="logo-maison">MAISON</span>
+          <span class="logo-hair">HAIR</span>
+        </a>
+        <p class="footer-tagline">
+          Peluquería &amp; Salón de Belleza boutique en el corazón de Madrid. Donde el arte y el cuidado se encuentran.
+        </p>
+        <div class="footer-socials">
+          <!-- Instagram -->
+          <a href="#" class="social-icon" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <!-- TikTok -->
+          <a href="#" class="social-icon" aria-label="TikTok">
+            <svg viewBox="0 0 24 24"><path d="M9 12a4 4 0 104 4V4a5 5 0 005 5"/></svg>
+          </a>
+          <!-- Facebook -->
+          <a href="#" class="social-icon" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <!-- Pinterest -->
+          <a href="#" class="social-icon" aria-label="Pinterest">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.236 2.636 7.855 6.356 9.312-.088-.791-.167-2.005.035-2.868.181-.78 1.172-4.97 1.172-4.97s-.299-.598-.299-1.482c0-1.388.806-2.428 1.808-2.428.852 0 1.265.64 1.265 1.408 0 .858-.546 2.14-.828 3.33-.236.995.499 1.806 1.476 1.806 1.772 0 3.137-1.867 3.137-4.563 0-2.386-1.715-4.054-4.163-4.054-2.836 0-4.5 2.127-4.5 4.326 0 .856.33 1.775.741 2.276a.3.3 0 01.069.288l-.275 1.121c-.044.18-.146.218-.336.132-1.249-.582-2.03-2.408-2.03-3.874 0-3.154 2.292-6.052 6.608-6.052 3.469 0 6.165 2.473 6.165 5.776 0 3.447-2.173 6.22-5.19 6.22-1.013 0-1.966-.527-2.292-1.148l-.623 2.378c-.226.869-.835 1.958-1.244 2.621.937.29 1.931.446 2.962.446 5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-heading">Navegación</p>
+        <ul class="footer-links">
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#precios">Tarifas</a></li>
+          <li><a href="#galeria">Galería</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#equipo">El equipo</a></li>
+          <li><a href="#cita">Pedir cita</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-heading">Contacto</p>
+        <ul class="footer-links">
+          <li><a href="tel:+34910234567">+34 910 234 567</a></li>
+          <li><a href="mailto:hola@maisonhair.es">hola@maisonhair.es</a></li>
+          <li><a href="#">C/ Velázquez, 34, Madrid</a></li>
+        </ul>
+        <p class="footer-heading" style="margin-top: 32px;">Horario</p>
+        <ul class="footer-links">
+          <li><a href="#">Lun–Vie: 9:00 – 20:00</a></li>
+          <li><a href="#">Sábados: 9:00 – 18:00</a></li>
+          <li><a href="#">Domingos: Cerrado</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">
+        &copy; 2025 Maison Hair · Madrid. Diseño web por <a href="https://alepixel.es" target="_blank">Alepixel</a>.
+      </p>
+      <nav class="footer-legal">
+        <a href="#">Aviso legal</a>
+        <a href="#">Política de privacidad</a>
+        <a href="#">Cookies</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- ===========================
+       WHATSAPP FAB
+  =========================== -->
+  <a class="wa-fab" href="https://wa.me/34910234567?text=Hola,%20me%20gustaría%20pedir%20cita" target="_blank" rel="noopener" aria-label="Pedir cita por WhatsApp">
+    <div class="wa-tooltip">¡Pide tu cita ahora!</div>
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <!-- ===========================
+       JAVASCRIPT
+  =========================== -->
+  <script>
+    // ---- Hero image pan on load ----
+    window.addEventListener('load', () => {
+      document.getElementById('heroBg').classList.add('loaded');
+    });
+
+    // ---- Sticky nav ----
+    const nav = document.getElementById('mainNav');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      nav.classList.toggle('scrolled', y > 60);
+      lastScroll = y;
+    }, { passive: true });
+
+    // ---- Mobile menu ----
+    function toggleMenu() {
+      const h = document.getElementById('hamburger');
+      const m = document.getElementById('mobileMenu');
+      h.classList.toggle('open');
+      m.classList.toggle('open');
+      document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
+    }
+    function closeMenu() {
+      document.getElementById('hamburger').classList.remove('open');
+      document.getElementById('mobileMenu').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // ---- Scroll reveal ----
+    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => io.observe(el));
+
+    // ---- Smooth scroll for anchor links ----
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          const offset = 80;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+
+    // ---- Parallax hero bg (subtle) ----
+    const heroBg = document.getElementById('heroBg');
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (y < window.innerHeight) {
+        heroBg.style.transform = `scale(1) translateY(${y * 0.25}px)`;
+      }
+    }, { passive: true });
+  </script>
+</body>
+</html>

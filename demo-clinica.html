@@ -1,0 +1,2459 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clínica Dental Sonrisa — Sevilla | Implantes · Ortodoncia · Estética Dental</title>
+  <meta name="description" content="Clínica dental privada en Sevilla. Implantes, ortodoncia invisible Invisalign, estética dental y urgencias 24h. Financiación sin intereses. Más de 15 años de experiencia." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ==========================================
+       RESET & BASE
+    ========================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --blue: #1B4FD8;
+      --blue-2: #2563EB;
+      --blue-light: #EFF6FF;
+      --blue-muted: #DBEAFE;
+      --teal: #0D9488;
+      --teal-light: #F0FDFA;
+      --ink: #0F172A;
+      --ink-soft: #334155;
+      --ink-muted: #64748B;
+      --surface: #F8FAFC;
+      --surface-2: #F1F5F9;
+      --white: #FFFFFF;
+      --border: #E2E8F0;
+      --green: #16A34A;
+      --red: #DC2626;
+      --red-light: #FEF2F2;
+      --radius-sm: 6px;
+      --radius: 10px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --shadow-sm: 0 1px 3px rgba(15,23,42,0.06), 0 1px 2px rgba(15,23,42,0.04);
+      --shadow: 0 4px 16px rgba(15,23,42,0.08), 0 1px 4px rgba(15,23,42,0.04);
+      --shadow-lg: 0 12px 40px rgba(15,23,42,0.12), 0 4px 12px rgba(15,23,42,0.06);
+      --shadow-blue: 0 8px 24px rgba(27,79,216,0.22);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      color: var(--ink);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'DM Serif Display', serif;
+      line-height: 1.15;
+      color: var(--ink);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* ==========================================
+       UTILITIES
+    ========================================== */
+    .container {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section {
+      padding: 90px 0;
+    }
+
+    .section--surface {
+      background: var(--surface);
+    }
+
+    .section--blue-light {
+      background: var(--blue-light);
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      background: var(--blue-muted);
+      padding: 5px 14px;
+      border-radius: 50px;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: clamp(1.85rem, 3.4vw, 2.6rem);
+      color: var(--ink);
+      margin-bottom: 14px;
+    }
+
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--ink-muted);
+      font-weight: 400;
+      max-width: 560px;
+      line-height: 1.75;
+    }
+
+    .section-header {
+      margin-bottom: 56px;
+    }
+
+    .section-header--center {
+      text-align: center;
+    }
+
+    .section-header--center .section-subtitle {
+      margin: 0 auto;
+    }
+
+    /* ==========================================
+       BUTTONS
+    ========================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 26px;
+      border-radius: var(--radius);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.22s ease;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+
+    .btn--blue {
+      background: var(--blue);
+      color: var(--white);
+      border-color: var(--blue);
+      box-shadow: var(--shadow-blue);
+    }
+
+    .btn--blue:hover {
+      background: var(--blue-2);
+      border-color: var(--blue-2);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 28px rgba(27,79,216,0.30);
+    }
+
+    .btn--outline {
+      background: transparent;
+      color: var(--ink);
+      border-color: var(--border);
+    }
+
+    .btn--outline:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+      transform: translateY(-1px);
+    }
+
+    .btn--outline-blue {
+      background: transparent;
+      color: var(--blue);
+      border-color: var(--blue);
+    }
+
+    .btn--outline-blue:hover {
+      background: var(--blue);
+      color: var(--white);
+      transform: translateY(-1px);
+    }
+
+    .btn--outline-red {
+      background: transparent;
+      color: var(--red);
+      border-color: var(--red);
+      font-size: 0.85rem;
+      padding: 9px 18px;
+    }
+
+    .btn--outline-red:hover {
+      background: var(--red);
+      color: var(--white);
+    }
+
+    .btn--sm {
+      padding: 9px 18px;
+      font-size: 0.88rem;
+    }
+
+    .btn--lg {
+      padding: 16px 32px;
+      font-size: 1rem;
+    }
+
+    /* ==========================================
+       SCROLL REVEAL
+    ========================================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.10s; }
+    .reveal-delay-2 { transition-delay: 0.20s; }
+    .reveal-delay-3 { transition-delay: 0.30s; }
+    .reveal-delay-4 { transition-delay: 0.40s; }
+    .reveal-delay-5 { transition-delay: 0.50s; }
+    .reveal-delay-6 { transition-delay: 0.60s; }
+
+    /* ==========================================
+       NAVIGATION
+    ========================================== */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: var(--white);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .nav.scrolled {
+      border-color: var(--border);
+      box-shadow: 0 2px 18px rgba(15,23,42,0.07);
+    }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      padding: 15px 24px;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .nav__logo {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+
+    .nav__logo-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.4rem;
+      color: var(--blue);
+      letter-spacing: 0.01em;
+    }
+
+    .nav__logo-sub {
+      font-size: 0.63rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-top: 2px;
+    }
+
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      margin-left: auto;
+    }
+
+    .nav__links a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--ink-soft);
+      padding: 7px 12px;
+      border-radius: var(--radius-sm);
+      transition: color 0.2s, background 0.2s;
+    }
+
+    .nav__links a:hover {
+      color: var(--blue);
+      background: var(--blue-light);
+    }
+
+    .nav__ctas {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .nav__toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      margin-left: auto;
+      background: none;
+      border: none;
+    }
+
+    .nav__toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--ink);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .nav__mobile {
+      display: none;
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      padding: 16px 24px 20px;
+    }
+
+    .nav__mobile.open {
+      display: block;
+    }
+
+    .nav__mobile a {
+      display: block;
+      padding: 10px 0;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--ink-soft);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav__mobile a:last-of-type {
+      border-bottom: none;
+    }
+
+    .nav__mobile-ctas {
+      display: flex;
+      gap: 10px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* ==========================================
+       HERO
+    ========================================== */
+    .hero {
+      padding-top: 94px;
+      padding-bottom: 80px;
+      background: var(--white);
+    }
+
+    .hero__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      min-height: calc(100vh - 94px);
+      max-height: 800px;
+    }
+
+    .hero__content {
+      padding-right: 12px;
+    }
+
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue-muted);
+      color: var(--blue);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 7px 14px;
+      border-radius: 50px;
+      margin-bottom: 28px;
+    }
+
+    .hero__badge-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--blue);
+      border-radius: 50%;
+    }
+
+    .hero__title {
+      font-size: clamp(2.3rem, 4.2vw, 3.5rem);
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 22px;
+    }
+
+    .hero__title em {
+      font-style: italic;
+      color: var(--blue);
+    }
+
+    .hero__subtitle {
+      font-size: 1.05rem;
+      color: var(--ink-muted);
+      line-height: 1.75;
+      margin-bottom: 30px;
+      font-weight: 400;
+      max-width: 490px;
+    }
+
+    .hero__trust {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 36px;
+    }
+
+    .hero__trust-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: 7px 14px;
+      font-size: 0.84rem;
+      font-weight: 500;
+      color: var(--ink-soft);
+    }
+
+    .hero__trust-badge .check {
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .hero__ctas {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .hero__image-wrap {
+      position: relative;
+    }
+
+    .hero__image {
+      width: 100%;
+      height: 560px;
+      object-fit: cover;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .hero__stat-card {
+      position: absolute;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 14px 20px;
+      box-shadow: 0 8px 32px rgba(15,23,42,0.14);
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+
+    .hero__stat-card--br {
+      bottom: 26px;
+      right: -18px;
+    }
+
+    .hero__stat-card--tl {
+      top: 26px;
+      left: -18px;
+    }
+
+    .hero__stat-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.7rem;
+      color: var(--blue);
+      line-height: 1;
+    }
+
+    .hero__stat-label {
+      font-size: 0.76rem;
+      font-weight: 500;
+      color: var(--ink-muted);
+      line-height: 1.35;
+      max-width: 82px;
+    }
+
+    .hero__stat-icon {
+      font-size: 1.5rem;
+    }
+
+    /* ==========================================
+       URGENCIAS BAND
+    ========================================== */
+    .urgencias-band {
+      background: linear-gradient(135deg, #DC2626, #B91C1C);
+      padding: 22px 0;
+    }
+
+    .urgencias-band__inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .urgencias-band__pulse {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .urgencias-band__dot {
+      width: 10px;
+      height: 10px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 50%;
+      flex-shrink: 0;
+      animation: pulse-dot 1.6s infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(255,255,255,0.5); }
+      50% { opacity: 0.7; transform: scale(1.2); box-shadow: 0 0 0 6px rgba(255,255,255,0); }
+    }
+
+    .urgencias-band__text {
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: 400;
+    }
+
+    .urgencias-band__text strong {
+      font-weight: 700;
+    }
+
+    .btn--white-red {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--white);
+      color: var(--red);
+      border: 2px solid transparent;
+      padding: 10px 22px;
+      border-radius: var(--radius);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.22s;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn--white-red:hover {
+      background: var(--red-light);
+      transform: translateY(-1px);
+    }
+
+    /* ==========================================
+       SERVICIOS
+    ========================================== */
+    .services__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 30px 26px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+      cursor: default;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--border);
+      transition: background 0.25s;
+    }
+
+    .service-card:hover::before {
+      background: var(--blue);
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--blue-muted);
+    }
+
+    .service-card__icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+
+    .service-card__title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.15rem;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .service-card__desc {
+      font-size: 0.9rem;
+      color: var(--ink-muted);
+      line-height: 1.65;
+      margin-bottom: 18px;
+    }
+
+    .service-card__price {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--blue);
+      background: var(--blue-light);
+      padding: 5px 12px;
+      border-radius: 50px;
+    }
+
+    /* ==========================================
+       STATS BAND
+    ========================================== */
+    .stats-band {
+      background: var(--blue);
+      padding: 62px 0;
+    }
+
+    .stats-band__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      text-align: center;
+    }
+
+    .stat-item {
+      padding: 12px;
+    }
+
+    .stat-item__num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.9rem;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-item__label {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.72);
+    }
+
+    /* ==========================================
+       POR QUÉ ELEGIRNOS
+    ========================================== */
+    .why__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .why-item {
+      text-align: center;
+      padding: 32px 20px;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+
+    .why-item:hover {
+      box-shadow: var(--shadow);
+      transform: translateY(-3px);
+    }
+
+    .why-item__icon {
+      width: 60px;
+      height: 60px;
+      background: var(--blue-muted);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin: 0 auto 18px;
+    }
+
+    .why-item__title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .why-item__desc {
+      font-size: 0.88rem;
+      color: var(--ink-muted);
+      line-height: 1.65;
+    }
+
+    /* ==========================================
+       EQUIPO
+    ========================================== */
+    .team__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+    }
+
+    .team-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+
+    .team-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+
+    .team-card__photo {
+      width: 100%;
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Serif Display', serif;
+      font-size: 4.5rem;
+      color: rgba(255,255,255,0.9);
+      position: relative;
+      overflow: hidden;
+    }
+    .team-card__photo img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+    }
+
+    .team-card__photo--1 { background: linear-gradient(145deg, #1B4FD8 0%, #4F75E0 100%); }
+    .team-card__photo--2 { background: linear-gradient(145deg, #0D9488 0%, #20B2A6 100%); }
+    .team-card__photo--3 { background: linear-gradient(145deg, #7C3AED 0%, #A855F7 100%); }
+
+    .team-card__body {
+      padding: 24px;
+    }
+
+    .team-card__role {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 6px;
+    }
+
+    .team-card__name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+
+    .team-card__bio {
+      font-size: 0.88rem;
+      color: var(--ink-muted);
+      line-height: 1.65;
+    }
+
+    .team-card__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--teal-light);
+      color: var(--teal);
+      font-size: 0.76rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 50px;
+      margin-top: 14px;
+    }
+
+    /* ==========================================
+       PROCESO
+    ========================================== */
+    .process__steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+    }
+
+    .process__steps::before {
+      content: '';
+      position: absolute;
+      top: 26px;
+      left: 12.5%;
+      right: 12.5%;
+      height: 2px;
+      background: var(--blue-muted);
+      z-index: 0;
+    }
+
+    .process-step {
+      text-align: center;
+      padding: 0 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .process-step__num {
+      width: 52px;
+      height: 52px;
+      background: var(--blue);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.3rem;
+      margin: 0 auto 22px;
+      position: relative;
+      z-index: 1;
+      box-shadow: var(--shadow-blue);
+    }
+
+    .process-step__title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.05rem;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .process-step__desc {
+      font-size: 0.87rem;
+      color: var(--ink-muted);
+      line-height: 1.65;
+    }
+
+    .process-step__tag {
+      display: inline-block;
+      background: var(--green);
+      color: var(--white);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 50px;
+      margin-top: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ==========================================
+       OPINIONES
+    ========================================== */
+    .reviews__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .review-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+
+    .review-card:hover {
+      box-shadow: var(--shadow);
+      transform: translateY(-3px);
+    }
+
+    .review-card__header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .review-card__avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.25rem;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+
+    .review-card__avatar--1 { background: linear-gradient(135deg, #1B4FD8, #7C3AED); }
+    .review-card__avatar--2 { background: linear-gradient(135deg, #0D9488, #1B4FD8); }
+    .review-card__avatar--3 { background: linear-gradient(135deg, #7C3AED, #EC4899); }
+
+    .review-card__name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .review-card__verified {
+      font-size: 0.74rem;
+      color: var(--green);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 2px;
+    }
+
+    .review-card__stars {
+      font-size: 1rem;
+      color: #F59E0B;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .review-card__text {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      line-height: 1.72;
+      font-style: italic;
+    }
+
+    .review-card__quote {
+      font-family: 'DM Serif Display', serif;
+      font-size: 3rem;
+      color: var(--blue-muted);
+      line-height: 0.6;
+      float: left;
+      margin-right: 4px;
+      margin-top: 12px;
+    }
+
+    .reviews__google-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 44px;
+      padding: 18px 32px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ==========================================
+       PRECIOS
+    ========================================== */
+    .prices__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-bottom: 36px;
+    }
+
+    .price-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px 22px;
+      text-align: center;
+      transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+    }
+
+    .price-card:hover {
+      box-shadow: var(--shadow);
+      transform: translateY(-3px);
+      border-color: var(--blue-muted);
+    }
+
+    .price-card__icon {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+    }
+
+    .price-card__name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--ink-soft);
+      margin-bottom: 14px;
+    }
+
+    .price-card__price {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.1rem;
+      color: var(--blue);
+      line-height: 1;
+    }
+
+    .price-card__price sup {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      vertical-align: top;
+      margin-top: 5px;
+      display: inline-block;
+    }
+
+    .price-card__from {
+      font-size: 0.74rem;
+      color: var(--ink-muted);
+      margin-top: 4px;
+    }
+
+    .prices__note {
+      text-align: center;
+      background: var(--blue-light);
+      border: 1px solid var(--blue-muted);
+      border-radius: var(--radius-lg);
+      padding: 20px 28px;
+      font-size: 0.93rem;
+      color: var(--blue);
+      font-weight: 500;
+      margin-bottom: 28px;
+    }
+
+    .prices__insurances {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .prices__insurances-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--ink-muted);
+    }
+
+    .insurance-badge {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 7px 16px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--ink-soft);
+      letter-spacing: 0.02em;
+    }
+
+    /* ==========================================
+       CONTACTO
+    ========================================== */
+    .contact__grid {
+      display: grid;
+      grid-template-columns: 1fr 1.45fr;
+      gap: 52px;
+      align-items: start;
+    }
+
+    .contact__info-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin-bottom: 24px;
+    }
+
+    .contact__info-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius);
+      background: var(--blue-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .contact__info-label {
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 4px;
+    }
+
+    .contact__info-value {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--ink-soft);
+      line-height: 1.55;
+    }
+
+    .contact__info-value a {
+      color: var(--blue);
+      font-weight: 600;
+    }
+
+    .contact__hours {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px 22px;
+      margin-top: 10px;
+    }
+
+    .contact__hours-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--ink-muted);
+      margin-bottom: 14px;
+    }
+
+    .contact__hours-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      font-size: 0.88rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--ink-soft);
+    }
+
+    .contact__hours-row:last-child {
+      border-bottom: none;
+    }
+
+    .contact__hours-row strong {
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .urgencia-tag {
+      color: var(--red);
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    /* FORM */
+    .contact-form {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 38px;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-form__title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.55rem;
+      color: var(--ink);
+      margin-bottom: 5px;
+    }
+
+    .contact-form__sub {
+      font-size: 0.88rem;
+      color: var(--ink-muted);
+      margin-bottom: 28px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--ink-soft);
+      margin-bottom: 7px;
+      letter-spacing: 0.02em;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.93rem;
+      color: var(--ink);
+      background: var(--surface);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      appearance: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px var(--blue-muted);
+      background: var(--white);
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--ink-muted);
+      font-weight: 400;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 96px;
+    }
+
+    .form-group select {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748B' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      background-color: var(--surface);
+      padding-right: 40px;
+    }
+
+    .form-submit {
+      width: 100%;
+      padding: 15px;
+      background: var(--blue);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.22s, transform 0.22s, box-shadow 0.22s;
+      box-shadow: var(--shadow-blue);
+      margin-top: 6px;
+    }
+
+    .form-submit:hover {
+      background: var(--blue-2);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 28px rgba(27,79,216,0.30);
+    }
+
+    .form-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .form-privacy {
+      text-align: center;
+      font-size: 0.74rem;
+      color: var(--ink-muted);
+      margin-top: 12px;
+      line-height: 1.5;
+    }
+
+    /* ==========================================
+       MAP PLACEHOLDER
+    ========================================== */
+    .map-section {
+      height: 260px;
+      background: linear-gradient(135deg, var(--blue-light), var(--blue-muted));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-top: 1px solid var(--blue-muted);
+      border-bottom: 1px solid var(--blue-muted);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .map-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(27,79,216,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(27,79,216,0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    .map-placeholder {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .map-placeholder__pin {
+      font-size: 2.8rem;
+      margin-bottom: 8px;
+      filter: drop-shadow(0 4px 12px rgba(27,79,216,0.3));
+    }
+
+    .map-placeholder__text {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.3rem;
+      color: var(--blue);
+      margin-bottom: 4px;
+    }
+
+    .map-placeholder__sub {
+      font-size: 0.88rem;
+      color: var(--ink-muted);
+    }
+
+    /* ==========================================
+       FOOTER
+    ========================================== */
+    .footer {
+      background: var(--ink);
+      padding: 64px 0 28px;
+    }
+
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.2fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer__logo-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.55rem;
+      color: var(--white);
+      margin-bottom: 3px;
+    }
+
+    .footer__logo-sub {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 16px;
+    }
+
+    .footer__desc {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.52);
+      line-height: 1.72;
+      margin-bottom: 22px;
+    }
+
+    .footer__certs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .footer__cert {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.11);
+      border-radius: var(--radius-sm);
+      padding: 5px 10px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.04em;
+    }
+
+    .footer__col-title {
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.38);
+      margin-bottom: 18px;
+    }
+
+    .footer__links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer__links a {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.58);
+      transition: color 0.2s;
+    }
+
+    .footer__links a:hover {
+      color: var(--white);
+    }
+
+    .footer__contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .footer__contact-icon {
+      font-size: 0.95rem;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .footer__contact-text {
+      font-size: 0.87rem;
+      color: rgba(255,255,255,0.56);
+      line-height: 1.55;
+    }
+
+    .footer__contact-text a {
+      color: rgba(255,255,255,0.78);
+    }
+
+    .footer__bottom {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer__copy {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.32);
+    }
+
+    .footer__bottom-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer__bottom-links a {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.32);
+      transition: color 0.2s;
+    }
+
+    .footer__bottom-links a:hover {
+      color: rgba(255,255,255,0.7);
+    }
+
+    .footer__made-by {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.22);
+    }
+
+    .footer__made-by a {
+      color: rgba(255,255,255,0.48);
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .footer__made-by a:hover {
+      color: var(--white);
+    }
+
+    /* ==========================================
+       FLOATING BUTTONS
+    ========================================== */
+    .floating-buttons {
+      position: fixed;
+      bottom: 26px;
+      right: 26px;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-end;
+    }
+
+    .float-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-radius: 50px;
+      padding: 12px 20px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+      transition: transform 0.22s, box-shadow 0.22s;
+    }
+
+    .float-btn:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.22);
+    }
+
+    .float-btn--whatsapp {
+      background: #25D366;
+      color: var(--white);
+    }
+
+    .float-btn--call {
+      background: var(--white);
+      color: var(--ink);
+      border: 1.5px solid var(--border);
+    }
+
+    .float-btn__icon {
+      font-size: 1.2rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .float-label {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .float-label__small {
+      font-size: 0.66rem;
+      font-weight: 500;
+      opacity: 0.75;
+    }
+
+    /* ==========================================
+       RESPONSIVE
+    ========================================== */
+    @media (max-width: 1024px) {
+      .why__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .stats-band__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+      }
+      .footer__grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 36px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero__grid {
+        grid-template-columns: 1fr;
+        max-height: none;
+        min-height: auto;
+        gap: 40px;
+      }
+      .hero__content {
+        padding-right: 0;
+      }
+      .hero__image {
+        height: 360px;
+      }
+      .hero__stat-card--tl { left: 10px; top: 16px; }
+      .hero__stat-card--br { right: 10px; bottom: 16px; }
+      .services__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .team__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .process__steps {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 36px;
+      }
+      .process__steps::before { display: none; }
+      .reviews__grid {
+        grid-template-columns: 1fr;
+        max-width: 520px;
+        margin: 0 auto;
+      }
+      .prices__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .contact__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav__links, .nav__ctas { display: none; }
+      .nav__toggle { display: flex; }
+      .section { padding: 62px 0; }
+      .services__grid { grid-template-columns: 1fr; }
+      .why__grid { grid-template-columns: 1fr; }
+      .team__grid { grid-template-columns: 1fr; }
+      .process__steps { grid-template-columns: 1fr; gap: 32px; }
+      .prices__grid { grid-template-columns: 1fr 1fr; }
+      .footer__grid { grid-template-columns: 1fr; gap: 28px; }
+      .footer__bottom { flex-direction: column; text-align: center; gap: 8px; }
+      .form-row { grid-template-columns: 1fr; }
+      .contact-form { padding: 24px 20px; }
+      .hero { padding-top: 82px; }
+      .urgencias-band__inner { flex-direction: column; text-align: center; gap: 14px; }
+      .stats-band__grid { grid-template-columns: repeat(2, 1fr); }
+      .float-btn .float-label { display: none; }
+      .float-btn { padding: 14px; }
+      .float-btn--call { display: none; }
+      .hero__stat-card { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================
+       NAVIGATION
+  ========================================== -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#inicio" class="nav__logo">
+        <span class="nav__logo-name">SONRISA</span>
+        <span class="nav__logo-sub">Clínica Dental · Sevilla</span>
+      </a>
+      <div class="nav__links">
+        <a href="#servicios">Servicios</a>
+        <a href="#tratamientos">Tratamientos</a>
+        <a href="#equipo">Equipo</a>
+        <a href="#precios">Precios</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+      <div class="nav__ctas">
+        <a href="tel:+34954000000" class="btn btn--outline-red">🚨 Urgencias 24h</a>
+        <a href="#contacto" class="btn btn--blue btn--sm">Pedir cita</a>
+      </div>
+      <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="nav__mobile" id="navMobile" role="navigation" aria-label="Menú móvil">
+      <a href="#servicios">Servicios</a>
+      <a href="#tratamientos">Tratamientos</a>
+      <a href="#equipo">Equipo</a>
+      <a href="#precios">Precios</a>
+      <a href="#contacto">Contacto</a>
+      <div class="nav__mobile-ctas">
+        <a href="tel:+34954000000" class="btn btn--outline-red">🚨 Urgencias 24h</a>
+        <a href="#contacto" class="btn btn--blue btn--sm">Pedir cita</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==========================================
+       HERO
+  ========================================== -->
+  <section class="hero" id="inicio">
+    <div class="container">
+      <div class="hero__grid">
+
+        <!-- LEFT: content -->
+        <div class="hero__content">
+          <div class="hero__badge reveal">
+            <span class="hero__badge-dot"></span>
+            ✓ Más de 15 años de experiencia en Sevilla
+          </div>
+          <h1 class="hero__title reveal reveal-delay-1">
+            Tu sonrisa perfecta<br/>
+            está más cerca<br/>
+            <em>de lo que crees</em>
+          </h1>
+          <p class="hero__subtitle reveal reveal-delay-2">
+            Tratamientos dentales de alta calidad en Sevilla. Tecnología de vanguardia, equipo especializado y financiación sin intereses para que puedas cuidar tu salud bucal sin preocupaciones.
+          </p>
+          <div class="hero__trust reveal reveal-delay-3">
+            <span class="hero__trust-badge"><span class="check">✓</span> Sin dolor</span>
+            <span class="hero__trust-badge"><span class="check">✓</span> Financiación 0%</span>
+            <span class="hero__trust-badge"><span class="check">✓</span> Urgencias 24h</span>
+            <span class="hero__trust-badge"><span class="check">✓</span> 1ª visita gratuita</span>
+          </div>
+          <div class="hero__ctas reveal reveal-delay-4">
+            <a href="#contacto" class="btn btn--blue btn--lg">
+              Pedir cita ahora
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="tel:+34954000000" class="btn btn--outline btn--lg">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.11 1.22 2 2 0 012.09 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.54a16 16 0 006.55 6.55l.91-.91a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              +34 954 XXX XXX
+            </a>
+          </div>
+        </div>
+
+        <!-- RIGHT: image -->
+        <div class="hero__image-wrap reveal reveal-delay-2">
+          <img
+            class="hero__image"
+            src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=1200&q=80"
+            alt="Instalaciones modernas de la Clínica Dental Sonrisa en Sevilla"
+            loading="eager"
+          />
+          <div class="hero__stat-card hero__stat-card--tl">
+            <span class="hero__stat-icon">⭐</span>
+            <div>
+              <div class="hero__stat-num">4.9</div>
+              <div class="hero__stat-label">Valoración en Google</div>
+            </div>
+          </div>
+          <div class="hero__stat-card hero__stat-card--br">
+            <span class="hero__stat-icon">🦷</span>
+            <div>
+              <div class="hero__stat-num">+3.200</div>
+              <div class="hero__stat-label">Pacientes satisfechos</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       URGENCIAS BAND
+  ========================================== -->
+  <div class="urgencias-band" role="alert">
+    <div class="urgencias-band__inner">
+      <div class="urgencias-band__pulse">
+        <span class="urgencias-band__dot" aria-hidden="true"></span>
+        <p class="urgencias-band__text">
+          🚨 <strong>¿Tienes una urgencia dental?</strong> Llamamos en menos de 2 minutos — disponibles <strong>24 horas al día, 365 días al año.</strong>
+        </p>
+      </div>
+      <a href="tel:+34954000000" class="btn--white-red">
+        Llamar ahora →
+      </a>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       SERVICIOS PRINCIPALES
+  ========================================== -->
+  <section class="section" id="servicios">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label reveal">Nuestros servicios</span>
+        <h2 class="section-title reveal reveal-delay-1">Todo lo que necesitas<br/>para una sonrisa sana</h2>
+        <p class="section-subtitle reveal reveal-delay-2">Desde revisiones rutinarias hasta tratamientos estéticos de alto nivel. Un equipo de especialistas dedicado a tu salud bucal.</p>
+      </div>
+      <div class="services__grid" id="tratamientos">
+        <div class="service-card reveal">
+          <div class="service-card__icon">🦷</div>
+          <h3 class="service-card__title">Implantes dentales</h3>
+          <p class="service-card__desc">La solución definitiva para dientes perdidos. Implantes de titanio de última generación con garantía de por vida y resultado completamente natural.</p>
+          <span class="service-card__price">Desde 799 €</span>
+        </div>
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-card__icon">✨</div>
+          <h3 class="service-card__title">Estética dental</h3>
+          <p class="service-card__desc">Blanqueamiento profesional, carillas de porcelana y composite. Diseño de sonrisa personalizado para recuperar tu confianza y luminosidad.</p>
+          <span class="service-card__price">Desde 299 €</span>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-card__icon">🔵</div>
+          <h3 class="service-card__title">Ortodoncia invisible</h3>
+          <p class="service-card__desc">Invisalign y alineadores transparentes certificados. Corrige tu mordida sin brackets metálicos visibles con la máxima discreción y comodidad.</p>
+          <span class="service-card__price">Desde 1.800 €</span>
+        </div>
+        <div class="service-card reveal reveal-delay-3">
+          <div class="service-card__icon">🏥</div>
+          <h3 class="service-card__title">Odontología general</h3>
+          <p class="service-card__desc">Revisiones periódicas, empastes, extracciones y limpiezas profesionales. La base imprescindible para una buena salud bucodental para toda la familia.</p>
+          <span class="service-card__price">Desde 35 €</span>
+        </div>
+        <div class="service-card reveal reveal-delay-4">
+          <div class="service-card__icon">👶</div>
+          <h3 class="service-card__title">Odontopediatría</h3>
+          <p class="service-card__desc">Especialistas en salud dental infantil. Creamos un ambiente cómodo y amigable para que los más pequeños pierdan el miedo al dentista.</p>
+          <span class="service-card__price" style="background:#F0FDFA;color:#0D9488;">Primera visita gratuita</span>
+        </div>
+        <div class="service-card reveal reveal-delay-5">
+          <div class="service-card__icon">🌙</div>
+          <h3 class="service-card__title">Urgencias 24h</h3>
+          <p class="service-card__desc">Dolor de muela, fractura dental, pérdida de pieza o corona. Atendemos tu urgencia al momento, sin esperas, cualquier día del año.</p>
+          <span class="service-card__price" style="background:#FEF2F2;color:#DC2626;">Disponible 24/7</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       STATS BAND
+  ========================================== -->
+  <div class="stats-band" aria-label="Datos de la clínica">
+    <div class="container">
+      <div class="stats-band__grid">
+        <div class="stat-item reveal">
+          <div class="stat-item__num">+15</div>
+          <div class="stat-item__label">Años de experiencia en Sevilla</div>
+        </div>
+        <div class="stat-item reveal reveal-delay-1">
+          <div class="stat-item__num">+3.200</div>
+          <div class="stat-item__label">Pacientes satisfechos</div>
+        </div>
+        <div class="stat-item reveal reveal-delay-2">
+          <div class="stat-item__num">5</div>
+          <div class="stat-item__label">Especialistas certificados</div>
+        </div>
+        <div class="stat-item reveal reveal-delay-3">
+          <div class="stat-item__num">4.9 ★</div>
+          <div class="stat-item__label">Valoración media en Google</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       POR QUÉ ELEGIRNOS
+  ========================================== -->
+  <section class="section section--surface">
+    <div class="container">
+      <div class="section-header section-header--center">
+        <span class="section-label reveal">Por qué elegirnos</span>
+        <h2 class="section-title reveal reveal-delay-1">La diferencia que marca<br/>nuestra clínica</h2>
+        <p class="section-subtitle reveal reveal-delay-2">Combinamos experiencia clínica, tecnología de vanguardia y calidez humana para ofrecerte la mejor atención dental de Sevilla.</p>
+      </div>
+      <div class="why__grid">
+        <div class="why-item reveal">
+          <div class="why-item__icon" aria-hidden="true">🔬</div>
+          <h3 class="why-item__title">Tecnología 3D</h3>
+          <p class="why-item__desc">Escáner intraoral de última generación, radiografía digital de baja radiación y diseño de sonrisa digital previo al tratamiento para resultados predecibles.</p>
+        </div>
+        <div class="why-item reveal reveal-delay-1">
+          <div class="why-item__icon" aria-hidden="true">💉</div>
+          <h3 class="why-item__title">Sin dolor</h3>
+          <p class="why-item__desc">Anestesia local computarizada de última generación. Tratamientos completamente cómodos e indoloros, incluso para los pacientes más aprensivos.</p>
+        </div>
+        <div class="why-item reveal reveal-delay-2">
+          <div class="why-item__icon" aria-hidden="true">💳</div>
+          <h3 class="why-item__title">Financiación 0%</h3>
+          <p class="why-item__desc">Hasta 24 meses sin intereses con Cofidis. Adaptamos el plan de pago a tu presupuesto para que nada te impida tener la sonrisa que mereces.</p>
+        </div>
+        <div class="why-item reveal reveal-delay-3">
+          <div class="why-item__icon" aria-hidden="true">📋</div>
+          <h3 class="why-item__title">Garantía escrita</h3>
+          <p class="why-item__desc">Todos nuestros tratamientos incluyen garantía por escrito. Implantes, prótesis y ortodoncia con garantía de por vida. Tu inversión protegida.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       EQUIPO
+  ========================================== -->
+  <section class="section" id="equipo">
+    <div class="container">
+      <div class="section-header section-header--center">
+        <span class="section-label reveal">Nuestro equipo</span>
+        <h2 class="section-title reveal reveal-delay-1">Especialistas que cuidan<br/>de tu sonrisa</h2>
+        <p class="section-subtitle reveal reveal-delay-2">Cinco odontólogos especializados con formación continua y vocación de servicio al paciente. Tu salud en las mejores manos de Sevilla.</p>
+      </div>
+      <div class="team__grid">
+        <div class="team-card reveal">
+          <div class="team-card__photo team-card__photo--1">
+            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&q=80" alt="Dra. Ana Romero" loading="lazy" onerror="this.remove()"/>
+          </div>
+          <div class="team-card__body">
+            <div class="team-card__role">Directora · Implantología y Cirugía Oral</div>
+            <h3 class="team-card__name">Dra. Ana Romero</h3>
+            <p class="team-card__bio">Especialista en Implantología y Cirugía Oral con más de 20 años de trayectoria. Formada en la Universidad Complutense de Madrid con máster en Cirugía Implantológica Avanzada por la Universidad de Berna.</p>
+            <span class="team-card__badge">✓ +1.500 implantes realizados</span>
+          </div>
+        </div>
+        <div class="team-card reveal reveal-delay-1">
+          <div class="team-card__photo team-card__photo--2">
+            <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&q=80" alt="Dr. Pablo Martín" loading="lazy" onerror="this.remove()"/>
+          </div>
+          <div class="team-card__body">
+            <div class="team-card__role">Ortodoncista · Invisalign Gold Provider</div>
+            <h3 class="team-card__name">Dr. Pablo Martín</h3>
+            <p class="team-card__bio">Especialista certificado Invisalign Gold Provider y premio al mejor ortodoncista 2023 por el Colegio de Odontólogos de Sevilla. Más de 300 casos Invisalign finalizados con éxito.</p>
+            <span class="team-card__badge">🏆 Premio Mejor Ortodoncista 2023</span>
+          </div>
+        </div>
+        <div class="team-card reveal reveal-delay-2">
+          <div class="team-card__photo team-card__photo--3">
+            <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=600&q=80" alt="Dra. Sara López" loading="lazy" onerror="this.remove()"/>
+          </div>
+          <div class="team-card__body">
+            <div class="team-card__role">Odontología Estética · Diseño de Sonrisa</div>
+            <h3 class="team-card__name">Dra. Sara López</h3>
+            <p class="team-card__bio">Especialista en estética dental, carillas de porcelana y blanqueamiento profesional. Pionera en diseño de sonrisa digital en Andalucía. Certificada por la Academia Americana de Cosmética Dental (AACD).</p>
+            <span class="team-card__badge">✓ Certificada AACD · EE.UU.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       PROCESO DE PRIMERA VISITA
+  ========================================== -->
+  <section class="section section--blue-light">
+    <div class="container">
+      <div class="section-header section-header--center">
+        <span class="section-label reveal">Cómo funciona</span>
+        <h2 class="section-title reveal reveal-delay-1">Tu primera visita,<br/>paso a paso</h2>
+        <p class="section-subtitle reveal reveal-delay-2">Sin compromisos, sin letra pequeña, sin sorpresas. Desde que contactas con nosotros hasta que empiezas a disfrutar de tu nueva sonrisa.</p>
+      </div>
+      <div class="process__steps">
+        <div class="process-step reveal">
+          <div class="process-step__num">1</div>
+          <h3 class="process-step__title">Pide tu cita</h3>
+          <p class="process-step__desc">Por teléfono, WhatsApp o a través de nuestro formulario online. Nos adaptamos a tu horario y te confirmamos en minutos.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-1">
+          <div class="process-step__num">2</div>
+          <h3 class="process-step__title">Valoración gratuita</h3>
+          <p class="process-step__desc">Revisión completa con ortopantomografía sin coste. Diagnóstico profesional y personalizado en tu primera visita.</p>
+          <span class="process-step__tag">SIN COSTE</span>
+        </div>
+        <div class="process-step reveal reveal-delay-2">
+          <div class="process-step__num">3</div>
+          <h3 class="process-step__title">Plan personalizado</h3>
+          <p class="process-step__desc">Presupuesto detallado y sin ningún compromiso. Te explicamos cada paso del tratamiento con total transparencia.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-3">
+          <div class="process-step__num">4</div>
+          <h3 class="process-step__title">Empieza el tratamiento</h3>
+          <p class="process-step__desc">Con la financiación adaptada a tu ritmo. Hasta 24 meses sin intereses para que no tengas que esperar más.</p>
+          <span class="process-step__tag">FINANCIACIÓN 0%</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       OPINIONES
+  ========================================== -->
+  <section class="section" id="opiniones">
+    <div class="container">
+      <div class="section-header section-header--center">
+        <span class="section-label reveal">Opiniones reales</span>
+        <h2 class="section-title reveal reveal-delay-1">Lo que dicen nuestros<br/>pacientes de Sevilla</h2>
+        <p class="section-subtitle reveal reveal-delay-2">Más de 480 opiniones verificadas en Google. La confianza de nuestros pacientes es nuestra mayor garantía y motivación.</p>
+      </div>
+      <div class="reviews__grid">
+        <div class="review-card reveal">
+          <div class="review-card__header">
+            <div class="review-card__avatar review-card__avatar--1" aria-hidden="true">M</div>
+            <div>
+              <div class="review-card__name">María G.</div>
+              <div class="review-card__verified">✓ Opinión verificada en Google</div>
+            </div>
+          </div>
+          <div class="review-card__stars" aria-label="5 estrellas">★★★★★</div>
+          <p class="review-card__text"><span class="review-card__quote" aria-hidden="true">"</span>Llevo años temiendo al dentista. Aquí me trataron con tanta amabilidad y profesionalidad que ha cambiado completamente mi experiencia. Mi implante quedó perfecto y sin apenas molestias. La Dra. Romero es increíble.</p>
+        </div>
+        <div class="review-card reveal reveal-delay-1">
+          <div class="review-card__header">
+            <div class="review-card__avatar review-card__avatar--2" aria-hidden="true">J</div>
+            <div>
+              <div class="review-card__name">Javier R.</div>
+              <div class="review-card__verified">✓ Opinión verificada en Google</div>
+            </div>
+          </div>
+          <div class="review-card__stars" aria-label="5 estrellas">★★★★★</div>
+          <p class="review-card__text"><span class="review-card__quote" aria-hidden="true">"</span>Los alineadores Invisalign cambiaron mi sonrisa en tan solo 8 meses. El Dr. Martín es un auténtico crack, siempre disponible para cualquier duda y con un trato cercano y profesional. 100% recomendado.</p>
+        </div>
+        <div class="review-card reveal reveal-delay-2">
+          <div class="review-card__header">
+            <div class="review-card__avatar review-card__avatar--3" aria-hidden="true">C</div>
+            <div>
+              <div class="review-card__name">Carmen L.</div>
+              <div class="review-card__verified">✓ Opinión verificada en Google</div>
+            </div>
+          </div>
+          <div class="review-card__stars" aria-label="5 estrellas">★★★★★</div>
+          <p class="review-card__text"><span class="review-card__quote" aria-hidden="true">"</span>Primera vez que traía a mis hijos al dentista sin dramas ni llantos. La odontopediatra es increíble con los niños, los pequeños salieron encantados y ya preguntan cuándo vuelven. Una maravilla de clínica.</p>
+        </div>
+      </div>
+      <div class="reviews__google-badge reveal">
+        <span style="font-size:1.8rem;font-weight:700;color:#4285F4;font-family:'DM Serif Display',serif;">G</span>
+        <div>
+          <div style="font-size:0.82rem;font-weight:600;color:var(--ink-muted);margin-bottom:4px;">Valoración media en Google</div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-family:'DM Serif Display',serif;font-size:1.6rem;color:var(--ink);">4.9</span>
+            <span style="color:#F59E0B;font-size:1rem;letter-spacing:1px;">★★★★★</span>
+            <span style="font-size:0.82rem;color:var(--ink-muted);">(+480 opiniones)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       PRECIOS
+  ========================================== -->
+  <section class="section section--surface" id="precios">
+    <div class="container">
+      <div class="section-header section-header--center">
+        <span class="section-label reveal">Precios claros</span>
+        <h2 class="section-title reveal reveal-delay-1">Tratamientos de calidad<br/>a precios accesibles</h2>
+        <p class="section-subtitle reveal reveal-delay-2">Sin letra pequeña ni costes ocultos. Presupuesto detallado y completamente gratuito antes de comenzar cualquier tratamiento.</p>
+      </div>
+      <div class="prices__grid">
+        <div class="price-card reveal">
+          <div class="price-card__icon">🔍</div>
+          <div class="price-card__name">Revisión + Limpieza</div>
+          <div class="price-card__price">35<sup>€</sup></div>
+          <div class="price-card__from">precio único</div>
+        </div>
+        <div class="price-card reveal reveal-delay-1">
+          <div class="price-card__icon">🦷</div>
+          <div class="price-card__name">Empaste dental</div>
+          <div class="price-card__price">50<sup>€</sup></div>
+          <div class="price-card__from">desde</div>
+        </div>
+        <div class="price-card reveal reveal-delay-2">
+          <div class="price-card__icon">✨</div>
+          <div class="price-card__name">Blanqueamiento</div>
+          <div class="price-card__price">299<sup>€</sup></div>
+          <div class="price-card__from">desde</div>
+        </div>
+        <div class="price-card reveal reveal-delay-3">
+          <div class="price-card__icon">🔩</div>
+          <div class="price-card__name">Implante completo</div>
+          <div class="price-card__price">799<sup>€</sup></div>
+          <div class="price-card__from">desde</div>
+        </div>
+      </div>
+      <div class="prices__note reveal">
+        💳 <strong>Financiación hasta 24 meses sin intereses</strong> · Presupuesto personalizado sin coste · Sin compromiso
+      </div>
+      <div class="prices__insurances reveal">
+        <span class="prices__insurances-label">Seguros aceptados:</span>
+        <span class="insurance-badge">Adeslas</span>
+        <span class="insurance-badge">Sanitas</span>
+        <span class="insurance-badge">Mapfre</span>
+        <span class="insurance-badge">DKV</span>
+        <span class="insurance-badge">Asisa</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       CONTACTO
+  ========================================== -->
+  <section class="section" id="contacto">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label reveal">Contacto</span>
+        <h2 class="section-title reveal reveal-delay-1">¿Listo para tu primera<br/>visita gratuita?</h2>
+        <p class="section-subtitle reveal reveal-delay-2">Rellena el formulario y te llamamos en menos de una hora en horario de clínica. Sin compromisos de ningún tipo.</p>
+      </div>
+      <div class="contact__grid">
+
+        <!-- Info column -->
+        <div>
+          <div class="contact__info-item reveal">
+            <div class="contact__info-icon" aria-hidden="true">📍</div>
+            <div>
+              <div class="contact__info-label">Dirección</div>
+              <div class="contact__info-value">C/ Sierpes, 45<br/>41001 Sevilla, España</div>
+            </div>
+          </div>
+          <div class="contact__info-item reveal reveal-delay-1">
+            <div class="contact__info-icon" aria-hidden="true">📞</div>
+            <div>
+              <div class="contact__info-label">Teléfono</div>
+              <div class="contact__info-value"><a href="tel:+34954000000">+34 954 XXX XXX</a></div>
+            </div>
+          </div>
+          <div class="contact__info-item reveal reveal-delay-2">
+            <div class="contact__info-icon" aria-hidden="true">📧</div>
+            <div>
+              <div class="contact__info-label">Correo electrónico</div>
+              <div class="contact__info-value"><a href="mailto:cita@clinicasonrisa.es">cita@clinicasonrisa.es</a></div>
+            </div>
+          </div>
+          <div class="contact__info-item reveal reveal-delay-3">
+            <div class="contact__info-icon" aria-hidden="true">💬</div>
+            <div>
+              <div class="contact__info-label">WhatsApp</div>
+              <div class="contact__info-value"><a href="https://wa.me/34954000000">Escríbenos directamente por WhatsApp</a></div>
+            </div>
+          </div>
+          <div class="contact__hours reveal reveal-delay-4">
+            <div class="contact__hours-title">Horario de atención</div>
+            <div class="contact__hours-row">
+              <strong>Lunes — Viernes</strong>
+              <span>9:00 — 21:00</span>
+            </div>
+            <div class="contact__hours-row">
+              <strong>Sábado</strong>
+              <span>9:00 — 14:00</span>
+            </div>
+            <div class="contact__hours-row">
+              <strong>Domingo</strong>
+              <span class="urgencia-tag">🚨 Urgencias únicamente</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form column -->
+        <div class="contact-form reveal reveal-delay-1">
+          <h3 class="contact-form__title">Solicitar cita</h3>
+          <p class="contact-form__sub">Primera valoración gratuita · Sin compromiso · Respuesta en menos de 1 hora</p>
+          <form id="contactForm" onsubmit="handleFormSubmit(event)" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nombre">Nombre completo *</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Ej: María García" required autocomplete="name" />
+              </div>
+              <div class="form-group">
+                <label for="telefono">Teléfono *</label>
+                <input type="tel" id="telefono" name="telefono" placeholder="+34 600 000 000" required autocomplete="tel" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="servicio">¿Qué tratamiento te interesa?</label>
+              <select id="servicio" name="servicio">
+                <option value="" disabled selected>Selecciona un tratamiento</option>
+                <option value="revision">Revisión + Limpieza (1ª visita gratuita)</option>
+                <option value="implantes">Implantes dentales</option>
+                <option value="estetica">Estética dental / Blanqueamiento</option>
+                <option value="ortodoncia">Ortodoncia invisible (Invisalign)</option>
+                <option value="general">Odontología general</option>
+                <option value="pediatria">Odontopediatría (niños)</option>
+                <option value="urgencia">Urgencia dental</option>
+                <option value="otro">Otro tratamiento</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="mensaje">Mensaje (opcional)</label>
+              <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos brevemente qué te ocurre o cualquier pregunta que tengas..."></textarea>
+            </div>
+            <button type="submit" class="form-submit" id="formSubmitBtn">
+              Solicitar cita gratuita →
+            </button>
+            <p class="form-privacy">
+              🔒 Tus datos están protegidos según el RGPD. Nunca los compartimos con terceros.
+              <a href="#" style="color:var(--blue);">Política de privacidad</a>
+            </p>
+          </form>
+          <div id="formSuccess" style="display:none;text-align:center;padding:36px 20px;">
+            <div style="font-size:3rem;margin-bottom:16px;">✅</div>
+            <h4 style="font-family:'DM Serif Display',serif;font-size:1.4rem;color:var(--ink);margin-bottom:10px;">¡Solicitud recibida!</h4>
+            <p style="color:var(--ink-muted);font-size:0.93rem;line-height:1.7;">Nos pondremos en contacto contigo en menos de una hora. Si tienes una urgencia, llámanos directamente al <a href="tel:+34954000000" style="color:var(--blue);font-weight:600;">+34 954 XXX XXX</a>.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       MAP PLACEHOLDER
+  ========================================== -->
+  <div class="map-section" role="img" aria-label="Mapa de ubicación de la Clínica Dental Sonrisa en C/ Sierpes 45, Sevilla">
+    <div class="map-placeholder">
+      <div class="map-placeholder__pin">📍</div>
+      <div class="map-placeholder__text">Clínica Dental Sonrisa</div>
+      <div class="map-placeholder__sub">C/ Sierpes, 45 · 41001 Sevilla · A 2 minutos del centro histórico</div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       FOOTER
+  ========================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+
+        <!-- Brand -->
+        <div>
+          <div class="footer__logo-name">SONRISA</div>
+          <div class="footer__logo-sub">Clínica Dental · Sevilla</div>
+          <p class="footer__desc">Clínica dental privada en el corazón de Sevilla. Más de 15 años ofreciendo tratamientos de alta calidad con la más avanzada tecnología odontológica disponible.</p>
+          <div class="footer__certs">
+            <span class="footer__cert">ISO 9001</span>
+            <span class="footer__cert">SEPA Member</span>
+            <span class="footer__cert">Invisalign Gold</span>
+            <span class="footer__cert">Col. Dentistas Sevilla</span>
+          </div>
+        </div>
+
+        <!-- Servicios -->
+        <div>
+          <div class="footer__col-title">Servicios</div>
+          <div class="footer__links">
+            <a href="#servicios">Implantes dentales</a>
+            <a href="#servicios">Estética dental</a>
+            <a href="#servicios">Ortodoncia invisible</a>
+            <a href="#servicios">Odontología general</a>
+            <a href="#servicios">Odontopediatría</a>
+            <a href="#servicios">Urgencias 24h</a>
+          </div>
+        </div>
+
+        <!-- Clínica -->
+        <div>
+          <div class="footer__col-title">Clínica</div>
+          <div class="footer__links">
+            <a href="#equipo">Nuestro equipo</a>
+            <a href="#opiniones">Opiniones</a>
+            <a href="#precios">Precios</a>
+            <a href="#contacto">Contacto</a>
+            <a href="#">Blog dental</a>
+            <a href="#">Trabaja con nosotros</a>
+          </div>
+        </div>
+
+        <!-- Contacto rápido -->
+        <div>
+          <div class="footer__col-title">Contacto</div>
+          <div class="footer__contact-item">
+            <span class="footer__contact-icon" aria-hidden="true">📍</span>
+            <div class="footer__contact-text">C/ Sierpes, 45<br/>41001 Sevilla</div>
+          </div>
+          <div class="footer__contact-item">
+            <span class="footer__contact-icon" aria-hidden="true">📞</span>
+            <div class="footer__contact-text"><a href="tel:+34954000000">+34 954 XXX XXX</a></div>
+          </div>
+          <div class="footer__contact-item">
+            <span class="footer__contact-icon" aria-hidden="true">📧</span>
+            <div class="footer__contact-text"><a href="mailto:cita@clinicasonrisa.es">cita@clinicasonrisa.es</a></div>
+          </div>
+          <div class="footer__contact-item">
+            <span class="footer__contact-icon" aria-hidden="true">🕐</span>
+            <div class="footer__contact-text">Lun–Vie: 9:00–21:00<br/>Sáb: 9:00–14:00<br/>Dom: urgencias</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="footer__bottom">
+        <div class="footer__copy">© 2025 Clínica Dental Sonrisa S.L. · Todos los derechos reservados</div>
+        <div class="footer__bottom-links">
+          <a href="#">Aviso legal</a>
+          <a href="#">Privacidad</a>
+          <a href="#">Cookies</a>
+        </div>
+        <div class="footer__made-by">Diseñado con cuidado por <a href="#">Alepixel Studio</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       FLOATING BUTTONS
+  ========================================== -->
+  <div class="floating-buttons" aria-label="Contacto rápido">
+    <a href="tel:+34954000000" class="float-btn float-btn--call" aria-label="Llamar a la clínica">
+      <span class="float-btn__icon" aria-hidden="true">📞</span>
+      <div class="float-label">
+        <span class="float-label__small">Llamar ahora</span>
+        <span>+34 954 XXX XXX</span>
+      </div>
+    </a>
+    <a href="https://wa.me/34954000000?text=Hola%2C%20quiero%20pedir%20cita%20en%20la%20Cl%C3%ADnica%20Dental%20Sonrisa" class="float-btn float-btn--whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+      <span class="float-btn__icon" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+      </span>
+      <div class="float-label">
+        <span class="float-label__small">Escríbenos</span>
+        <span>WhatsApp</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- ==========================================
+       JAVASCRIPT
+  ========================================== -->
+  <script>
+    // ── Scroll Reveal (IntersectionObserver) ─────────────────
+    (function () {
+      var els = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) {
+        els.forEach(function (el) { el.classList.add('revealed'); });
+        return;
+      }
+      var observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -36px 0px' }
+      );
+      els.forEach(function (el) { observer.observe(el); });
+    })();
+
+    // ── Nav scroll shadow ─────────────────────────────────────
+    (function () {
+      var nav = document.getElementById('nav');
+      function onScroll() {
+        if (window.scrollY > 18) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
+        }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+
+    // ── Mobile nav toggle ─────────────────────────────────────
+    (function () {
+      var toggle = document.getElementById('navToggle');
+      var mobile = document.getElementById('navMobile');
+
+      toggle.addEventListener('click', function () {
+        var isOpen = mobile.classList.contains('open');
+        mobile.classList.toggle('open', !isOpen);
+        toggle.setAttribute('aria-expanded', String(!isOpen));
+      });
+
+      mobile.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          mobile.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    })();
+
+    // ── Smooth scroll for anchor links ────────────────────────
+    (function () {
+      document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+        anchor.addEventListener('click', function (e) {
+          var href = this.getAttribute('href');
+          if (href === '#') return;
+          var target = document.querySelector(href);
+          if (target) {
+            e.preventDefault();
+            var offset = 82;
+            var top = target.getBoundingClientRect().top + window.scrollY - offset;
+            window.scrollTo({ top: top, behavior: 'smooth' });
+          }
+        });
+      });
+    })();
+
+    // ── Contact form handler ──────────────────────────────────
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      var form = document.getElementById('contactForm');
+      var btn = document.getElementById('formSubmitBtn');
+      var nombre = document.getElementById('nombre').value.trim();
+      var telefono = document.getElementById('telefono').value.trim();
+
+      if (!nombre || !telefono) {
+        alert('Por favor, rellena los campos obligatorios: Nombre y Teléfono.');
+        return;
+      }
+
+      btn.textContent = 'Enviando...';
+      btn.disabled = true;
+
+      setTimeout(function () {
+        form.style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      }, 1100);
+    }
+
+    // ── Stats counter animation ───────────────────────────────
+    (function () {
+      var stats = document.querySelectorAll('.stat-item__num');
+      var animated = [];
+
+      function easeOutCubic(t) {
+        return 1 - Math.pow(1 - t, 3);
+      }
+
+      function animateCounter(el) {
+        var rawText = el.textContent.trim();
+        // Extract numeric part and surrounding text
+        var match = rawText.match(/^(\D*)([\d,.]+)(\D*)$/);
+        if (!match) return;
+        var prefix = match[1];
+        var numStr = match[2].replace(/\./g, '').replace(/,/g, '.');
+        var suffix = match[3];
+        var target = parseFloat(numStr);
+        if (isNaN(target)) return;
+        var isDecimal = numStr.indexOf('.') !== -1;
+        var duration = 1600;
+        var startTime = null;
+
+        function tick(timestamp) {
+          if (!startTime) startTime = timestamp;
+          var elapsed = timestamp - startTime;
+          var progress = Math.min(elapsed / duration, 1);
+          var eased = easeOutCubic(progress);
+          var current = target * eased;
+          var display;
+          if (isDecimal) {
+            display = current.toFixed(1);
+          } else {
+            display = Math.round(current).toLocaleString('es-ES');
+          }
+          el.textContent = prefix + display + suffix;
+          if (progress < 1) {
+            requestAnimationFrame(tick);
+          }
+        }
+        requestAnimationFrame(tick);
+      }
+
+      if ('IntersectionObserver' in window) {
+        var obs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting && animated.indexOf(entry.target) === -1) {
+              animated.push(entry.target);
+              animateCounter(entry.target);
+            }
+          });
+        }, { threshold: 0.5 });
+        stats.forEach(function (s) { obs.observe(s); });
+      }
+    })();
+  </script>
+</body>
+</html>
