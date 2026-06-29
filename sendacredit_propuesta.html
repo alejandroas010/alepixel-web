@@ -86,7 +86,7 @@
   .cards { display:flex; gap:34px; flex:1; }
   .card {
     flex:1; background:rgba(255,255,255,0.97);
-    border-radius:22px; padding:36px 38px;
+    border-radius:22px; padding:40px 38px;
     box-shadow:0 18px 40px rgba(5,15,45,0.28);
     display:flex; flex-direction:column;
   }
@@ -97,11 +97,11 @@
     display:flex; align-items:center; justify-content:center;
     margin-bottom:20px; box-shadow:0 8px 18px rgba(19,185,191,0.35);
   }
-  .card h2 { font-size:25px; font-weight:800; color:var(--ink); margin-bottom:16px; line-height:1.25; }
+  .card h2 { font-size:28px; font-weight:800; color:var(--ink); margin-bottom:22px; line-height:1.25; }
   .card ul { list-style:none; margin-bottom:14px; }
   .card li {
-    position:relative; padding-left:24px; margin-bottom:11px;
-    font-size:16px; color:#33415f; line-height:1.45;
+    position:relative; padding-left:28px; margin-bottom:18px;
+    font-size:19px; color:#33415f; line-height:1.5;
   }
   .card li::before {
     content:"›"; position:absolute; left:0; top:-1px;
@@ -125,8 +125,8 @@
     display:flex; align-items:center; justify-content:center;
     font-size:22px; color:#fff; box-shadow:0 6px 14px rgba(19,185,191,0.35);
   }
-  .feat h3 { font-size:19px; font-weight:800; color:var(--ink); margin-bottom:6px; }
-  .feat p { font-size:14.5px; color:#3a4a6b; line-height:1.45; }
+  .feat h3 { font-size:21px; font-weight:800; color:var(--ink); margin-bottom:8px; }
+  .feat p { font-size:16.5px; color:#3a4a6b; line-height:1.5; }
 
   .foot-logo { position:absolute; bottom:30px; right:90px; width:150px; opacity:0.92; z-index:2; }
 
@@ -136,21 +136,31 @@
     display:flex; flex-direction:column; align-items:center; justify-content:center;
     padding:60px;
   }
-  .contact-slide .logo-round { width:130px; margin-bottom:16px; }
+  .contact-slide .logo-round { width:140px; margin-bottom:18px; }
   .contact-slide .kicker { align-self:center; }
-  .contact-slide h2 { font-size:32px; font-weight:800; color:#fff; margin:14px 0 46px; letter-spacing:0.3px; }
-  .offices { display:flex; gap:36px; width:100%; max-width:1260px; }
+  .contact-slide h2 { font-size:38px; font-weight:800; color:#fff; margin:16px 0 50px; letter-spacing:0.3px; }
+  .offices { display:flex; gap:40px; width:100%; max-width:1320px; }
   .office {
-    flex:1; background:rgba(255,255,255,0.06);
-    border:1px solid rgba(255,255,255,0.14); border-radius:20px; padding:32px 30px;
+    flex:1; min-height:300px; background:rgba(10,20,50,0.55);
+    border:1px solid rgba(255,255,255,0.18); border-radius:22px; padding:40px 36px;
+    display:flex; flex-direction:column; justify-content:center;
+    backdrop-filter:blur(2px);
   }
-  .office h3 { font-size:19px; font-weight:800; color:var(--teal-1); letter-spacing:2px; margin-bottom:22px; }
+  .office h3 { font-size:23px; font-weight:800; color:var(--teal-1); letter-spacing:2.5px; margin-bottom:24px; }
   .office p {
-    display:flex; align-items:flex-start; gap:12px;
-    font-size:17px; color:rgba(225,238,255,0.88); margin-bottom:16px; line-height:1.4;
+    display:flex; align-items:flex-start; gap:14px;
+    font-size:20px; color:#fff; margin-bottom:20px; line-height:1.5;
   }
-  .office p .ic { flex:none; font-size:16px; color:var(--teal-1); margin-top:1px; }
-  .thanks { margin-top:46px; font-size:19px; color:rgba(200,225,255,0.65); font-weight:400; letter-spacing:0.3px; }
+  .office p .ic { flex:none; font-size:18px; color:var(--teal-1); margin-top:1px; }
+  .thanks { margin-top:50px; font-size:21px; color:rgba(255,255,255,0.85); font-weight:400; letter-spacing:0.3px; }
+  .contact-slide .bg-photo {
+    position:absolute; inset:0; z-index:0;
+    background-size:cover; background-position:center;
+  }
+  .contact-slide .bg-overlay {
+    position:absolute; inset:0; z-index:1;
+    background:linear-gradient(150deg, rgba(33,71,143,0.88) 0%, rgba(20,47,110,0.90) 55%, rgba(10,33,80,0.93) 100%);
+  }
 </style>
 </head>
 <body>
@@ -191,7 +201,6 @@
           <li>Validación de datos y documentación</li>
           <li>Integración en la plataforma de gestión</li>
         </ul>
-        <div class="note">Cada expediente queda registrado y trazable desde el primer minuto.</div>
       </div>
       <div class="card">
         <div class="badge">2</div>
@@ -200,7 +209,6 @@
           <li>Clasificación por antigüedad, importe, tipología y probabilidad de recuperación</li>
           <li>Definición de la estrategia de gestión más adecuada para cada expediente, valorando la actividad o sector de nuestro cliente</li>
         </ul>
-        <div class="note">La segmentación inicial permite priorizar recursos y aplicar el enfoque más eficaz a cada caso.</div>
       </div>
     </div>
   </div>
@@ -224,7 +232,6 @@
           <li>Verificación de datos de contacto y situación del cliente</li>
           <li>Acciones simultáneas de búsqueda de nuevos datos, centrándose en los no contactados o sin localización</li>
         </ul>
-        <div class="note">Más canales desde el primer momento, más probabilidad de respuesta.</div>
       </div>
       <div class="card">
         <div class="badge">4</div>
@@ -234,7 +241,6 @@
           <li>Propuesta de acuerdos personalizados</li>
           <li>Formalización de seguimientos de pago</li>
         </ul>
-        <div class="note">Cada acuerdo se adapta a la realidad económica real del deudor.</div>
       </div>
     </div>
   </div>
@@ -258,7 +264,6 @@
           <li>Recordatorios preventivos de vencimiento</li>
           <li>Reactivación inmediata ante incidencias o incumplimientos</li>
         </ul>
-        <div class="note">Reducimos el riesgo de impago reiterado con un seguimiento sin pausas.</div>
       </div>
       <div class="card">
         <div class="badge">6</div>
@@ -268,7 +273,6 @@
           <li>Informes periódicos de actividad y resultados</li>
           <li>KPIs de recuperación y productividad</li>
         </ul>
-        <div class="note">Visibilidad completa para nuestro cliente sobre el progreso de su cartera.</div>
       </div>
     </div>
   </div>
@@ -300,7 +304,6 @@
           <li>Servicio de recobro amistoso a éxito</li>
           <li>Retribución escalada según tipología de deuda</li>
         </ul>
-        <div class="note">Sin cuota fija: solo cobramos cuando hay resultado.</div>
       </div>
     </div>
   </div>
@@ -352,6 +355,7 @@
 <!-- ============ SLIDE 7 — CONTACTO ============ -->
 <div class="slide">
   <div class="bg"></div>
+  <div class="bg-overlay" style="position:absolute;inset:0;z-index:1;background:linear-gradient(150deg, rgba(33,71,143,0.88) 0%, rgba(20,47,110,0.90) 55%, rgba(10,33,80,0.93) 100%);"></div>
   <div class="blob blob-teal-1"></div>
   <div class="blob blob-teal-2"></div>
   <div class="contact-slide">
